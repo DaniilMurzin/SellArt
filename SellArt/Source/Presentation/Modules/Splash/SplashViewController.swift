@@ -16,7 +16,7 @@ class SplashViewController: UIViewController {
     
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Tap me!", for: .normal)
+        button.setTitle(Strings.buttonTitle, for: .normal)
         button.tintColor = .white
         button.backgroundColor = .systemOrange
         button.translatesAutoresizingMaskIntoConstraints =  false
