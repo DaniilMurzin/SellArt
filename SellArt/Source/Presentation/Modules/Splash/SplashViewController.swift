@@ -33,7 +33,7 @@ class SplashViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: override methods
+    // MARK: override methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,12 +44,12 @@ class SplashViewController: UIViewController {
         presenter.attachView(self) // это здесь нужно?
     }
     
-    //MARK: private methods
-    func setupView(){
+    // MARK: private methods
+    func setupView() {
         view.backgroundColor = .cyan
     }
     
-    func setupConstraints(){
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -58,10 +58,9 @@ class SplashViewController: UIViewController {
         ])
     }
     
-    @objc private func buttonTapped(){
+    @objc private func buttonTapped() {
         print("Button taped")
     }
-    
     
 }
 extension SplashViewController: SplashViewProtocol {
