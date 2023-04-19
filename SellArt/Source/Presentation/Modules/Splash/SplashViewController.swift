@@ -40,8 +40,6 @@ class SplashViewController: UIViewController {
         view.addSubview(button)
         setupView()
         setupConstraints()
-        
-        presenter.attachView(self) // это здесь нужно?
     }
     
     //MARK: private methods
