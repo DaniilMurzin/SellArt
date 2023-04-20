@@ -13,7 +13,7 @@ class SplashViewController: UIViewController {
     private enum LocalConstants {
         static let buttonWidth: CGFloat = 250
     }
-    
+
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Strings.buttonTitle, for: .normal)
@@ -33,8 +33,8 @@ class SplashViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: override methods
-    override func viewDidLoad() {
+    // MARK: override methods
+    override func viewDidLoad () {
         super.viewDidLoad()
         
         view.addSubview(button)
@@ -42,12 +42,12 @@ class SplashViewController: UIViewController {
         setupConstraints()
     }
     
-    //MARK: private methods
-    func setupView(){
+    // MARK: private methods
+    func setupView() {
         view.backgroundColor = .cyan
     }
     
-    func setupConstraints(){
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -56,10 +56,9 @@ class SplashViewController: UIViewController {
         ])
     }
     
-    @objc private func buttonTapped(){
+    @objc private func buttonTapped() {
         print("Button taped")
     }
-    
     
 }
 extension SplashViewController: SplashViewProtocol {

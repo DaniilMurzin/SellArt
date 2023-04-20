@@ -9,10 +9,7 @@ class SplashPresenter {
     
     func attachView(_ view: SplashViewProtocol) {
         self.view = view
+    }
 }
-
-// MARK: extension SplashPresenter + SplashPresenterProtocol
-extension SplashPresenter: SplashPresenterProtocol {}
-
-
-
+    // MARK: extension SplashPresenter + SplashPresenterProtocol
+    extension SplashPresenter: SplashPresenterProtocol {}
