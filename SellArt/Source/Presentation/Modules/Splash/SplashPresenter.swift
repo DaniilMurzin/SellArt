@@ -13,4 +13,3 @@ class SplashPresenter {
 }
     // MARK: extension SplashPresenter + SplashPresenterProtocol
     extension SplashPresenter: SplashPresenterProtocol {}
-//tetsssss

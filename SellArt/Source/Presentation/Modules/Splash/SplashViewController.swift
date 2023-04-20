@@ -17,6 +17,8 @@ class SplashViewController: UIViewController {
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Strings.buttonTitle, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Quicksand-Medium", size: 16)
+        button.applyCustomFont(with: 12.5)
         button.tintColor = .white
         button.backgroundColor = .systemOrange
         button.translatesAutoresizingMaskIntoConstraints =  false
