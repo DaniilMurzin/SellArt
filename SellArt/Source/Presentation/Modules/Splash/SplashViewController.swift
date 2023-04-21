@@ -63,7 +63,9 @@ class SplashViewController: UIViewController {
     }
     
 }
+
 extension SplashViewController: SplashViewProtocol {
+    
     func setButtonTitle(_ title: String) {
     }
 
