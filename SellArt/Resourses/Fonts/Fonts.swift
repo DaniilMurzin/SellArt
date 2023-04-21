@@ -2,6 +2,7 @@ import UIKit
 
 extension UIFont {
     static let fontForButtons = UIFont(name: "Quicksand-Medium", size: 20)
+    static let 
 }
 
 extension UIButton {
