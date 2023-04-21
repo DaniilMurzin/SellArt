@@ -6,6 +6,9 @@
 	<array>
 		<string>Quicksand-VariableFont_wght.ttf</string>
 		<string>Quicksand-Medium.ttf</string>
+		<string>RFTone-Regular.ttf</string>
+		<string>RFTone-Bold.ttf</string>
+		<string>SFProText-Semibold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
