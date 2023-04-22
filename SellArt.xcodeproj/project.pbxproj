@@ -14,6 +14,7 @@
 		B639ECE129F298CE007FD55D /* RFTone-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE029F298CE007FD55D /* RFTone-Regular.ttf */; };
 		B639ECE329F29D3B007FD55D /* RFTone-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */; };
 		B639ECE529F2A039007FD55D /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */; };
+		B65D8EE729F439CD0092425E /* UIcolor + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65D8EE629F439CD0092425E /* UIcolor + Hex.swift */; };
 		B6721BE329F149B2008436A7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6721BE229F149B2008436A7 /* Fonts.swift */; };
 		B6721BE529F149C9008436A7 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6721BE429F149C9008436A7 /* Images.swift */; };
 		B6721BE729F149DA008436A7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6721BE629F149DA008436A7 /* Colors.swift */; };
@@ -39,6 +40,7 @@
 		B639ECE029F298CE007FD55D /* RFTone-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RFTone-Regular.ttf"; sourceTree = "<group>"; };
 		B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RFTone-Bold.ttf"; sourceTree = "<group>"; };
 		B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.ttf"; sourceTree = "<group>"; };
+		B65D8EE629F439CD0092425E /* UIcolor + Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIcolor + Hex.swift"; sourceTree = "<group>"; };
 		B6721BE229F149B2008436A7 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		B6721BE429F149C9008436A7 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B6721BE629F149DA008436A7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		B614025A29EB086B0044DA2D /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				B65D8EE529F439840092425E /* Extensions */,
 				B614025B29EB08850044DA2D /* Application */,
 			);
 			path = Infrastructure;
@@ -155,6 +158,14 @@
 				B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		B65D8EE529F439840092425E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B65D8EE629F439CD0092425E /* UIcolor + Hex.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B6721BEB29F16459008436A7 /* Fonts */ = {
@@ -205,8 +216,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6D24F8D29EAEE090015F5B2 /* Build configuration list for PBXNativeTarget "SellArt" */;
 			buildPhases = (
-				B6721BE129F14368008436A7 /* ShellScript */,
 				9DD32B6E67D6A3CD38D97EA9 /* [CP] Check Pods Manifest.lock */,
+				B6721BE129F14368008436A7 /* ShellScript */,
 				B6D24F7529EAEE060015F5B2 /* Sources */,
 				B6D24F7629EAEE060015F5B2 /* Frameworks */,
 				B6D24F7729EAEE060015F5B2 /* Resources */,
@@ -324,6 +335,7 @@
 				B6D24F7D29EAEE060015F5B2 /* AppDelegate.swift in Sources */,
 				B6D24F7F29EAEE060015F5B2 /* SceneDelegate.swift in Sources */,
 				B6D24F9129EAEF170015F5B2 /* SplashPresenter.swift in Sources */,
+				B65D8EE729F439CD0092425E /* UIcolor + Hex.swift in Sources */,
 				B6D24F9329EAEFA00015F5B2 /* SplashViewController.swift in Sources */,
 				B6721BE529F149C9008436A7 /* Images.swift in Sources */,
 				B610C25529EC526D001AF42B /* Strings.swift in Sources */,

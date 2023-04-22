@@ -1,21 +1,11 @@
 import UIKit
 
 extension UIColor {
-    convenience init(hex: String, alpha: CGFloat = 1.0) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int = UInt64()
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3:
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6:
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8:
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (1, 1, 1, 0)
-        }
-        self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
-    }
+    static let mainBackgroundColor = UIColor(hex: "FFFFFF")
+    static let tabBarColor = UIColor(hex: "EEEAE5")
+    static let selectionBarColor = UIColor(hex: "007AFF")
+    static let linkColor = UIColor(hex: "05ACF3")
+    static let buttonEnableColor = UIColor(hex: "D7644A")
+    static let buttonDisabledColor = UIColor(hex: "A45648")
+    static let buttonFontColor = UIColor(hex: "313E57")
 }

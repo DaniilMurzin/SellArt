@@ -1,7 +1,7 @@
 import UIKit
 
 extension UIFont {
-    static let fontForButtons = UIFont(name: "Quicksand-Medium", size: 20)
+    static let buttonsFont = UIFont(name: "Quicksand-Medium", size: 20)
     static let regularBaseFont = UIFont(name: "RFTone-Regular", size: 13)
     static let regularSettingsFont = UIFont(name: "RFTone-Regular", size: 16)
     static let priceFont = UIFont(name: "RFTone-Bold", size: 16)
@@ -9,17 +9,18 @@ extension UIFont {
     static let alertOptions = UIFont(name: "SFProText-Semibold", size: 17)
 }
 
-extension UIButton {
-    func applyCustomFont(with letterSpacingPercentage: CGFloat) {
-        guard let font = UIFont.fontForButtons, let currentTitle = self.currentTitle else { return }
-        
-        let letterSpacing = font.pointSize * letterSpacingPercentage / 100
+extension String {
+    func toStyledForButtonAttributedString() -> NSAttributedString {
+        guard let font = UIFont.buttonsFont else {
+            assertionFailure("Preinstalled font does not exist!")
+            return NSAttributedString()
+        }
+
+        let letterSpacing = font.pointSize * 0.125
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: letterSpacing,
             .font: font
         ]
-        
-        let attributedTitle = NSAttributedString(string: currentTitle, attributes: attributes)
-        self.setAttributedTitle(attributedTitle, for: .normal)
+        return NSAttributedString(string: self, attributes: attributes)
     }
 }

@@ -12,14 +12,12 @@ class SplashViewController: UIViewController {
     // MARK: private properties
     private enum LocalConstants {
         static let buttonWidth: CGFloat = 250
-        static let buttonLetterSpacing = 12.5
     }
     
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(Strings.buttonTitle, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Quicksand-Medium", size: 16)
-        button.applyCustomFont(with: LocalConstants.buttonLetterSpacing)
+        let attributedTitle = Strings.buttonTitle.toStyledForButtonAttributedString()
+        button.setAttributedTitle(attributedTitle, for: .normal)
         button.tintColor = .white
         button.backgroundColor = .systemOrange
         button.translatesAutoresizingMaskIntoConstraints =  false
@@ -43,16 +41,11 @@ class SplashViewController: UIViewController {
         view.addSubview(button)
         setupView()
         setupConstraints()
-        
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
     }
     
     // MARK: private methods
     func setupView() {
-        view.backgroundColor = .cyan
+        view.backgroundColor = UIColor.buttonDisabledColor
     }
     
     func setupConstraints() {
