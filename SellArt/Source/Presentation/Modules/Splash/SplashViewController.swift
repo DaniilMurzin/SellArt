@@ -8,15 +8,16 @@ class SplashViewController: UIViewController {
     
     // MARK: public properties
     var presenter: SplashPresenterProtocol
-
+    
     // MARK: private properties
     private enum LocalConstants {
         static let buttonWidth: CGFloat = 250
     }
-
+    
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(Strings.buttonTitle, for: .normal)
+        let attributedTitle = Strings.buttonTitle.toStyledForButtonAttributedString()
+        button.setAttributedTitle(attributedTitle, for: .normal)
         button.tintColor = .white
         button.backgroundColor = .systemOrange
         button.translatesAutoresizingMaskIntoConstraints =  false
@@ -44,7 +45,7 @@ class SplashViewController: UIViewController {
     
     // MARK: private methods
     func setupView() {
-        view.backgroundColor = .cyan
+        view.backgroundColor = UIColor.buttonDisabledColor
     }
     
     func setupConstraints() {
@@ -61,8 +62,10 @@ class SplashViewController: UIViewController {
     }
     
 }
+
 extension SplashViewController: SplashViewProtocol {
+    
     func setButtonTitle(_ title: String) {
     }
-
+    
 }

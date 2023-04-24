@@ -11,6 +11,6 @@ class SplashPresenter {
         self.view = view
     }
 }
-    // MARK: extension SplashPresenter + SplashPresenterProtocol
-    extension SplashPresenter: SplashPresenterProtocol {}
-//tet
+
+// MARK: extension SplashPresenter + SplashPresenterProtocol
+extension SplashPresenter: SplashPresenterProtocol {}
