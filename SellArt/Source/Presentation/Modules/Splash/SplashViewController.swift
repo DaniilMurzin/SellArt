@@ -10,13 +10,12 @@ class SplashViewController: UIViewController {
     var presenter: SplashPresenterProtocol
     
     // MARK: private properties
-    private lazy var  button: ButtonView = {
-        let btn = ButtonView()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
+    private lazy var button = ButtonView(state: .submitForm )
+    
     private enum LocalConstants {
-        static let buttonWidth: CGFloat = 250
+        static let rightInset: CGFloat = -16
+        static let leftInset: CGFloat = 16
+        static let bottomInset: CGFloat = -25
     }
     
     // MARK: init
@@ -32,7 +31,6 @@ class SplashViewController: UIViewController {
     override func viewDidLoad () {
         super.viewDidLoad()
         
-        view.addSubview(button)
         setupView()
         setupConstraints()
     }
@@ -40,17 +38,17 @@ class SplashViewController: UIViewController {
     // MARK: private methods
     func setupView() {
         view.backgroundColor = UIColor.mainBackgroundColor
+        view.addSubview(button)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
             
-            button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 32),
-            button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -32),
-            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -52)
+            button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: LocalConstants.leftInset),
+            button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: LocalConstants.rightInset),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: LocalConstants.bottomInset)
         ])
     }
-    
 }
 
 extension SplashViewController: SplashViewProtocol {

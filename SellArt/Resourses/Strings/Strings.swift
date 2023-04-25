@@ -1,5 +1,7 @@
 import UIKit
 
 enum Strings {
-    static let buttonTitle = NSLocalizedString("button_title", comment: "Button title")
+    static let submitFormButtonTitle = NSLocalizedString("submitFormButtonTitle", comment: "submitFormButtonTitle")
+    static let registrationButtonTitle = NSLocalizedString("registrationButtonTitle", comment: "registrationButtonTitle")
+    static let purchaseButtonTitle = NSLocalizedString("purchase", comment: "purchase")
 }

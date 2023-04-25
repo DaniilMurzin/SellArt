@@ -10,7 +10,7 @@
 		B610C25029EC4672001AF42B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B610C25229EC4672001AF42B /* Localizable.strings */; };
 		B610C25529EC526D001AF42B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B610C25429EC526D001AF42B /* Strings.swift */; };
 		B614025729EB027F0044DA2D /* SplashModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */; };
-		B617893C29F7D9410085E079 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B617893B29F7D9400085E079 /* ButtonView.swift */; };
+		B617893C29F7D9410085E079 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B617893B29F7D9400085E079 /* CustomButton.swift */; };
 		B639ECE129F298CE007FD55D /* RFTone-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE029F298CE007FD55D /* RFTone-Regular.ttf */; };
 		B639ECE329F29D3B007FD55D /* RFTone-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */; };
 		B639ECE529F2A039007FD55D /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */; };
@@ -38,7 +38,7 @@
 		B610C25329EC4677001AF42B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B610C25429EC526D001AF42B /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashModuleBuilder.swift; sourceTree = "<group>"; };
-		B617893B29F7D9400085E079 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		B617893B29F7D9400085E079 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		B639ECE029F298CE007FD55D /* RFTone-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RFTone-Regular.ttf"; sourceTree = "<group>"; };
 		B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RFTone-Bold.ttf"; sourceTree = "<group>"; };
 		B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.ttf"; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 		B617893A29F7CF410085E079 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B617893B29F7D9400085E079 /* ButtonView.swift */,
+				B617893B29F7D9400085E079 /* CustomButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 				B6721BE529F149C9008436A7 /* Images.swift in Sources */,
 				B610C25529EC526D001AF42B /* Strings.swift in Sources */,
 				B614025729EB027F0044DA2D /* SplashModuleBuilder.swift in Sources */,
-				B617893C29F7D9410085E079 /* ButtonView.swift in Sources */,
+				B617893C29F7D9410085E079 /* CustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
