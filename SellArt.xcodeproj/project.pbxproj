@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		54C8DDC4B885FAEEA4BA5C31 /* Pods_SellArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D13E3C908528460D47B06A6 /* Pods_SellArt.framework */; };
 		B610C25029EC4672001AF42B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B610C25229EC4672001AF42B /* Localizable.strings */; };
 		B610C25529EC526D001AF42B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B610C25429EC526D001AF42B /* Strings.swift */; };
 		B614025729EB027F0044DA2D /* SplashModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */; };
+		B617893C29F7D9410085E079 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B617893B29F7D9400085E079 /* ButtonView.swift */; };
 		B639ECE129F298CE007FD55D /* RFTone-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE029F298CE007FD55D /* RFTone-Regular.ttf */; };
 		B639ECE329F29D3B007FD55D /* RFTone-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */; };
 		B639ECE529F2A039007FD55D /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */; };
@@ -26,17 +26,19 @@
 		B6D24F8929EAEE090015F5B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D24F8729EAEE090015F5B2 /* LaunchScreen.storyboard */; };
 		B6D24F9129EAEF170015F5B2 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D24F9029EAEF170015F5B2 /* SplashPresenter.swift */; };
 		B6D24F9329EAEFA00015F5B2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D24F9229EAEFA00015F5B2 /* SplashViewController.swift */; };
+		DED9B8B9C24F1638AA5C6395 /* Pods_SellArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0BF302F73678CCD5F479FD /* Pods_SellArt.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CD41B2E50150CB76C916E04 /* Pods-SellArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.debug.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.debug.xcconfig"; sourceTree = "<group>"; };
-		3D13E3C908528460D47B06A6 /* Pods_SellArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SellArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2CD7A56F3CBC17823025093 /* Pods-SellArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.release.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.release.xcconfig"; sourceTree = "<group>"; };
+		03FD8CC5CD2C7851C7040367 /* Pods-SellArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.debug.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.debug.xcconfig"; sourceTree = "<group>"; };
+		2D0BF302F73678CCD5F479FD /* Pods_SellArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SellArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88CD09113D918D600A59A6C7 /* Pods-SellArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.release.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.release.xcconfig"; sourceTree = "<group>"; };
 		B610C24C29EC464C001AF42B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B610C25129EC4672001AF42B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B610C25329EC4677001AF42B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B610C25429EC526D001AF42B /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashModuleBuilder.swift; sourceTree = "<group>"; };
+		B617893B29F7D9400085E079 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		B639ECE029F298CE007FD55D /* RFTone-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RFTone-Regular.ttf"; sourceTree = "<group>"; };
 		B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RFTone-Bold.ttf"; sourceTree = "<group>"; };
 		B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.ttf"; sourceTree = "<group>"; };
@@ -61,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54C8DDC4B885FAEEA4BA5C31 /* Pods_SellArt.framework in Frameworks */,
+				DED9B8B9C24F1638AA5C6395 /* Pods_SellArt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,18 +73,10 @@
 		28716DFCF2D8D8CC30FCD927 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2CD41B2E50150CB76C916E04 /* Pods-SellArt.debug.xcconfig */,
-				A2CD7A56F3CBC17823025093 /* Pods-SellArt.release.xcconfig */,
+				03FD8CC5CD2C7851C7040367 /* Pods-SellArt.debug.xcconfig */,
+				88CD09113D918D600A59A6C7 /* Pods-SellArt.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		ACB673F045C843AA6BA48463 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3D13E3C908528460D47B06A6 /* Pods_SellArt.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B610C24D29EC4657001AF42B /* Strings */ = {
@@ -137,6 +131,7 @@
 		B614025C29EB08A60044DA2D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B617893A29F7CF410085E079 /* Views */,
 				B614025D29EB08B40044DA2D /* Modules */,
 			);
 			path = Presentation;
@@ -158,6 +153,14 @@
 				B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		B617893A29F7CF410085E079 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B617893B29F7D9400085E079 /* ButtonView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B65D8EE529F439840092425E /* Extensions */ = {
@@ -187,7 +190,7 @@
 				B6D24F7B29EAEE060015F5B2 /* SellArt */,
 				B6D24F7A29EAEE060015F5B2 /* Products */,
 				28716DFCF2D8D8CC30FCD927 /* Pods */,
-				ACB673F045C843AA6BA48463 /* Frameworks */,
+				E344140CA9EA9BE12E02B1A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,6 +212,14 @@
 			path = SellArt;
 			sourceTree = "<group>";
 		};
+		E344140CA9EA9BE12E02B1A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D0BF302F73678CCD5F479FD /* Pods_SellArt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -216,7 +227,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6D24F8D29EAEE090015F5B2 /* Build configuration list for PBXNativeTarget "SellArt" */;
 			buildPhases = (
-				9DD32B6E67D6A3CD38D97EA9 /* [CP] Check Pods Manifest.lock */,
+				143A3AB37E657616BAA9218B /* [CP] Check Pods Manifest.lock */,
 				B6721BE129F14368008436A7 /* ShellScript */,
 				B6D24F7529EAEE060015F5B2 /* Sources */,
 				B6D24F7629EAEE060015F5B2 /* Frameworks */,
@@ -284,7 +295,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9DD32B6E67D6A3CD38D97EA9 /* [CP] Check Pods Manifest.lock */ = {
+		143A3AB37E657616BAA9218B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -340,6 +351,7 @@
 				B6721BE529F149C9008436A7 /* Images.swift in Sources */,
 				B610C25529EC526D001AF42B /* Strings.swift in Sources */,
 				B614025729EB027F0044DA2D /* SplashModuleBuilder.swift in Sources */,
+				B617893C29F7D9410085E079 /* ButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +497,7 @@
 		};
 		B6D24F8E29EAEE090015F5B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CD41B2E50150CB76C916E04 /* Pods-SellArt.debug.xcconfig */;
+			baseConfigurationReference = 03FD8CC5CD2C7851C7040367 /* Pods-SellArt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -512,7 +524,7 @@
 		};
 		B6D24F8F29EAEE090015F5B2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2CD7A56F3CBC17823025093 /* Pods-SellArt.release.xcconfig */;
+			baseConfigurationReference = 88CD09113D918D600A59A6C7 /* Pods-SellArt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -10,20 +10,14 @@ class SplashViewController: UIViewController {
     var presenter: SplashPresenterProtocol
     
     // MARK: private properties
+    private lazy var  button: ButtonView = {
+        let btn = ButtonView()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
     private enum LocalConstants {
         static let buttonWidth: CGFloat = 250
     }
-    
-    private lazy var button: UIButton = {
-        let button = UIButton(type: .system)
-        let attributedTitle = Strings.buttonTitle.toStyledForButtonAttributedString()
-        button.setAttributedTitle(attributedTitle, for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = .systemOrange
-        button.translatesAutoresizingMaskIntoConstraints =  false
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        return button
-    }()
     
     // MARK: init
     init(presenter: SplashPresenterProtocol) {
@@ -45,20 +39,16 @@ class SplashViewController: UIViewController {
     
     // MARK: private methods
     func setupView() {
-        view.backgroundColor = UIColor.buttonDisabledColor
+        view.backgroundColor = UIColor.mainBackgroundColor
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
             
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            button.widthAnchor.constraint(equalToConstant: LocalConstants.buttonWidth)
+            button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 32),
+            button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -32),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -52)
         ])
-    }
-    
-    @objc private func buttonTapped() {
-        print("Button taped")
     }
     
 }
