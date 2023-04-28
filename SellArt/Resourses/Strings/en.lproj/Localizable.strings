@@ -1,3 +1,8 @@
 "submitFormButtonTitle" = "SUBMIT FORM";
 "registrationButtonTitle" = "REGISTRATION";
 "purchase" = "PURCHASE";
+"name" = "Name";
+"surname" = "Surname";
+"email" = "Email";
+"phone number" = "Phone number";
+"address" = "Adress";

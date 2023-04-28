@@ -8,7 +8,25 @@ class SplashViewController: UIViewController {
     var presenter: SplashPresenterProtocol
     
     // MARK: private properties
-    private let button = ButtonView(state: .submitForm )
+    private let button = СustomButton(state: .submitForm )
+ 
+    private let emailTextField = CustomTextField(style: .email)
+    
+    private let nameTextField = CustomTextField(style: .name)
+    
+    private let surnameTextField = CustomTextField(style: .surname)
+    
+    private let phoneNumberTextField = CustomTextField(style: .phoneNumber)
+    
+    private let addressTextField = CustomTextField(style: .address)
+    
+    private let stackView: UIStackView = {
+           let stackView = UIStackView()
+           stackView.axis = .vertical
+           stackView.spacing = 10
+           stackView.translatesAutoresizingMaskIntoConstraints = false
+           return stackView
+       }()
     
     // MARK: init
     init(presenter: SplashPresenterProtocol) {
@@ -22,7 +40,7 @@ class SplashViewController: UIViewController {
     // MARK: override methods
     override func viewDidLoad () {
         super.viewDidLoad()
-        
+       
         setupView()
         setupConstraints()
     }
@@ -30,11 +48,24 @@ class SplashViewController: UIViewController {
     // MARK: private methods
     func setupView() {
         view.backgroundColor = UIColor.mainBackgroundColor
+        
+        view.addSubview(stackView)
+        stackView.addArrangedSubview(emailTextField)
+        stackView.addArrangedSubview(nameTextField)
+        stackView.addArrangedSubview(surnameTextField)
+        stackView.addArrangedSubview(phoneNumberTextField)
+        stackView.addArrangedSubview(addressTextField)
+        
         view.addSubview(button)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
+            
+            stackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            stackView.leadingAnchor.constraint(equalTo: button.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: button.trailingAnchor),
             
             button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: LocalConstants.leftInset),
             button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: LocalConstants.rightInset),
