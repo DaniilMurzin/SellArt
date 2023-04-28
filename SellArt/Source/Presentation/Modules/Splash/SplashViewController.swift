@@ -1,8 +1,6 @@
 import UIKit
 
-protocol SplashViewProtocol: AnyObject {
-    func setButtonTitle (_ title: String)
-}
+protocol SplashViewProtocol: AnyObject {}
 
 class SplashViewController: UIViewController {
     
@@ -10,13 +8,7 @@ class SplashViewController: UIViewController {
     var presenter: SplashPresenterProtocol
     
     // MARK: private properties
-    private lazy var button = ButtonView(state: .submitForm )
-    
-    private enum LocalConstants {
-        static let rightInset: CGFloat = -16
-        static let leftInset: CGFloat = 16
-        static let bottomInset: CGFloat = -25
-    }
+    private let button = ButtonView(state: .submitForm )
     
     // MARK: init
     init(presenter: SplashPresenterProtocol) {
@@ -51,9 +43,10 @@ class SplashViewController: UIViewController {
     }
 }
 
-extension SplashViewController: SplashViewProtocol {
-    
-    func setButtonTitle(_ title: String) {
-    }
-    
+extension SplashViewController: SplashViewProtocol {}
+
+private enum LocalConstants {
+    static let rightInset: CGFloat = -16
+    static let leftInset: CGFloat = 16
+    static let bottomInset: CGFloat = -25
 }

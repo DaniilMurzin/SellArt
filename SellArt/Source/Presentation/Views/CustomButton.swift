@@ -13,12 +13,6 @@ class ButtonView: UIButton {
         super.init(frame: .zero)
         
         setupView(state: state)
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
-        addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
-        addTarget(self, action: #selector(buttonTouchUpOutside), for: .touchUpOutside)
     }
     
     required init?(coder: NSCoder) {
@@ -41,11 +35,17 @@ class ButtonView: UIButton {
         
         backgroundColor = UIColor.buttonEnableColor
         
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.black.cgColor
+        
         setAttributedTitle(attributedTitle, for: .normal)
         tintColor = .buttonFontColor
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
+        addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
+        addTarget(self, action: #selector(buttonTouchUpOutside), for: .touchUpOutside)
     }
     
     @objc private func buttonTapped() {
