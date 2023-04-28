@@ -1,8 +1,6 @@
 import UIKit
 
-protocol SplashViewProtocol: AnyObject {
-    func setButtonTitle (_ title: String)
-}
+protocol SplashViewProtocol: AnyObject {}
 
 class SplashViewController: UIViewController {
     
@@ -10,20 +8,7 @@ class SplashViewController: UIViewController {
     var presenter: SplashPresenterProtocol
     
     // MARK: private properties
-    private enum LocalConstants {
-        static let buttonWidth: CGFloat = 250
-    }
-    
-    private lazy var button: UIButton = {
-        let button = UIButton(type: .system)
-        let attributedTitle = Strings.buttonTitle.toStyledForButtonAttributedString()
-        button.setAttributedTitle(attributedTitle, for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = .systemOrange
-        button.translatesAutoresizingMaskIntoConstraints =  false
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        return button
-    }()
+    private let button = ButtonView(state: .submitForm )
     
     // MARK: init
     init(presenter: SplashPresenterProtocol) {
@@ -38,34 +23,30 @@ class SplashViewController: UIViewController {
     override func viewDidLoad () {
         super.viewDidLoad()
         
-        view.addSubview(button)
         setupView()
         setupConstraints()
     }
     
     // MARK: private methods
     func setupView() {
-        view.backgroundColor = UIColor.buttonDisabledColor
+        view.backgroundColor = UIColor.mainBackgroundColor
+        view.addSubview(button)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
             
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            button.widthAnchor.constraint(equalToConstant: LocalConstants.buttonWidth)
+            button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: LocalConstants.leftInset),
+            button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: LocalConstants.rightInset),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: LocalConstants.bottomInset)
         ])
     }
-    
-    @objc private func buttonTapped() {
-        print("Button taped")
-    }
-    
 }
 
-extension SplashViewController: SplashViewProtocol {
-    
-    func setButtonTitle(_ title: String) {
-    }
-    
+extension SplashViewController: SplashViewProtocol {}
+
+private enum LocalConstants {
+    static let rightInset: CGFloat = -16
+    static let leftInset: CGFloat = 16
+    static let bottomInset: CGFloat = -25
 }
