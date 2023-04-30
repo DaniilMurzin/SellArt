@@ -6,7 +6,7 @@ enum ButtonViewState {
     case purchase
 }
 
-class ButtonView: UIButton {
+class СustomButton: UIButton {
     
     // MARK: init
     init(state: ButtonViewState) {

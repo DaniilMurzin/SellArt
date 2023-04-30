@@ -1,3 +1,8 @@
 "submitFormButtonTitle" = "ОТПРАВИТЬ ЗАЯВКУ";
 "registrationButtonTitle" = "РЕГИСТРАЦИЯ";
 "purchase" = "КУПИТЬ";
+"name" = "Имя";
+"surname" = "Фамилия";
+"email" = "Емейл";
+"phone number" = "Номер телефона";
+"address" = "Адресс";
