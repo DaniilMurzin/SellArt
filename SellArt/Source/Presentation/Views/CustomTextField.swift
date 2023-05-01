@@ -13,6 +13,7 @@ class CustomTextField: UITextField {
     // MARK: init
     init(style: TextFieldStyle) {
         super.init(frame: .zero)
+        
         setupTextField(style: style)
     }
 
@@ -23,35 +24,36 @@ class CustomTextField: UITextField {
     // MARK: private methods
     private func setupTextField(style: TextFieldStyle) {
         
-        self.backgroundColor = .mainBackgroundColor
-        self.font = UIFont.regularSettingsFont
-        self.tintColor = .buttonFontColor
+        backgroundColor = .mainBackgroundColor
+        font = UIFont.regularSettingsFont
+        tintColor = .buttonFontColor
         
         switch style {
+            
         case .email:
-            self.keyboardType = .emailAddress
-            self.textContentType = .emailAddress
-            self.placeholder = Strings.emailTextField
+            keyboardType = .emailAddress
+            textContentType = .emailAddress
+            placeholder = Strings.emailTextField
             
         case .name:
-            self.keyboardType = .default
-            self.textContentType = .name
-            self.placeholder = Strings.nameTextField
+            keyboardType = .default
+            textContentType = .name
+            placeholder = Strings.nameTextField
             
         case .surname:
-            self.keyboardType = .default
-            self.textContentType = .familyName
-            self.placeholder = Strings.surnameTextField
+            keyboardType = .default
+            textContentType = .familyName
+            placeholder = Strings.surnameTextField
             
         case .phoneNumber:
-            self.keyboardType = .phonePad
-            self.textContentType = .telephoneNumber
-            self.placeholder = Strings.phoneNumber
+            keyboardType = .phonePad
+            textContentType = .telephoneNumber
+            placeholder = Strings.phoneNumber
             
         case .address:
-            self.keyboardType = .default
-            self.textContentType = .fullStreetAddress
-            self.placeholder = Strings.addressTextField
+            keyboardType = .default
+            textContentType = .fullStreetAddress
+            placeholder = Strings.addressTextField
         }
     }
 }

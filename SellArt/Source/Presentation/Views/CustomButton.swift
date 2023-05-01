@@ -38,14 +38,21 @@ class СustomButton: UIButton {
         layer.borderWidth = 1
         layer.borderColor = UIColor.black.cgColor
         
-        setAttributedTitle(attributedTitle, for: .normal)
+        setAttributedTitle(attributedTitle,
+                           for: .normal)
         tintColor = .buttonFontColor
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
-        addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
-        addTarget(self, action: #selector(buttonTouchUpOutside), for: .touchUpOutside)
+        addTarget(self,
+                  action: #selector(buttonTapped),
+                  for: .touchUpInside)
+        addTarget(self,
+                  action: #selector(buttonTouchDown),
+                  for: .touchDown)
+        addTarget(self,
+                  action: #selector(buttonTouchUpOutside),
+                  for: .touchUpOutside)
     }
     
     @objc private func buttonTapped() {
