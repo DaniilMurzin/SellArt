@@ -13,6 +13,7 @@ class CustomTextField: UITextField {
     // MARK: init
     init(style: TextFieldStyle) {
         super.init(frame: .zero)
+        
         setupTextField(style: style)
     }
 

@@ -11,8 +11,8 @@ enum UserActionType {
 class UserActionsButtons: UIButton {
     
     // MARK: private properties
-    private var isFavoriteSelected: Bool = false
-    private var isCartSelected: Bool = false
+    private var isFavoriteSelected = false
+    private var isCartSelected = false
     
     // MARK: init
     init(type: UserActionType) {
@@ -31,34 +31,48 @@ class UserActionsButtons: UIButton {
         switch type {
             
         case .favorite:
-            setImage(UIImage(named: "Favorite Unselected"), for: .normal)
-            addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+            setImage(UIImage.favoriteUnselected,
+                     for: .normal)
+            addTarget(self,
+                      action: #selector(favoriteButtonTapped),
+                      for: .touchUpInside)
             
         case .cart:
-            setImage(UIImage(named: "Cart Unselected"), for: .normal)
-            addTarget(self, action: #selector(cartButtonTapped), for: .touchUpInside)
+            setImage(UIImage.cartUnselected,
+                     for: .normal)
+            addTarget(self,
+                      action: #selector(cartButtonTapped),
+                      for: .touchUpInside)
             
         case .profile:
-            setImage(UIImage(named: "Profile"), for: .normal)
+            setImage(UIImage.profile,
+                     for: .normal)
             
         case .share:
-            setImage(UIImage(named: "Share"), for: .normal)
+            setImage(UIImage.share,
+                     for: .normal)
     
         case .close:
-            setImage(UIImage(named: "Close Button"), for: .normal)
-        
+            setImage(UIImage.close,
+                     for: .normal)
         }
     }
 
     @objc private func favoriteButtonTapped() {
         isFavoriteSelected.toggle()
-        let imageName = isFavoriteSelected ? "Favorite Selected" : "Favorite Unselected"
-        setImage(UIImage(named: imageName), for: .normal)
+        
+        let image = isFavoriteSelected ? UIImage.favoriteSelected : UIImage.cartUnselected
+
+        setImage(image,
+                 for: .normal)
     }
     
     @objc private func cartButtonTapped() {
         isCartSelected.toggle()
-        let imageName = isCartSelected ? "Cart Selected" : "Cart Unselected"
-        setImage(UIImage(named: imageName), for: .normal)
+        
+        let image = isCartSelected ? UIImage.cartSelected : UIImage.cartUnselected
+        
+        setImage(image,
+                 for: .normal)
     }
 }
