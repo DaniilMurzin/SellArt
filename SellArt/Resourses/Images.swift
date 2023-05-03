@@ -9,6 +9,8 @@ extension UIImage {
     
     static let appleLogo = UIImage(named: "AppleLogo")
     
+    static let matisse = UIImage(named: "Matisse")
+
     static let cartSelected = UIImage(named: "Cart Selected")
     
     static let cartUnselected = UIImage(named: "Cart Unselected")
@@ -36,4 +38,11 @@ extension UIImage {
     static let share = UIImage(named: "Share")
     
     static let close = UIImage(named: "Close Button")
+    
+    static let wave = UIImage(named: "Wave")
+    
+    static let pompeii = UIImage(named: "Pompeii")
 }
+
+// пока здесь создал
+var paintings: [UIImage] = [UIImage.demon!, UIImage.lebed!, UIImage.knight!, UIImage.matisse!, UIImage.demon!, UIImage.demon!]

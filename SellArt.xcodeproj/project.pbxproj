@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		B610C25029EC4672001AF42B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B610C25229EC4672001AF42B /* Localizable.strings */; };
 		B610C25529EC526D001AF42B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B610C25429EC526D001AF42B /* Strings.swift */; };
+		B612F1DC29FFEE2F006041CF /* PaintingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B612F1DB29FFEE2F006041CF /* PaintingCollectionViewCell.swift */; };
+		B612F1DF2A02443E006041CF /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B612F1DE2A02443E006041CF /* MainPresenter.swift */; };
+		B612F1E12A024451006041CF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B612F1E02A024451006041CF /* MainViewController.swift */; };
+		B612F1E32A02446C006041CF /* MainModuleBilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B612F1E22A02446C006041CF /* MainModuleBilder.swift */; };
 		B614025729EB027F0044DA2D /* SplashModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */; };
 		B617893C29F7D9410085E079 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B617893B29F7D9400085E079 /* CustomButton.swift */; };
 		B639ECE129F298CE007FD55D /* RFTone-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE029F298CE007FD55D /* RFTone-Regular.ttf */; };
@@ -39,6 +43,10 @@
 		B610C25129EC4672001AF42B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B610C25329EC4677001AF42B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B610C25429EC526D001AF42B /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		B612F1DB29FFEE2F006041CF /* PaintingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingCollectionViewCell.swift; sourceTree = "<group>"; };
+		B612F1DE2A02443E006041CF /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		B612F1E02A024451006041CF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B612F1E22A02446C006041CF /* MainModuleBilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleBilder.swift; sourceTree = "<group>"; };
 		B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashModuleBuilder.swift; sourceTree = "<group>"; };
 		B617893B29F7D9400085E079 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		B639ECE029F298CE007FD55D /* RFTone-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RFTone-Regular.ttf"; sourceTree = "<group>"; };
@@ -90,6 +98,25 @@
 				B610C25429EC526D001AF42B /* Strings.swift */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		B612F1DA29FFEDD5006041CF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B612F1DB29FFEE2F006041CF /* PaintingCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B612F1DD2A0240CB006041CF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B612F1DE2A02443E006041CF /* MainPresenter.swift */,
+				B612F1E02A024451006041CF /* MainViewController.swift */,
+				B612F1E22A02446C006041CF /* MainModuleBilder.swift */,
+				B614025E29EB08C00044DA2D /* Splash */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		B614025829EB08290044DA2D /* Resourses */ = {
@@ -144,7 +171,7 @@
 		B614025D29EB08B40044DA2D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B614025E29EB08C00044DA2D /* Splash */,
+				B612F1DD2A0240CB006041CF /* Main */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -165,6 +192,7 @@
 				B6B1A3E429FC0CF400227388 /* CustomTextField.swift */,
 				B617893B29F7D9400085E079 /* CustomButton.swift */,
 				B6B1A3E629FE262600227388 /* UserActionsButtons.swift */,
+				B612F1DA29FFEDD5006041CF /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -355,11 +383,15 @@
 				B6D24F9129EAEF170015F5B2 /* SplashPresenter.swift in Sources */,
 				B65D8EE729F439CD0092425E /* UIcolor + Hex.swift in Sources */,
 				B6D24F9329EAEFA00015F5B2 /* SplashViewController.swift in Sources */,
+				B612F1E12A024451006041CF /* MainViewController.swift in Sources */,
 				B6721BE529F149C9008436A7 /* Images.swift in Sources */,
 				B610C25529EC526D001AF42B /* Strings.swift in Sources */,
 				B614025729EB027F0044DA2D /* SplashModuleBuilder.swift in Sources */,
+				B612F1DF2A02443E006041CF /* MainPresenter.swift in Sources */,
 				B617893C29F7D9410085E079 /* CustomButton.swift in Sources */,
 				B6B1A3E729FE262700227388 /* UserActionsButtons.swift in Sources */,
+				B612F1DC29FFEE2F006041CF /* PaintingCollectionViewCell.swift in Sources */,
+				B612F1E32A02446C006041CF /* MainModuleBilder.swift in Sources */,
 				B6B1A3E529FC0CF400227388 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
