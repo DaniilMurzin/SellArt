@@ -13,5 +13,5 @@ extension UIColor {
     
     static let buttonDisabledColor = UIColor(hex: "A45648")
     
-    static let buttonFontColor = UIColor(hex: "313E57")
+    static let mainFontColor = UIColor(hex: "313E57")
 }

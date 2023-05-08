@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window?.windowScene = windowScene
         
-        window?.rootViewController = UINavigationController(rootViewController: SplashModuleBuilder.build())
+        window?.rootViewController = UINavigationController(rootViewController: MainModuleBuilder.build())
         
         window?.makeKeyAndVisible()
     }

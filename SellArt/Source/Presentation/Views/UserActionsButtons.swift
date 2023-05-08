@@ -28,6 +28,8 @@ class UserActionsButtons: UIButton {
     // MARK: private methods
     private func setupButton(type: UserActionType ) {
         
+        translatesAutoresizingMaskIntoConstraints = false
+        
         switch type {
             
         case .favorite:
@@ -61,7 +63,7 @@ class UserActionsButtons: UIButton {
     @objc private func favoriteButtonTapped() {
         isFavoriteSelected.toggle()
         
-        let image = isFavoriteSelected ? UIImage.favoriteSelected : UIImage.cartUnselected
+        let image = isFavoriteSelected ? UIImage.favoriteSelected : UIImage.favoriteUnselected
 
         setImage(image,
                  for: .normal)

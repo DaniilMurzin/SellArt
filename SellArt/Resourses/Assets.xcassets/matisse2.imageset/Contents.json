@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Matisse-The-Dessert-Harmony-in-Red-Henri-1908-fast 1.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Matisse-The-Dessert-Harmony-in-Red-Henri-1908-fast 1@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Matisse-The-Dessert-Harmony-in-Red-Henri-1908-fast 1@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
