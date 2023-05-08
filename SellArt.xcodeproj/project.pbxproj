@@ -19,6 +19,7 @@
 		B639ECE329F29D3B007FD55D /* RFTone-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */; };
 		B639ECE529F2A039007FD55D /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */; };
 		B65D8EE729F439CD0092425E /* UIcolor + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65D8EE629F439CD0092425E /* UIcolor + Hex.swift */; };
+		B66273F62A078BC6008EFA72 /* Paintings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66273F52A078BC6008EFA72 /* Paintings.swift */; };
 		B6721BE329F149B2008436A7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6721BE229F149B2008436A7 /* Fonts.swift */; };
 		B6721BE529F149C9008436A7 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6721BE429F149C9008436A7 /* Images.swift */; };
 		B6721BE729F149DA008436A7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6721BE629F149DA008436A7 /* Colors.swift */; };
@@ -53,6 +54,7 @@
 		B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RFTone-Bold.ttf"; sourceTree = "<group>"; };
 		B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.ttf"; sourceTree = "<group>"; };
 		B65D8EE629F439CD0092425E /* UIcolor + Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIcolor + Hex.swift"; sourceTree = "<group>"; };
+		B66273F52A078BC6008EFA72 /* Paintings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paintings.swift; sourceTree = "<group>"; };
 		B6721BE229F149B2008436A7 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		B6721BE429F149C9008436A7 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B6721BE629F149DA008436A7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		B614025D29EB08B40044DA2D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B66273F42A078B1F008EFA72 /* Model */,
 				B612F1DD2A0240CB006041CF /* Main */,
 			);
 			path = Modules;
@@ -203,6 +206,14 @@
 				B65D8EE629F439CD0092425E /* UIcolor + Hex.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B66273F42A078B1F008EFA72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B66273F52A078BC6008EFA72 /* Paintings.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B6721BEB29F16459008436A7 /* Fonts */ = {
@@ -391,6 +402,7 @@
 				B617893C29F7D9410085E079 /* CustomButton.swift in Sources */,
 				B6B1A3E729FE262700227388 /* UserActionsButtons.swift in Sources */,
 				B612F1DC29FFEE2F006041CF /* PaintingCollectionViewCell.swift in Sources */,
+				B66273F62A078BC6008EFA72 /* Paintings.swift in Sources */,
 				B612F1E32A02446C006041CF /* MainModuleBilder.swift in Sources */,
 				B6B1A3E529FC0CF400227388 /* CustomTextField.swift in Sources */,
 			);

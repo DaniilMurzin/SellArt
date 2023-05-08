@@ -13,10 +13,8 @@ class PaintingCollectionViewCell: UICollectionViewCell {
     private let paintingImageView: UIImageView = {
         let image = UIImageView()
         
-        image.contentMode = .scaleAspectFill
-        
+        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
-        
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
@@ -26,13 +24,8 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         
         label.font = UIFont.artNameFont
-        
         label.textColor = UIColor.mainFontColor
-        
-        label.attributedText = "Art name".toStyledAttributedString(withStyle: .artName)
-        
         label.textColor = UIColor.mainFontColor
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -42,11 +35,7 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         
         label.font = UIFont.regularBaseFont
-        
         label.textColor = UIColor.mainFontColor
-        
-        label.text = "Artist"
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -56,24 +45,18 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         
         label.font = UIFont.priceFont
-        
-        label.text = "1 000 000 $"
-        
         label.textColor = .mainFontColor
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     // MARK: StackViews properties
-    private let  ArtistArtPriceStackView: UIStackView = {
+    private let  artistArtPriceStackView: UIStackView = {
         let view = UIStackView()
         
         view.axis  = NSLayoutConstraint.Axis.vertical
-        
         view.spacing = LocalConstants.DescriptionStackViewSpacing
-        
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -83,9 +66,7 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         let view = UIStackView()
         
         view.axis  = NSLayoutConstraint.Axis.horizontal
-        
         view.spacing = LocalConstants.buttonsStackViewSpacing
-        
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -100,11 +81,11 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         buttonsStackView.addArrangedSubview(favoriteButton)
         buttonsStackView.addArrangedSubview(cartButton)
         
-        contentView.addSubview(ArtistArtPriceStackView)
+        contentView.addSubview(artistArtPriceStackView)
         
-        ArtistArtPriceStackView.addArrangedSubview(artist)
-        ArtistArtPriceStackView.addArrangedSubview(artNameLabel)
-        ArtistArtPriceStackView.addArrangedSubview(price)
+        artistArtPriceStackView.addArrangedSubview(artist)
+        artistArtPriceStackView.addArrangedSubview(artNameLabel)
+        artistArtPriceStackView.addArrangedSubview(price)
         
         contentView.addSubview(paintingImageView)
         
@@ -116,8 +97,16 @@ class PaintingCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: public methods
-    func setPaintingImage(_ image: UIImage) {
-        paintingImageView.image = image
+    func setupCell(with painting: Paintings) {
+        
+        paintingImageView.image = painting.image
+        artist.text = painting.artist
+        artNameLabel.attributedText = painting.name.toStyledAttributedString(
+            withStyle: .artName)
+        
+        price.text = String(
+            format: "%.2f $",
+            painting.price)
     }
     
     // MARK: private methods
@@ -146,11 +135,11 @@ class PaintingCollectionViewCell: UICollectionViewCell {
             buttonsStackView.heightAnchor.constraint(equalToConstant: LocalConstants.buttonsHeight),
             
             // MARK: Picture description
-            ArtistArtPriceStackView.topAnchor.constraint(
+            artistArtPriceStackView.topAnchor.constraint(
                 equalTo: buttonsStackView.bottomAnchor,
                 constant: LocalConstants.topInset),
             
-            ArtistArtPriceStackView.leadingAnchor.constraint(
+            artistArtPriceStackView.leadingAnchor.constraint(
                 equalTo: buttonsStackView.leadingAnchor)
         ])
     }

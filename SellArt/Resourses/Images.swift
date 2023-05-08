@@ -7,6 +7,18 @@ extension UIImage {
     
     static let knight = UIImage(named: "Knight")
     
+    static let matisse2 = UIImage(named: "matisse2")
+    
+    static let sunflowers = UIImage(named: "Sunflowers")
+    
+    static let impression = UIImage(named: "Impression")
+    
+    static let lilies = UIImage(named: "Lilies")
+    
+    static let dali1 = UIImage(named: "dali1")
+    
+    static let dali2 = UIImage(named: "dali2")
+    
     static let appleLogo = UIImage(named: "AppleLogo")
     
     static let matisse = UIImage(named: "Matisse")
@@ -43,6 +55,3 @@ extension UIImage {
     
     static let pompeii = UIImage(named: "Pompeii")
 }
-
-// пока здесь создал
-var paintings: [UIImage] = [UIImage.demon!, UIImage.lebed!, UIImage.knight!, UIImage.matisse!, UIImage.demon!, UIImage.demon!]
