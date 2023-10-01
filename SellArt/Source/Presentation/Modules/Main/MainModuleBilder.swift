@@ -7,7 +7,6 @@ class MainModuleBuilder {
         let presenter = MainPresenter()
         let viewController = MainViewController(presenter: presenter)
         
-        viewController.presenter = presenter
         presenter.attachedView(viewController)
         
         return viewController 

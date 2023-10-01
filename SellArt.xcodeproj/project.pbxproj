@@ -185,6 +185,7 @@
 				B6D24F9029EAEF170015F5B2 /* SplashPresenter.swift */,
 				B6D24F9229EAEFA00015F5B2 /* SplashViewController.swift */,
 				B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */,
+				B6D24F7A29EAEE060015F5B2 /* Products */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -233,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				B6D24F7B29EAEE060015F5B2 /* SellArt */,
-				B6D24F7A29EAEE060015F5B2 /* Products */,
 				28716DFCF2D8D8CC30FCD927 /* Pods */,
 				E344140CA9EA9BE12E02B1A6 /* Frameworks */,
 			);
@@ -245,6 +245,7 @@
 				B6D24F7929EAEE060015F5B2 /* SellArt.app */,
 			);
 			name = Products;
+			path = ../../../../../..;
 			sourceTree = "<group>";
 		};
 		B6D24F7B29EAEE060015F5B2 /* SellArt */ = {

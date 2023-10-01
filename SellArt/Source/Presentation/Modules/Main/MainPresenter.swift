@@ -1,7 +1,7 @@
 import UIKit
 
 protocol MainPresenterProtocol {
-    func loadPaintings()
+    func loadPaintings(completion: @escaping ([Paintings]) -> Void)
 }
 
 class MainPresenter {
@@ -16,8 +16,8 @@ class MainPresenter {
 
 extension MainPresenter: MainPresenterProtocol {
     
-    func loadPaintings() {
-        paintings = PaintingsModel.paintings
-        view?.updatePaintings(paintings)
+    func loadPaintings(completion: @escaping ([Paintings]) -> Void) {
+        let paintings = PaintingsModel.paintings
+        completion(paintings)
     }
 }

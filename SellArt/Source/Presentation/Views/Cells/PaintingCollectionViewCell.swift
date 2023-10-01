@@ -4,27 +4,29 @@ class PaintingCollectionViewCell: UICollectionViewCell {
     
     // MARK: eternal properties
     static let identifier = "PaintingCollectionViewCell"
-    
+
     // MARK: private properties
-    private lazy var favoriteButton = UserActionsButtons(type: .favorite)
+    private var image: UIImage?
+    private var heightImageConstraint: NSLayoutConstraint?
+
+    private var favoriteButton = UserActionsButtons(type: .favorite)
     
-    private lazy var cartButton = UserActionsButtons(type: .cart)
+    private var cartButton = UserActionsButtons(type: .cart)
     
-    private let paintingImageView: UIImageView = {
-        let image = UIImageView()
+    private let paintingImageView = {
+        let imageView = UIImageView()
         
-        image.contentMode = .scaleAspectFit
-        image.clipsToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         
-        return image
+        return imageView
     }()
     
     private let artNameLabel: UILabel = {
         let label = UILabel()
         
         label.font = UIFont.artNameFont
-        label.textColor = UIColor.mainFontColor
         label.textColor = UIColor.mainFontColor
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -55,7 +57,7 @@ class PaintingCollectionViewCell: UICollectionViewCell {
     private let  artistArtPriceStackView: UIStackView = {
         let view = UIStackView()
         
-        view.axis  = NSLayoutConstraint.Axis.vertical
+        view.axis  = .vertical
         view.spacing = LocalConstants.DescriptionStackViewSpacing
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -88,17 +90,28 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         artistArtPriceStackView.addArrangedSubview(price)
         
         contentView.addSubview(paintingImageView)
-        
-        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    // MARK: override methods
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupConstraints()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        image = nil
+        heightImageConstraint?.isActive = false
+        heightImageConstraint = nil
+    }
+
     // MARK: public methods
     func setupCell(with painting: Paintings) {
-        
+        self.image = painting.image
         paintingImageView.image = painting.image
         artist.text = painting.artist
         artNameLabel.attributedText = painting.name.toStyledAttributedString(
@@ -107,32 +120,44 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         price.text = String(
             format: "%.2f $",
             painting.price)
+
+        layoutIfNeeded()
     }
     
     // MARK: private methods
     private func setupConstraints() {
+        let image = image?.copy(newWidth: bounds.width)
+
+        heightImageConstraint?.isActive = false
+        heightImageConstraint = paintingImageView.heightAnchor.constraint(
+            equalToConstant: image?.size.height ?? 0)
+
+        guard let heightImageAnchor = heightImageConstraint else { return }
+
         NSLayoutConstraint.activate([
             
             // MARK: Painting
             paintingImageView.topAnchor.constraint(
                 equalTo: contentView.topAnchor),
-            
+
             paintingImageView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor),
-            
-            paintingImageView.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor),
-            
+
+            heightImageAnchor,
+            paintingImageView.widthAnchor.constraint(
+                equalToConstant: bounds.width),
+
             paintingImageView.bottomAnchor.constraint(
                 equalTo: buttonsStackView.topAnchor,
                 constant: -LocalConstants.topInset),
-            
+
             // MARK: Buttons
             buttonsStackView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor,
                 constant: LocalConstants.topInset),
             
-            buttonsStackView.heightAnchor.constraint(equalToConstant: LocalConstants.buttonsHeight),
+            buttonsStackView.heightAnchor.constraint(
+                equalToConstant: LocalConstants.buttonsHeight),
             
             // MARK: Picture description
             artistArtPriceStackView.topAnchor.constraint(
@@ -154,4 +179,23 @@ private enum LocalConstants {
     static let buttonsStackViewSpacing: CGFloat = 15
     
     static let DescriptionStackViewSpacing: CGFloat = 5
+}
+
+private extension UIImage {
+    func copy(newWidth: CGFloat, retina: Bool = true) -> UIImage? {
+        let multiplier = newWidth / size.width
+        let newHeight = size.height * multiplier + 40
+        let newSize = CGSize(width: newWidth,
+                             height: newHeight)
+
+        UIGraphicsBeginImageContextWithOptions(
+            newSize,
+            false,
+            retina ? 0 : 1
+        )
+        defer { UIGraphicsEndImageContext() }
+
+        self.draw(in: CGRect(origin: .zero, size: newSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
 }

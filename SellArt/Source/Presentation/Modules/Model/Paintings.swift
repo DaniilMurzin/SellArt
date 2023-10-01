@@ -8,7 +8,7 @@ struct Paintings {
     let price: Double
 }
 
-class PaintingsModel {
+struct PaintingsModel {
     
     static let paintings: [Paintings] = [
         Paintings(id: 1,

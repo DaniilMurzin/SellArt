@@ -1,14 +1,12 @@
 import UIKit
 
-protocol MainViewProtocol: AnyObject {
-    func updatePaintings(_ paintings: [Paintings])
-}
+protocol MainViewProtocol: AnyObject {}
 
 class MainViewController: UIViewController {
     
-    var presenter: MainPresenterProtocol
-    
     // MARK: private properties
+    private(set) var presenter: MainPresenterProtocol
+    
     private var paintings: [Paintings] = [] {
            didSet {
                collectionView.reloadData()
@@ -23,19 +21,20 @@ class MainViewController: UIViewController {
         layout.minimumInteritemSpacing = LocalConstants.minimumInterItemSpacing
         layout.minimumLineSpacing = LocalConstants.minimumLineSpacing
 
-        $0.setCollectionViewLayout(layout, animated: false)
-        $0.register(
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout)
+        collectionView.register(
             PaintingCollectionViewCell.self,
-            forCellWithReuseIdentifier: PaintingCollectionViewCell.identifier)
-        $0.backgroundColor = .mainBackgroundColor
-        $0.delegate = self
-        $0.dataSource = self
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        return $0
-    }(UICollectionView(
-        frame: .zero,
-        collectionViewLayout: UICollectionViewFlowLayout()))
-    
+            forCellWithReuseIdentifier:
+                PaintingCollectionViewCell.identifier)
+        collectionView.backgroundColor = .mainBackgroundColor
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+
     // MARK: init
     init(presenter: MainPresenterProtocol) {
         self.presenter = presenter
@@ -53,7 +52,9 @@ class MainViewController: UIViewController {
         
         setupView()
         setupConstraints()
-        presenter.loadPaintings()
+        presenter.loadPaintings { [weak self] paintings in
+            self?.paintings = paintings
+        }
     }
     
     // MARK: private methods
@@ -121,12 +122,19 @@ extension MainViewController: UICollectionViewDataSource {
 // MARK: extension MainViewController + UICollectionViewDelegateFlowLayout
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                    layout collectionViewLayout: UICollectionViewLayout,
+                    sizeForItemAt indexPath: IndexPath)
+    -> CGSize {
+        
         let screenWidth = UIScreen.main.bounds.width
-        let cellWidth = (screenWidth - LocalConstants.totalSpacing) / LocalConstants.numberOfColumns
+        let cellWidth = (screenWidth - LocalConstants.totalSpacing) /
+        LocalConstants.numberOfColumns
         let imageHeight = cellWidth * LocalConstants.aspectRatio
         let cellHeight = imageHeight + LocalConstants.extraHeight
-        return CGSize(width: cellWidth, height: cellHeight)
+                            
+        return CGSize(width: cellWidth,
+                      height: cellHeight)
     }
 }
     private enum LocalConstants {
@@ -146,22 +154,3 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         // Added extra height for buttons and labels
         static let extraHeight: CGFloat = 150 // можно изменить на свое значение
     }
-
-//  func collectionView(
-//    _ collectionView: UICollectionView,
-//    layout collectionViewLayout: UICollectionViewLayout,
-//    sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        let numberOfColumns: CGFloat = 2
-//        let totalSpacing = (numberOfColumns - 1) * 10 // 10 — это расстояние между ячейками, можно изменить на свое значение
-//        let screenWidth = UIScreen.main.bounds.width
-//        let cellWidth = (screenWidth - totalSpacing) / numberOfColumns
-//
-//        let aspectRatio: CGFloat = 1.5 // можно изменить соотношение сторон на свое значение
-//        let imageHeight = cellWidth * aspectRatio
-//
-//        // Add extra height for buttons and labels
-//        let extraHeight: CGFloat = 90 // можно изменить на свое значение
-//        let cellHeight = imageHeight + extraHeigh
-//        return CGSize(width: cellWidth, height: cellHeight)
-// }
