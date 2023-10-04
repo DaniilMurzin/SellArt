@@ -110,16 +110,13 @@ class PaintingCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: public methods
-    func setupCell(with painting: Paintings) {
+    func setupCell(with painting: Paintings, formattedPrice: String) {
         self.image = painting.image
         paintingImageView.image = painting.image
         artist.text = painting.artist
         artNameLabel.attributedText = painting.name.toStyledAttributedString(
             withStyle: .artName)
-        
-        price.text = String(
-            format: "%.2f $",
-            painting.price)
+        price.text = formattedPrice
 
         layoutIfNeeded()
     }

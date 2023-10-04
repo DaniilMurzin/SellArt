@@ -2,6 +2,7 @@ import UIKit
 
 protocol MainPresenterProtocol {
     func loadPaintings(completion: @escaping ([Paintings]) -> Void)
+    func formatPrice(_ price: Double) -> String
 }
 
 class MainPresenter {
@@ -12,12 +13,20 @@ class MainPresenter {
     func attachedView( _ view: MainViewProtocol) {
         self.view = view
     }
+    
+    func fetchPaintings() -> [Paintings] {
+        PaintingsModel.paintings
+    }
+    
+    func formatPrice(_ price: Double) -> String {
+        return String(format: "%.2f $", price)
+    }
 }
 
 extension MainPresenter: MainPresenterProtocol {
     
     func loadPaintings(completion: @escaping ([Paintings]) -> Void) {
-        let paintings = PaintingsModel.paintings
+        let paintings = fetchPaintings()
         completion(paintings)
     }
 }

@@ -82,12 +82,7 @@ class MainViewController: UIViewController {
 }
 
 // MARK: extension MainViewController + MainViewProtocol
-extension MainViewController: MainViewProtocol {
-    
-    func updatePaintings(_ paintings: [Paintings]) {
-        self.paintings = paintings
-    }
-}
+extension MainViewController: MainViewProtocol {}
 
 // MARK: extension MainViewController + UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
@@ -112,8 +107,8 @@ extension MainViewController: UICollectionViewDataSource {
             }
             
             let painting = paintings[indexPath.item]
-            paintingCell.setupCell(with: painting)
-            
+            let formattedPrice = presenter.formatPrice(painting.price)
+            paintingCell.setupCell(with: painting, formattedPrice: formattedPrice)
             return paintingCell
         }
 

@@ -39,7 +39,9 @@
 /* Begin PBXFileReference section */
 		03FD8CC5CD2C7851C7040367 /* Pods-SellArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.debug.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.debug.xcconfig"; sourceTree = "<group>"; };
 		2D0BF302F73678CCD5F479FD /* Pods_SellArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SellArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		665DACA6FFE58005A2488B02 /* Pods-SellArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.debug.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.debug.xcconfig"; sourceTree = "<group>"; };
 		88CD09113D918D600A59A6C7 /* Pods-SellArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.release.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.release.xcconfig"; sourceTree = "<group>"; };
+		B353076ABEFDDDE1BBB8C191 /* Pods-SellArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.release.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.release.xcconfig"; sourceTree = "<group>"; };
 		B610C24C29EC464C001AF42B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B610C25129EC4672001AF42B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B610C25329EC4677001AF42B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -93,6 +95,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		388535F401F432409F4A6D83 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				665DACA6FFE58005A2488B02 /* Pods-SellArt.debug.xcconfig */,
+				B353076ABEFDDDE1BBB8C191 /* Pods-SellArt.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B610C24D29EC4657001AF42B /* Strings */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +127,7 @@
 				B612F1DE2A02443E006041CF /* MainPresenter.swift */,
 				B612F1E02A024451006041CF /* MainViewController.swift */,
 				B612F1E22A02446C006041CF /* MainModuleBilder.swift */,
+				B6856CF72ACD68F600AF63FC /* TempFeature */,
 				B614025E29EB08C00044DA2D /* Splash */,
 			);
 			path = Main;
@@ -185,6 +197,7 @@
 				B6D24F9029EAEF170015F5B2 /* SplashPresenter.swift */,
 				B6D24F9229EAEFA00015F5B2 /* SplashViewController.swift */,
 				B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */,
+				28716DFCF2D8D8CC30FCD927 /* Pods */,
 				B6D24F7A29EAEE060015F5B2 /* Products */,
 			);
 			path = Splash;
@@ -212,7 +225,6 @@
 		B66273F42A078B1F008EFA72 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B66273F52A078BC6008EFA72 /* Paintings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,12 +242,20 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		B6856CF72ACD68F600AF63FC /* TempFeature */ = {
+			isa = PBXGroup;
+			children = (
+				B66273F52A078BC6008EFA72 /* Paintings.swift */,
+			);
+			path = TempFeature;
+			sourceTree = "<group>";
+		};
 		B6D24F7029EAEE060015F5B2 = {
 			isa = PBXGroup;
 			children = (
 				B6D24F7B29EAEE060015F5B2 /* SellArt */,
-				28716DFCF2D8D8CC30FCD927 /* Pods */,
 				E344140CA9EA9BE12E02B1A6 /* Frameworks */,
+				388535F401F432409F4A6D83 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
