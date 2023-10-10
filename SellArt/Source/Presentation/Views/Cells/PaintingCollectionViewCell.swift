@@ -136,14 +136,12 @@ class PaintingCollectionViewCell: UICollectionViewCell {
             // MARK: Painting
             paintingImageView.topAnchor.constraint(
                 equalTo: contentView.topAnchor),
-
             paintingImageView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor),
 
             heightImageAnchor,
             paintingImageView.widthAnchor.constraint(
                 equalToConstant: bounds.width),
-
             paintingImageView.bottomAnchor.constraint(
                 equalTo: buttonsStackView.topAnchor,
                 constant: -LocalConstants.topInset),
@@ -152,7 +150,6 @@ class PaintingCollectionViewCell: UICollectionViewCell {
             buttonsStackView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor,
                 constant: LocalConstants.topInset),
-            
             buttonsStackView.heightAnchor.constraint(
                 equalToConstant: LocalConstants.buttonsHeight),
             
@@ -160,7 +157,6 @@ class PaintingCollectionViewCell: UICollectionViewCell {
             artistArtPriceStackView.topAnchor.constraint(
                 equalTo: buttonsStackView.bottomAnchor,
                 constant: LocalConstants.topInset),
-            
             artistArtPriceStackView.leadingAnchor.constraint(
                 equalTo: buttonsStackView.leadingAnchor)
         ])

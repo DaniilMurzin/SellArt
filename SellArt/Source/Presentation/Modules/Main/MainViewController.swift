@@ -87,6 +87,17 @@ extension MainViewController: MainViewProtocol {}
 // MARK: extension MainViewController + UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        UIEdgeInsets(top: 0,
+                     left: LocalConstants.leftInset,
+                     bottom: 0,
+                     right: LocalConstants.rightInset)
+    }
+    
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection
@@ -118,8 +129,8 @@ extension MainViewController: UICollectionViewDataSource {
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
-                    layout collectionViewLayout: UICollectionViewLayout,
-                    sizeForItemAt indexPath: IndexPath)
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath)
     -> CGSize {
         
         let screenWidth = UIScreen.main.bounds.width
@@ -133,8 +144,9 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
 }
     private enum LocalConstants {
+        static let rightInset: CGFloat = 2
         
-        static let rightInset: CGFloat = -16
+        static let leftInset: CGFloat = 2
         
         static let minimumInterItemSpacing: CGFloat = 5
         
@@ -147,5 +159,5 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         static let aspectRatio: CGFloat = 1.9 // можно изменить соотношение сторон на свое значение
         
         // Added extra height for buttons and labels
-        static let extraHeight: CGFloat = 150 // можно изменить на свое значение
+        static let extraHeight: CGFloat = 20 // можно изменить на свое значение
     }

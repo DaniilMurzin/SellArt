@@ -60,6 +60,16 @@ struct PaintingsModel {
                   image: UIImage.dali2!,
                   artist: "Salvador Dalí",
                   name: "Swans Reflecting Elephants",
-                  price: 1800000)
+                  price: 1800000),
+        Paintings(id: 11,
+                  image: UIImage.lebed!,
+                  artist: "Mikhail Vrubel",
+                  name: "Demon Seated",
+                  price: 900000),
+        Paintings(id: 12,
+                  image: UIImage.lebed!,
+                  artist: "Mikhail Vrubel",
+                  name: "Demon Seated",
+                  price: 900000)
     ]
 }

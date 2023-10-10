@@ -19,6 +19,7 @@
 		B639ECE329F29D3B007FD55D /* RFTone-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */; };
 		B639ECE529F2A039007FD55D /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */; };
 		B65D8EE729F439CD0092425E /* UIcolor + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65D8EE629F439CD0092425E /* UIcolor + Hex.swift */; };
+		B660DF262AD17A19000206A4 /* PaintingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660DF252AD17A19000206A4 /* PaintingsRepository.swift */; };
 		B66273F62A078BC6008EFA72 /* Paintings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66273F52A078BC6008EFA72 /* Paintings.swift */; };
 		B6721BE329F149B2008436A7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6721BE229F149B2008436A7 /* Fonts.swift */; };
 		B6721BE529F149C9008436A7 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6721BE429F149C9008436A7 /* Images.swift */; };
@@ -56,6 +57,7 @@
 		B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RFTone-Bold.ttf"; sourceTree = "<group>"; };
 		B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.ttf"; sourceTree = "<group>"; };
 		B65D8EE629F439CD0092425E /* UIcolor + Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIcolor + Hex.swift"; sourceTree = "<group>"; };
+		B660DF252AD17A19000206A4 /* PaintingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingsRepository.swift; sourceTree = "<group>"; };
 		B66273F52A078BC6008EFA72 /* Paintings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paintings.swift; sourceTree = "<group>"; };
 		B6721BE229F149B2008436A7 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		B6721BE429F149C9008436A7 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		B614025929EB084E0044DA2D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B660DF232AD17943000206A4 /* Feature */,
 				B614025A29EB086B0044DA2D /* Infrastructure */,
 				B614025C29EB08A60044DA2D /* Presentation */,
 			);
@@ -220,6 +223,22 @@
 				B65D8EE629F439CD0092425E /* UIcolor + Hex.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B660DF232AD17943000206A4 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				B660DF242AD179E0000206A4 /* MainScreenContentFeature */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		B660DF242AD179E0000206A4 /* MainScreenContentFeature */ = {
+			isa = PBXGroup;
+			children = (
+				B660DF252AD17A19000206A4 /* PaintingsRepository.swift */,
+			);
+			path = MainScreenContentFeature;
 			sourceTree = "<group>";
 		};
 		B66273F42A078B1F008EFA72 /* Model */ = {
@@ -412,6 +431,7 @@
 				B6721BE729F149DA008436A7 /* Colors.swift in Sources */,
 				B6D24F7D29EAEE060015F5B2 /* AppDelegate.swift in Sources */,
 				B6D24F7F29EAEE060015F5B2 /* SceneDelegate.swift in Sources */,
+				B660DF262AD17A19000206A4 /* PaintingsRepository.swift in Sources */,
 				B6D24F9129EAEF170015F5B2 /* SplashPresenter.swift in Sources */,
 				B65D8EE729F439CD0092425E /* UIcolor + Hex.swift in Sources */,
 				B6D24F9329EAEFA00015F5B2 /* SplashViewController.swift in Sources */,
