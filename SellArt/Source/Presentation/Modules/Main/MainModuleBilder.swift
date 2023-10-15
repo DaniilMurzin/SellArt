@@ -2,7 +2,7 @@ import UIKit
 
 class MainModuleBuilder {
     
-    static func build() -> UITabBarController {
+    static func build() -> UIViewController {
         
         let presenter = MainPresenter()
         let mainViewController = MainViewController(presenter: presenter)
@@ -10,9 +10,8 @@ class MainModuleBuilder {
         
         mainViewController.tabBarItem.image = UIImage.galerySelected
         mainViewController.tabBarItem.selectedImage = UIImage.galery
-        mainViewController.tabBarItem.title = "Gallery"
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [mainViewController]
-        return tabBarController
+        mainViewController.tabBarItem.title = Strings.tabBarGallery
+        
+        return mainViewController
     }
 }

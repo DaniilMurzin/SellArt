@@ -28,6 +28,7 @@
 		B6721BEF29F17F27008436A7 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6721BEE29F17F27008436A7 /* Quicksand-Medium.ttf */; };
 		B6B1A3E529FC0CF400227388 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B1A3E429FC0CF400227388 /* CustomTextField.swift */; };
 		B6B1A3E729FE262700227388 /* UserActionsButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B1A3E629FE262600227388 /* UserActionsButtons.swift */; };
+		B6B32D7D2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B32D7C2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift */; };
 		B6D24F7D29EAEE060015F5B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D24F7C29EAEE060015F5B2 /* AppDelegate.swift */; };
 		B6D24F7F29EAEE060015F5B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D24F7E29EAEE060015F5B2 /* SceneDelegate.swift */; };
 		B6D24F8629EAEE080015F5B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D24F8529EAEE080015F5B2 /* Assets.xcassets */; };
@@ -66,7 +67,8 @@
 		B6721BEE29F17F27008436A7 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Medium.ttf"; sourceTree = "<group>"; };
 		B6B1A3E429FC0CF400227388 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		B6B1A3E629FE262600227388 /* UserActionsButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActionsButtons.swift; sourceTree = "<group>"; };
-		B6D24F7929EAEE060015F5B2 /* SellArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SellArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6B32D7C2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionVIewCell + Identifier.swift"; sourceTree = "<group>"; };
+		B6D24F7929EAEE060015F5B2 /* SellArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SellArt.app; path = "/Users/novyjpolzovatel/Documents/New folder/SellArt/build/Debug-iphoneos/SellArt.app"; sourceTree = "<absolute>"; };
 		B6D24F7C29EAEE060015F5B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6D24F7E29EAEE060015F5B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B6D24F8529EAEE080015F5B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,7 +131,6 @@
 				B612F1DE2A02443E006041CF /* MainPresenter.swift */,
 				B612F1E02A024451006041CF /* MainViewController.swift */,
 				B612F1E22A02446C006041CF /* MainModuleBilder.swift */,
-				B6856CF72ACD68F600AF63FC /* TempFeature */,
 				B614025E29EB08C00044DA2D /* Splash */,
 			);
 			path = Main;
@@ -201,7 +202,6 @@
 				B6D24F9229EAEFA00015F5B2 /* SplashViewController.swift */,
 				B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */,
 				28716DFCF2D8D8CC30FCD927 /* Pods */,
-				B6D24F7A29EAEE060015F5B2 /* Products */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -221,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				B65D8EE629F439CD0092425E /* UIcolor + Hex.swift */,
+				B6B32D7C2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				B660DF252AD17A19000206A4 /* PaintingsRepository.swift */,
+				B66273F52A078BC6008EFA72 /* Paintings.swift */,
 			);
 			path = MainScreenContentFeature;
 			sourceTree = "<group>";
@@ -261,14 +263,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		B6856CF72ACD68F600AF63FC /* TempFeature */ = {
-			isa = PBXGroup;
-			children = (
-				B66273F52A078BC6008EFA72 /* Paintings.swift */,
-			);
-			path = TempFeature;
-			sourceTree = "<group>";
-		};
 		B6D24F7029EAEE060015F5B2 = {
 			isa = PBXGroup;
 			children = (
@@ -276,15 +270,6 @@
 				E344140CA9EA9BE12E02B1A6 /* Frameworks */,
 				388535F401F432409F4A6D83 /* Pods */,
 			);
-			sourceTree = "<group>";
-		};
-		B6D24F7A29EAEE060015F5B2 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B6D24F7929EAEE060015F5B2 /* SellArt.app */,
-			);
-			name = Products;
-			path = ../../../../../..;
 			sourceTree = "<group>";
 		};
 		B6D24F7B29EAEE060015F5B2 /* SellArt */ = {
@@ -352,7 +337,7 @@
 				ru,
 			);
 			mainGroup = B6D24F7029EAEE060015F5B2;
-			productRefGroup = B6D24F7A29EAEE060015F5B2 /* Products */;
+			productRefGroup = B6D24F7029EAEE060015F5B2;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -431,6 +416,7 @@
 				B6721BE729F149DA008436A7 /* Colors.swift in Sources */,
 				B6D24F7D29EAEE060015F5B2 /* AppDelegate.swift in Sources */,
 				B6D24F7F29EAEE060015F5B2 /* SceneDelegate.swift in Sources */,
+				B6B32D7D2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift in Sources */,
 				B660DF262AD17A19000206A4 /* PaintingsRepository.swift in Sources */,
 				B6D24F9129EAEF170015F5B2 /* SplashPresenter.swift in Sources */,
 				B65D8EE729F439CD0092425E /* UIcolor + Hex.swift in Sources */,

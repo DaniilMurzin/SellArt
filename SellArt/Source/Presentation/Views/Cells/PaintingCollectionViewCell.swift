@@ -1,9 +1,6 @@
 import UIKit
 
 class PaintingCollectionViewCell: UICollectionViewCell {
-    
-    // MARK: eternal properties
-    static let identifier = "PaintingCollectionViewCell"
 
     // MARK: private properties
     private var image: UIImage?
@@ -54,13 +51,15 @@ class PaintingCollectionViewCell: UICollectionViewCell {
     }()
     
     // MARK: StackViews properties
-    private let  artistArtPriceStackView: UIStackView = {
+    private lazy var artistArtPriceStackView: UIStackView = {
         let view = UIStackView()
-        
+
         view.axis  = .vertical
         view.spacing = LocalConstants.DescriptionStackViewSpacing
         view.translatesAutoresizingMaskIntoConstraints = false
-        
+        view.addArrangedSubview(artist)
+        view.addArrangedSubview(artNameLabel)
+        view.addArrangedSubview(price)
         return view
     }()
     
@@ -70,7 +69,8 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         view.axis  = NSLayoutConstraint.Axis.horizontal
         view.spacing = LocalConstants.buttonsStackViewSpacing
         view.translatesAutoresizingMaskIntoConstraints = false
-        
+        view.addArrangedSubview(favoriteButton)
+        view.addArrangedSubview(cartButton)
         return view
     }()
     
@@ -79,16 +79,7 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
      
         contentView.addSubview(buttonsStackView)
-        
-        buttonsStackView.addArrangedSubview(favoriteButton)
-        buttonsStackView.addArrangedSubview(cartButton)
-        
         contentView.addSubview(artistArtPriceStackView)
-        
-        artistArtPriceStackView.addArrangedSubview(artist)
-        artistArtPriceStackView.addArrangedSubview(artNameLabel)
-        artistArtPriceStackView.addArrangedSubview(price)
-        
         contentView.addSubview(paintingImageView)
     }
     
@@ -110,7 +101,8 @@ class PaintingCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: public methods
-    func setupCell(with painting: Paintings, formattedPrice: String) {
+    func setupCell(with painting: Paintings,
+                   formattedPrice: String) {
         self.image = painting.image
         paintingImageView.image = painting.image
         artist.text = painting.artist
@@ -175,19 +167,20 @@ private enum LocalConstants {
 }
 
 private extension UIImage {
-    func copy(newWidth: CGFloat, retina: Bool = true) -> UIImage? {
+    func copy(newWidth: CGFloat,
+              retina: Bool = true) -> UIImage? {
         let multiplier = newWidth / size.width
         let newHeight = size.height * multiplier + 40
         let newSize = CGSize(width: newWidth,
                              height: newHeight)
-
+        
         UIGraphicsBeginImageContextWithOptions(
             newSize,
             false,
             retina ? 0 : 1
         )
         defer { UIGraphicsEndImageContext() }
-
+        
         self.draw(in: CGRect(origin: .zero, size: newSize))
         return UIGraphicsGetImageFromCurrentImageContext()
     }

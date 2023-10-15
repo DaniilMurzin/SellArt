@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: override methods
+// MARK: override methods
     override func viewDidLoad () {
         super.viewDidLoad()
         
@@ -86,7 +86,6 @@ extension MainViewController: MainViewProtocol {}
 
 // MARK: extension MainViewController + UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
-    
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -154,10 +153,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         
         static let numberOfColumns: CGFloat = 2
         
-        static let totalSpacing = (LocalConstants.numberOfColumns - 1) * 10 // 10 — это расстояние между ячейками, можно изменить на свое значение
+        static let totalSpacing = (LocalConstants.numberOfColumns - 1) * 10
+        static let aspectRatio: CGFloat = 1.9
         
-        static let aspectRatio: CGFloat = 1.9 // можно изменить соотношение сторон на свое значение
-        
-        // Added extra height for buttons and labels
-        static let extraHeight: CGFloat = 20 // можно изменить на свое значение
+        static let extraHeight: CGFloat = 20
     }
