@@ -26,7 +26,7 @@ class CustomTextField: UITextField {
         
         backgroundColor = .mainBackgroundColor
         font = UIFont.regularSettingsFont
-        tintColor = .buttonFontColor
+        tintColor = .mainFontColor
         
         switch style {
             

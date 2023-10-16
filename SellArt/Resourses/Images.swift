@@ -7,8 +7,22 @@ extension UIImage {
     
     static let knight = UIImage(named: "Knight")
     
+    static let matisse2 = UIImage(named: "matisse2")
+    
+    static let sunflowers = UIImage(named: "Sunflowers")
+    
+    static let impression = UIImage(named: "Impression")
+    
+    static let lilies = UIImage(named: "Lilies")
+    
+    static let dali1 = UIImage(named: "dali1")
+    
+    static let dali2 = UIImage(named: "dali2")
+    
     static let appleLogo = UIImage(named: "AppleLogo")
     
+    static let matisse = UIImage(named: "Matisse")
+
     static let cartSelected = UIImage(named: "Cart Selected")
     
     static let cartUnselected = UIImage(named: "Cart Unselected")
@@ -36,4 +50,8 @@ extension UIImage {
     static let share = UIImage(named: "Share")
     
     static let close = UIImage(named: "Close Button")
+    
+    static let wave = UIImage(named: "Wave")
+    
+    static let pompeii = UIImage(named: "Pompeii")
 }

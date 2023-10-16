@@ -9,4 +9,5 @@ enum Strings {
     static let emailTextField = NSLocalizedString("email", comment: "")
     static let addressTextField = NSLocalizedString("address", comment: "")
     static let phoneNumber = NSLocalizedString("phone number", comment: "")
+    static let tabBarGallery = NSLocalizedString("Gallery", comment: "")
 }

@@ -26,11 +26,11 @@ class СustomButton: UIButton {
         
         switch state {
         case .submitForm:
-            attributedTitle = Strings.submitFormButtonTitle.toStyledForButtonAttributedString()
+            attributedTitle = Strings.submitFormButtonTitle.toStyledAttributedString(withStyle: .buttons)
         case .registration:
-            attributedTitle = Strings.registrationButtonTitle.toStyledForButtonAttributedString()
+            attributedTitle = Strings.registrationButtonTitle.toStyledAttributedString(withStyle: .buttons)
         case .purchase:
-            attributedTitle = Strings.purchaseButtonTitle.toStyledForButtonAttributedString()
+            attributedTitle = Strings.purchaseButtonTitle.toStyledAttributedString(withStyle: .buttons)
         }
         
         backgroundColor = UIColor.buttonEnableColor
@@ -40,7 +40,7 @@ class СustomButton: UIButton {
         
         setAttributedTitle(attributedTitle,
                            for: .normal)
-        tintColor = .buttonFontColor
+        tintColor = .mainFontColor
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
