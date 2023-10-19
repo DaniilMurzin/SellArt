@@ -2,7 +2,7 @@ import UIKit
 
 extension UIColor {
     static let mainBackgroundColor = UIColor(hex: "FFFFFF")
-    
+
     static let tabBarColor = UIColor(hex: "EEEAE5")
     
     static let selectionBarColor = UIColor(hex: "007AFF")

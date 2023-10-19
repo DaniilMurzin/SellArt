@@ -1,6 +1,8 @@
 import UIKit
 
-protocol MainViewProtocol: AnyObject {}
+protocol MainViewProtocol: AnyObject {
+    func navigateToPaintingDetails(with painting: Paintings)
+}
 
 class MainViewController: UIViewController {
     
@@ -17,6 +19,7 @@ class MainViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = LocalConstants.minimumInterItemSpacing
         layout.minimumLineSpacing = LocalConstants.minimumLineSpacing
@@ -24,6 +27,7 @@ class MainViewController: UIViewController {
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: layout)
+        
         collectionView.register(
             PaintingCollectionViewCell.self,
             forCellWithReuseIdentifier:
@@ -32,6 +36,7 @@ class MainViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         return collectionView
     }()
 
@@ -46,7 +51,7 @@ class MainViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-// MARK: override methods
+    // MARK: override methods
     override func viewDidLoad () {
         super.viewDidLoad()
         
@@ -58,7 +63,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: private methods
-    func setupView() {
+    private func setupView() {
         view.addSubview(collectionView)
         view.backgroundColor = .mainBackgroundColor
         
@@ -66,7 +71,7 @@ class MainViewController: UIViewController {
         navigationItem.rightBarButtonItem = profileBarItem
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             
             collectionView.centerXAnchor.constraint(
@@ -81,10 +86,23 @@ class MainViewController: UIViewController {
     }
 }
 
-// MARK: extension MainViewController + MainViewProtocol
-extension MainViewController: MainViewProtocol {}
+    // MARK: extension MainViewController + MainViewProtocol
+extension MainViewController: MainViewProtocol {
+    
+    func navigateToPaintingDetails(
+        with painting: Paintings) {
+            
+        let infoViewController = PaintingInfoBuilder.build(
+            with: painting)
+        infoViewController.hidesBottomBarWhenPushed = true
+            
+        self.navigationController?.pushViewController(
+            infoViewController,
+            animated: true)
+        }
+}
 
-// MARK: extension MainViewController + UICollectionViewDataSource
+    // MARK: extension MainViewController + UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
@@ -121,27 +139,31 @@ extension MainViewController: UICollectionViewDataSource {
             paintingCell.setupCell(with: painting, formattedPrice: formattedPrice)
             return paintingCell
         }
-
-}
-
-// MARK: extension MainViewController + UICollectionViewDelegateFlowLayout
-extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath)
-    -> CGSize {
+                        didSelectItemAt indexPath: IndexPath) {
         
-        let screenWidth = UIScreen.main.bounds.width
-        let cellWidth = (screenWidth - LocalConstants.totalSpacing) /
-        LocalConstants.numberOfColumns
-        let imageHeight = cellWidth * LocalConstants.aspectRatio
-        let cellHeight = imageHeight + LocalConstants.extraHeight
-                            
-        return CGSize(width: cellWidth,
-                      height: cellHeight)
+        presenter.didSelectPainting(at: indexPath.item)
     }
 }
+    // MARK: extension MainViewController + UICollectionViewDelegateFlowLayout
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+        
+        func collectionView(_ collectionView: UICollectionView,
+                            layout collectionViewLayout: UICollectionViewLayout,
+                            sizeForItemAt indexPath: IndexPath)
+        -> CGSize {
+            
+            let screenWidth = UIScreen.main.bounds.width
+            let cellWidth = (screenWidth - LocalConstants.totalSpacing) /
+            LocalConstants.numberOfColumns
+            let imageHeight = cellWidth * LocalConstants.aspectRatio
+            let cellHeight = imageHeight + LocalConstants.extraHeight
+            
+            return CGSize(width: cellWidth,
+                          height: cellHeight)
+        }
+    }
     private enum LocalConstants {
         static let rightInset: CGFloat = 2
         

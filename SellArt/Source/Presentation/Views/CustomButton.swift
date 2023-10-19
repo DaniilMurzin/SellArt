@@ -60,12 +60,10 @@ class СustomButton: UIButton {
     }
     
     @objc private func buttonTouchDown() {
-        // Обработка нажатия вниз на кнопку
         backgroundColor = UIColor.buttonDisabledColor
     }
     
     @objc private func buttonTouchUpOutside() {
-        // Обработка отпускания кнопки вне ее границ
         backgroundColor = UIColor.buttonEnableColor
     }
 }

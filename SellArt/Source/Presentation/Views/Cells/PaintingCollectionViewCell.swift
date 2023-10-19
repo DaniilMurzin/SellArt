@@ -6,9 +6,9 @@ class PaintingCollectionViewCell: UICollectionViewCell {
     private var image: UIImage?
     private var heightImageConstraint: NSLayoutConstraint?
 
-    private var favoriteButton = UserActionsButtons(type: .favorite)
+    private let favoriteButton = UserActionsButtons(type: .favorite)
     
-    private var cartButton = UserActionsButtons(type: .cart)
+    private let cartButton = UserActionsButtons(type: .cart)
     
     private let paintingImageView = {
         let imageView = UIImageView()
