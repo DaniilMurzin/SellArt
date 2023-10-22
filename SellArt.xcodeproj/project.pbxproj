@@ -30,7 +30,7 @@
 		B6B1A3E729FE262700227388 /* UserActionsButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B1A3E629FE262600227388 /* UserActionsButtons.swift */; };
 		B6B32D7D2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B32D7C2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift */; };
 		B6B6FE4C2ADD3C37006C981E /* PaintingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B6FE4B2ADD3C37006C981E /* PaintingInfoViewController.swift */; };
-		B6B6FE4F2ADD3CA2006C981E /* PaintingInfoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B6FE4E2ADD3CA2006C981E /* PaintingInfoBuilder.swift */; };
+		B6B6FE4F2ADD3CA2006C981E /* PaintingInfoModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B6FE4E2ADD3CA2006C981E /* PaintingInfoModuleBuilder.swift */; };
 		B6B6FE512ADD3CB7006C981E /* PaintingInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B6FE502ADD3CB7006C981E /* PaintingInfoPresenter.swift */; };
 		B6C295A32AE0DDBB00943E80 /* CustomSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C295A22AE0DDBB00943E80 /* CustomSeparator.swift */; };
 		B6D24F7D29EAEE060015F5B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D24F7C29EAEE060015F5B2 /* AppDelegate.swift */; };
@@ -74,7 +74,7 @@
 		B6B32D7C2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionVIewCell + Identifier.swift"; sourceTree = "<group>"; };
 		B6B6FE4A2ADD0C18006C981E /* SellArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SellArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6B6FE4B2ADD3C37006C981E /* PaintingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingInfoViewController.swift; sourceTree = "<group>"; };
-		B6B6FE4E2ADD3CA2006C981E /* PaintingInfoBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingInfoBuilder.swift; sourceTree = "<group>"; };
+		B6B6FE4E2ADD3CA2006C981E /* PaintingInfoModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingInfoModuleBuilder.swift; sourceTree = "<group>"; };
 		B6B6FE502ADD3CB7006C981E /* PaintingInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingInfoPresenter.swift; sourceTree = "<group>"; };
 		B6C295A22AE0DDBB00943E80 /* CustomSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSeparator.swift; sourceTree = "<group>"; };
 		B6D24F7C29EAEE060015F5B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 			children = (
 				B6B6FE4B2ADD3C37006C981E /* PaintingInfoViewController.swift */,
 				B6B6FE502ADD3CB7006C981E /* PaintingInfoPresenter.swift */,
-				B6B6FE4E2ADD3CA2006C981E /* PaintingInfoBuilder.swift */,
+				B6B6FE4E2ADD3CA2006C981E /* PaintingInfoModuleBuilder.swift */,
 			);
 			path = PaintingInfo;
 			sourceTree = "<group>";
@@ -446,7 +446,7 @@
 				B65D8EE729F439CD0092425E /* UIcolor + Hex.swift in Sources */,
 				B6D24F9329EAEFA00015F5B2 /* SplashViewController.swift in Sources */,
 				B612F1E12A024451006041CF /* MainViewController.swift in Sources */,
-				B6B6FE4F2ADD3CA2006C981E /* PaintingInfoBuilder.swift in Sources */,
+				B6B6FE4F2ADD3CA2006C981E /* PaintingInfoModuleBuilder.swift in Sources */,
 				B6721BE529F149C9008436A7 /* Images.swift in Sources */,
 				B610C25529EC526D001AF42B /* Strings.swift in Sources */,
 				B614025729EB027F0044DA2D /* SplashModuleBuilder.swift in Sources */,

@@ -7,3 +7,8 @@
 "phone number" = "Номер телефона";
 "address" = "Адрес";
 "tabBarGallery" = "Галерея";
+"addedTitle" = "Добавлено в избранное";
+"addedMessage" = "Этот товар был добавлен в избранное.";
+"addedToCartTitle" = "Добавлено в корзину";
+"addedToCartMessage" = "Этот товар был добавлен в вашу корзину.";
+"ok" = "Принять";

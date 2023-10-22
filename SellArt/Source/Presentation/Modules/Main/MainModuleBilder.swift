@@ -11,8 +11,7 @@ class MainModuleBuilder {
         mainViewController.tabBarItem.image = UIImage.galerySelected
         mainViewController.tabBarItem.selectedImage = UIImage.galery
         mainViewController.tabBarItem.title = Strings.tabBarGallery
-        
-        let mainNavigationController = UINavigationController(rootViewController: mainViewController)
-        return mainNavigationController
+    
+        return mainViewController
     }
 }

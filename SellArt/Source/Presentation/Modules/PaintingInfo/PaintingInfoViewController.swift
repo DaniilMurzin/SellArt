@@ -9,14 +9,11 @@ class PaintingInfoViewController: UIViewController {
     
     private var painting: Paintings
     
-    private let buyButton = СustomButton(
-        state: .purchase)
-    private let favoriteButton = UserActionsButtons(
-        type: .favorite)
-    private let cartButton = UserActionsButtons(
-        type: .cart)
-    private let shareButton = UserActionsButtons(
-        type: .share)
+    private let buyButton = СustomButton(state: .purchase)
+    private let favoriteButton = UserActionsButtons(type: .favorite)
+    private let cartButton = UserActionsButtons(type: .cart)
+    private let shareButton = UserActionsButtons(type: .share)
+    
     private let separator =  Separator()
     private let separator2 = Separator()
     
@@ -92,7 +89,7 @@ class PaintingInfoViewController: UIViewController {
         
         return label
     }()
-        
+    
     private lazy var paintingTypeLabel: UILabel = {
         let label = UILabel()
         
@@ -103,7 +100,7 @@ class PaintingInfoViewController: UIViewController {
         
         return label
     }()
-
+    
     private lazy var materialLabel: UILabel = {
         let label = UILabel()
         
@@ -114,7 +111,7 @@ class PaintingInfoViewController: UIViewController {
         
         return label
     }()
-
+    
     private lazy var dimensionsLabel: UILabel = {
         let label = UILabel()
         
@@ -125,7 +122,7 @@ class PaintingInfoViewController: UIViewController {
         
         return label
     }()
-
+    
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         
@@ -179,7 +176,10 @@ class PaintingInfoViewController: UIViewController {
     }()
     
     // MARK: - Init
-    init(presenter: PaintingInfoPresenterProtocol, painting: Paintings) {
+    init(
+        presenter: PaintingInfoPresenterProtocol,
+        painting: Paintings
+    ) {
         self.presenter = presenter
         self.painting = painting
         super.init(nibName: nil, bundle: nil)
@@ -192,13 +192,13 @@ class PaintingInfoViewController: UIViewController {
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupView()
         setupConstraints()
     }
-    
     // MARK: - Private Methods
     private func setupView() {
+        
+        view.backgroundColor = .mainBackgroundColor
         view.addSubview(scrollView)
         
         scrollView.addSubview(contentView)
@@ -211,103 +211,232 @@ class PaintingInfoViewController: UIViewController {
         contentView.addSubview(paintingDetailsStackView)
         contentView.addSubview(separator2)
         contentView.addSubview(buyButton)
+        
+        favoriteButton.addTarget(
+            self,
+            action: #selector(likeButtonAction),
+            for: .touchUpInside
+        )
+        cartButton.addTarget(
+            self,
+            action: #selector(cartButtonAction),
+            for: .touchUpInside
+        )
+    }
+    
+    private func setupScrollViewConstraints() {
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.topAnchor
+            ),
+            scrollView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor
+            ),
+            scrollView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor
+            ),
+            scrollView.bottomAnchor.constraint(
+                equalTo: view.bottomAnchor
+            )
+        ])
+    }
+    
+    private func setupContentViewConstraints() {
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(
+                equalTo: scrollView.topAnchor
+            ),
+            contentView.leadingAnchor.constraint(
+                equalTo: scrollView.leadingAnchor
+            ),
+            contentView.trailingAnchor.constraint(
+                equalTo: scrollView.trailingAnchor
+            ),
+            contentView.bottomAnchor.constraint(
+                equalTo: scrollView.bottomAnchor
+            ),
+            contentView.widthAnchor.constraint(
+                equalTo: scrollView.widthAnchor
+            )
+        ])
+    }
+    
+    private func setupImageViewConstraints() {
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(
+                equalTo: contentView.topAnchor,
+                constant: LocalConstants.imageViewTop
+            ),
+            imageView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: LocalConstants.imageViewLeading
+            ),
+            imageView.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor,
+                constant: LocalConstants.imageViewTrailing
+            ),
+            imageView.heightAnchor.constraint(
+                equalToConstant: LocalConstants.imageViewHeight
+            )
+        ])
+    }
+    private func setupTopLabelsStackViewConstraints() {
+        NSLayoutConstraint.activate([
+            topLabelsStackView.topAnchor.constraint(
+                equalTo: imageView.bottomAnchor,
+                constant: LocalConstants.topLabelsStackViewTop
+            ),
+            topLabelsStackView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: LocalConstants.topLabelsStackViewLeading
+            )
+        ])
+    }
+    private func setupButtonsStackViewConstraints() {
+        NSLayoutConstraint.activate([
+            buttonsStackView.topAnchor.constraint(
+                equalTo: locationLabel.bottomAnchor,
+                constant: LocalConstants.buttonsStackViewTop
+            ),
+            buttonsStackView.leadingAnchor.constraint(
+                equalTo: artistNameLabel.leadingAnchor
+            )
+        ])
+    }
+    private func setupViewsLabelConstraints() {
+        NSLayoutConstraint.activate([
+            viewsLabel.topAnchor.constraint(
+                equalTo: buttonsStackView.topAnchor,
+                constant: LocalConstants.viewsLabelTop
+            ),
+            viewsLabel.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor,
+                constant: LocalConstants.viewsLabelTrailing
+            ),
+            viewsLabel.bottomAnchor.constraint(
+                equalTo: buttonsStackView.bottomAnchor
+            )
+        ])
+    }
+    private func setupSeparatorConstraints() {
+        NSLayoutConstraint.activate([
+            separator.topAnchor.constraint(
+                equalTo: viewsLabel.bottomAnchor,
+                constant: LocalConstants.separatorTop
+            ),
+            separator.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor
+            ),
+            separator.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor
+            )
+        ])
+    }
+    private func setupPaintingDetailsStackViewConstraints() {
+        NSLayoutConstraint.activate([
+            paintingDetailsStackView.topAnchor.constraint(
+                equalTo: separator.bottomAnchor,
+                constant: LocalConstants.paintingDetailsStackViewTop
+            ),
+            paintingDetailsStackView.leadingAnchor.constraint(
+                equalTo: buttonsStackView.leadingAnchor
+            )
+        ])
+    }
+    private func setupSeparator2Constraints() {
+        NSLayoutConstraint.activate([
+            separator2.topAnchor.constraint(
+                equalTo: paintingDetailsStackView.bottomAnchor,
+                constant: LocalConstants.separator2Top
+            ),
+            separator2.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor
+            ),
+            separator2.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor
+            )
+        ])
+    }
+    
+    private func setupBuyButtonConstraints() {
+        NSLayoutConstraint.activate([
+            buyButton.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: LocalConstants.buyButtonLeading
+            ),
+            buyButton.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor,
+                constant: LocalConstants.buyButtonTrailing
+            ),
+            buyButton.topAnchor.constraint(
+                equalTo: separator2.bottomAnchor,
+                constant: LocalConstants.buyButtonTop
+            ),
+            buyButton.heightAnchor.constraint(
+                equalToConstant: LocalConstants.buyButtonHeight
+            ),
+            buyButton.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor,
+                constant: LocalConstants.buyButtonBottom
+            )
+        ])
     }
     
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor),
-            
-            contentView.topAnchor.constraint(
-                equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(
-                equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(
-                equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(
-                equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(
-                equalTo: scrollView.widthAnchor),
-            
-            imageView.topAnchor.constraint(
-                equalTo: contentView.topAnchor,
-                constant: LocalConstants.imageViewTop),
-            imageView.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor,
-                constant: LocalConstants.imageViewLeading),
-            imageView.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: LocalConstants.imageViewTrailing),
-            imageView.heightAnchor.constraint(
-                equalToConstant: LocalConstants.imageViewHeight),
-            
-            topLabelsStackView.topAnchor.constraint(
-                equalTo: imageView.bottomAnchor,
-                constant: LocalConstants.topLabelsStackViewTop),
-            topLabelsStackView.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor,
-                constant: LocalConstants.topLabelsStackViewLeading),
-            
-            buttonsStackView.topAnchor.constraint(
-                equalTo: locationLabel.bottomAnchor,
-                constant: LocalConstants.buttonsStackViewTop),
-            buttonsStackView.leadingAnchor.constraint(
-                equalTo: artistNameLabel.leadingAnchor),
-            
-            viewsLabel.topAnchor.constraint(
-                equalTo: buttonsStackView.topAnchor,
-                constant: LocalConstants.viewsLabelTop),
-            viewsLabel.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: LocalConstants.viewsLabelTrailing),
-            viewsLabel.bottomAnchor.constraint(
-                equalTo: buttonsStackView.bottomAnchor),
-            
-            separator.topAnchor.constraint(
-                equalTo: viewsLabel.bottomAnchor,
-                constant: LocalConstants.separatorTop),
-            separator.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor),
-            separator.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor),
-            
-            paintingDetailsStackView.topAnchor.constraint(
-                equalTo: separator.bottomAnchor,
-                constant: LocalConstants.paintingDetailsStackViewTop),
-            paintingDetailsStackView.leadingAnchor.constraint(
-                equalTo: buttonsStackView.leadingAnchor),
-            
-            separator2.topAnchor.constraint(
-                equalTo: paintingDetailsStackView.bottomAnchor,
-                constant: LocalConstants.separator2Top),
-            separator2.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor),
-            separator2.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor),
-
-            buyButton.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor,
-                constant: LocalConstants.buyButtonLeading),
-            buyButton.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: LocalConstants.buyButtonTrailing),
-            buyButton.topAnchor.constraint(
-                equalTo: separator2.bottomAnchor,
-                constant: LocalConstants.buyButtonTop),
-            buyButton.heightAnchor.constraint(
-                equalToConstant: LocalConstants.buyButtonHeight),
-            buyButton.bottomAnchor.constraint(
-                equalTo: contentView.bottomAnchor,
-                constant: LocalConstants.buyButtonBottom)
-        ])
+        setupScrollViewConstraints()
+        setupContentViewConstraints()
+        setupImageViewConstraints()
+        setupTopLabelsStackViewConstraints()
+        setupButtonsStackViewConstraints()
+        setupViewsLabelConstraints()
+        setupSeparatorConstraints()
+        setupPaintingDetailsStackViewConstraints()
+        setupSeparator2Constraints()
+        setupBuyButtonConstraints()
+    }
+    
+    @objc func likeButtonAction() {
+        showAlert(
+            withTitle: Strings.addedTitle,
+            message: Strings.addedMessage
+        )
+        presenter.likeButtonTapped()
+    }
+    
+    @objc func cartButtonAction() {
+        showAlert(
+            withTitle: Strings.addedToCartTitle,
+            message: Strings.addedToCartMessage
+        )
+        presenter.cartButtonTapped()
+    }
+    
+    private func showAlert(
+        withTitle title: String,
+        message: String
+    ) {
+        
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(
+            title: Strings.ok,
+            style: .default,
+            handler: nil
+        )
+        
+        alertController.addAction(okAction)
+        present(
+            alertController,
+            animated: true,
+            completion: nil
+        )
     }
 }
+
     // MARK: LocalConstants
     private enum LocalConstants {
         
@@ -338,6 +467,4 @@ class PaintingInfoViewController: UIViewController {
      }
 
     // MARK: extension PaintingInfoViewController + PaintingInfoViewProtocol
-extension PaintingInfoViewController: PaintingInfoViewProtocol {
-    
-}
+extension PaintingInfoViewController: PaintingInfoViewProtocol {}

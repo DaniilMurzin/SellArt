@@ -4,6 +4,8 @@ protocol MainPresenterProtocol {
     func loadPaintings(completion: @escaping ([Paintings]) -> Void)
     func formatPrice(_ price: Double) -> String
     func didSelectPainting(at index: Int)
+    func likeButtonTapped(at indexPath: IndexPath)
+    func cartButtonTapped(at indexPath: IndexPath)
 }
 
 class MainPresenter {
@@ -21,6 +23,19 @@ class MainPresenter {
         PaintingsModel.paintings
     }
     
+}
+    // MARK: extension MainPresenter + MainPresenterProtocol
+extension MainPresenter: MainPresenterProtocol {
+    
+    func likeButtonTapped(at indexPath: IndexPath) {}
+    
+    func cartButtonTapped(at indexPath: IndexPath) {}
+    
+    func loadPaintings(completion: @escaping ([Paintings]) -> Void) {
+        let paintings = fetchPaintings()
+        completion(paintings)
+    }
+    
     func formatPrice(_ price: Double) -> String {
         return String(format: "%.2f $", price)
     }
@@ -29,13 +44,4 @@ class MainPresenter {
         let painting = PaintingsModel.paintings[index]
         view?.navigateToPaintingDetails(with: painting)
     }
-}
-    // MARK: extension MainPresenter + MainPresenterProtocol
-extension MainPresenter: MainPresenterProtocol {
-    
-    func loadPaintings(completion: @escaping ([Paintings]) -> Void) {
-        let paintings = fetchPaintings()
-        completion(paintings)
-    }
-    
 }

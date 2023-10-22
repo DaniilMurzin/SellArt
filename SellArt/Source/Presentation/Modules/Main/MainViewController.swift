@@ -26,12 +26,13 @@ class MainViewController: UIViewController {
 
         let collectionView = UICollectionView(
             frame: .zero,
-            collectionViewLayout: layout)
+            collectionViewLayout: layout
+        )
         
         collectionView.register(
             PaintingCollectionViewCell.self,
-            forCellWithReuseIdentifier:
-                PaintingCollectionViewCell.identifier)
+            forCellWithReuseIdentifier: PaintingCollectionViewCell.identifier
+        )
         collectionView.backgroundColor = .mainBackgroundColor
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -43,8 +44,10 @@ class MainViewController: UIViewController {
     // MARK: init
     init(presenter: MainPresenterProtocol) {
         self.presenter = presenter
-        super.init(nibName: nil,
-                   bundle: nil)
+        super.init(
+            nibName: nil,
+            bundle: nil
+        )
     }
     
     required init?(coder: NSCoder) {
@@ -75,14 +78,19 @@ class MainViewController: UIViewController {
         NSLayoutConstraint.activate([
             
             collectionView.centerXAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+                equalTo: view.safeAreaLayoutGuide.centerXAnchor
+            ),
             collectionView.centerYAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+                equalTo: view.safeAreaLayoutGuide.centerYAnchor
+            ),
             collectionView.heightAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.heightAnchor),
+                equalTo: view.safeAreaLayoutGuide.heightAnchor
+            ),
             collectionView.widthAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.widthAnchor)
+                equalTo: view.safeAreaLayoutGuide.widthAnchor
+            )
         ])
+    
     }
 }
 
@@ -90,58 +98,71 @@ class MainViewController: UIViewController {
 extension MainViewController: MainViewProtocol {
     
     func navigateToPaintingDetails(
-        with painting: Paintings) {
-            
-        let infoViewController = PaintingInfoBuilder.build(
-            with: painting)
+        with painting: Paintings
+    ) {
+        let infoViewController = PaintingInfoModuleBuilder.build(with: painting)
         infoViewController.hidesBottomBarWhenPushed = true
             
         self.navigationController?.pushViewController(
             infoViewController,
-            animated: true)
-        }
+            animated: true
+        )
+    }
 }
 
     // MARK: extension MainViewController + UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
         
-        UIEdgeInsets(top: 0,
-                     left: LocalConstants.leftInset,
-                     bottom: 0,
-                     right: LocalConstants.rightInset)
+        UIEdgeInsets(
+            top: 0,
+            left: LocalConstants.leftInset,
+            bottom: 0,
+            right: LocalConstants.rightInset
+        )
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
-        numberOfItemsInSection
-        section: Int) -> Int {
-            paintings.count
-        }
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        paintings.count
+    }
     
     func collectionView(
         _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            
-            let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PaintingCollectionViewCell.identifier,
-                for: indexPath)
-            
-            guard let paintingCell = cell as? PaintingCollectionViewCell else {
-                return cell
-            }
-            
-            let painting = paintings[indexPath.item]
-            let formattedPrice = presenter.formatPrice(painting.price)
-            paintingCell.setupCell(with: painting, formattedPrice: formattedPrice)
-            return paintingCell
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: PaintingCollectionViewCell.identifier,
+            for: indexPath
+        )
+                
+        guard let paintingCell = cell as? PaintingCollectionViewCell else {
+            return cell
         }
+        
+        paintingCell.delegate = self
+        paintingCell.indexPath = indexPath
+        let painting = paintings[indexPath.item]
+        let formattedPrice = presenter.formatPrice(painting.price)
+        paintingCell.setupCell(
+            with: painting,
+            formattedPrice: formattedPrice
+        )
+        return paintingCell
+    }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         
         presenter.didSelectPainting(at: indexPath.item)
     }
@@ -149,9 +170,11 @@ extension MainViewController: UICollectionViewDataSource {
     // MARK: extension MainViewController + UICollectionViewDelegateFlowLayout
 extension MainViewController: UICollectionViewDelegateFlowLayout {
         
-        func collectionView(_ collectionView: UICollectionView,
-                            layout collectionViewLayout: UICollectionViewLayout,
-                            sizeForItemAt indexPath: IndexPath)
+        func collectionView(
+            _ collectionView: UICollectionView,
+            layout collectionViewLayout: UICollectionViewLayout,
+            sizeForItemAt indexPath: IndexPath
+        )
         -> CGSize {
             
             let screenWidth = UIScreen.main.bounds.width
@@ -160,10 +183,57 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
             let imageHeight = cellWidth * LocalConstants.aspectRatio
             let cellHeight = imageHeight + LocalConstants.extraHeight
             
-            return CGSize(width: cellWidth,
-                          height: cellHeight)
+            return CGSize(
+                width: cellWidth,
+                height: cellHeight
+            )
         }
     }
+
+    // MARK: extension MainViewController + CustomCellDelegate
+extension MainViewController: CustomCellDelegate {
+    
+    func likeButtonTapped(at indexPath: IndexPath) {
+        showAlert(
+            withTitle: Strings.addedTitle,
+            message: Strings.addedMessage
+        )
+        presenter.likeButtonTapped(at: indexPath)
+    }
+    
+    func cartButtonTapped(at indexPath: IndexPath) {
+        showAlert(
+            withTitle: Strings.addedToCartTitle,
+            message: Strings.addedToCartMessage
+        )
+        presenter.cartButtonTapped(at: indexPath)
+    }
+    
+    private func showAlert(
+        withTitle title: String,
+        message: String
+    ) {
+        
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(
+            title: Strings.ok,
+            style: .default,
+            handler: nil
+        )
+        
+        alertController.addAction(okAction)
+        present(
+            alertController,
+            animated: true,
+            completion: nil
+        )
+    }
+}
     private enum LocalConstants {
         static let rightInset: CGFloat = 2
         
@@ -179,4 +249,4 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         static let aspectRatio: CGFloat = 1.9
         
         static let extraHeight: CGFloat = 20
-    }
+}

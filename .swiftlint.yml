@@ -2,5 +2,6 @@ line_length:
 - 250 # warning
 - 500 # error
 disabled_rules:
+- type_body_length
 - trailing_whitespace
 - identifier_name

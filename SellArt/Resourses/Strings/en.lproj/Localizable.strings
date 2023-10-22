@@ -7,3 +7,8 @@
 "phone number" = "Phone number";
 "address" = "Address";
 "tabBarGallery" = "Gallery";
+"addedTitle" = "Added to Favorites";
+"addedMessage" = "This item has been added to your favorites.";
+"addedToCartTitle" = "Added to Cart";
+"addedToCartMessage" = "This item has been added to your cart.";
+"ok" = "OK";

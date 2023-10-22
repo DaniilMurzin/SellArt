@@ -33,30 +33,40 @@ class UserActionsButtons: UIButton {
         switch type {
             
         case .favorite:
-            setImage(UIImage.favoriteUnselected,
-                     for: .normal)
-            addTarget(self,
-                      action: #selector(favoriteButtonTapped),
-                      for: .touchUpInside)
-            
+            setImage(
+                UIImage.favoriteUnselected,
+                for: .normal
+            )
+            addTarget(
+                self,
+                action: #selector(favoriteButtonTapped),
+                for: .touchUpInside
+            )
         case .cart:
-            setImage(UIImage.cartUnselected,
-                     for: .normal)
-            addTarget(self,
-                      action: #selector(cartButtonTapped),
-                      for: .touchUpInside)
-            
+            setImage(
+                UIImage.cartUnselected,
+                for: .normal
+            )
+            addTarget(
+                self,
+                action: #selector(cartButtonTapped),
+                for: .touchUpInside
+            )
         case .profile:
-            setImage(UIImage.profile,
-                     for: .normal)
-            
+            setImage(
+                UIImage.profile,
+                for: .normal
+            )
         case .share:
-            setImage(UIImage.share,
-                     for: .normal)
-    
+            setImage(
+                UIImage.share,
+                for: .normal
+            )
         case .close:
-            setImage(UIImage.close,
-                     for: .normal)
+            setImage(
+                UIImage.close,
+                for: .normal
+            )
         }
     }
 
@@ -65,8 +75,10 @@ class UserActionsButtons: UIButton {
         
         let image = isFavoriteSelected ? UIImage.favoriteSelected : UIImage.favoriteUnselected
 
-        setImage(image,
-                 for: .normal)
+        setImage(
+            image,
+            for: .normal
+        )
     }
     
     @objc private func cartButtonTapped() {
@@ -74,7 +86,9 @@ class UserActionsButtons: UIButton {
         
         let image = isCartSelected ? UIImage.cartSelected : UIImage.cartUnselected
         
-        setImage(image,
-                 for: .normal)
+        setImage(
+            image,
+            for: .normal
+        )
     }
 }

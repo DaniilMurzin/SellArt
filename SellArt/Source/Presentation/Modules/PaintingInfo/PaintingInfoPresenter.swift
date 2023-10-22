@@ -2,6 +2,8 @@ import UIKit
 
 protocol PaintingInfoPresenterProtocol {
     func formatPrice(_ price: Double) -> String
+    func likeButtonTapped()
+    func cartButtonTapped()
 }
 
 class PaintingInfoPresenter {
@@ -23,6 +25,11 @@ class PaintingInfoPresenter {
 }
 // MARK: extension PaintingInfoPresenter + PaintingInfoPresenterProtocol
 extension PaintingInfoPresenter: PaintingInfoPresenterProtocol {
+    
+    func likeButtonTapped() {}
+    
+    func cartButtonTapped() {}
+    
     func formatPrice(_ price: Double) -> String {
         return String(format: "%.2f $", price)
     }

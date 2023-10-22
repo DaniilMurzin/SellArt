@@ -1,16 +1,16 @@
 import UIKit
 
-class PaintingInfoBuilder {
+class PaintingInfoModuleBuilder {
     static func build(with painting: Paintings) -> UIViewController {
         
-        let presenter = PaintingInfoPresenter(
-            painting: painting)
+        let presenter = PaintingInfoPresenter(painting: painting)
         
         let paintingInfoViewController = PaintingInfoViewController(
-            presenter: presenter, painting: painting)
+            presenter: presenter,
+            painting: painting
+        )
         
-        presenter.attachedView(
-            paintingInfoViewController)
+        presenter.attachedView(paintingInfoViewController)
         
         return paintingInfoViewController
     }
