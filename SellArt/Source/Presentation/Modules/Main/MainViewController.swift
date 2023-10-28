@@ -97,9 +97,7 @@ class MainViewController: UIViewController {
     // MARK: extension MainViewController + MainViewProtocol
 extension MainViewController: MainViewProtocol {
     
-    func navigateToPaintingDetails(
-        with painting: Paintings
-    ) {
+    func navigateToPaintingDetails(with painting: Paintings) {
         let infoViewController = PaintingInfoModuleBuilder.build(with: painting)
         infoViewController.hidesBottomBarWhenPushed = true
             
@@ -163,31 +161,37 @@ extension MainViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        
-        presenter.didSelectPainting(at: indexPath.item)
+    presenter.didSelectPainting(at: indexPath.item)
     }
 }
     // MARK: extension MainViewController + UICollectionViewDelegateFlowLayout
 extension MainViewController: UICollectionViewDelegateFlowLayout {
         
-        func collectionView(
-            _ collectionView: UICollectionView,
-            layout collectionViewLayout: UICollectionViewLayout,
-            sizeForItemAt indexPath: IndexPath
-        )
-        -> CGSize {
-            
-            let screenWidth = UIScreen.main.bounds.width
-            let cellWidth = (screenWidth - LocalConstants.totalSpacing) /
-            LocalConstants.numberOfColumns
-            let imageHeight = cellWidth * LocalConstants.aspectRatio
-            let cellHeight = imageHeight + LocalConstants.extraHeight
-            
-            return CGSize(
-                width: cellWidth,
-                height: cellHeight
-            )
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    )
+    -> CGSize {
+
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: PaintingCollectionViewCell.identifier,
+            for: indexPath
+        ) as? PaintingCollectionViewCell else {
+            return CGSize(width: 0, height: 0) 
         }
+        
+        let painting = paintings[indexPath.item]
+        let formattedPrice = presenter.formatPrice(painting.price)
+        cell.setupCell(with: painting, formattedPrice: formattedPrice)
+
+        cell.layoutIfNeeded()
+
+        let size = cell.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+
+        return size
+    }
+
     }
 
     // MARK: extension MainViewController + CustomCellDelegate
@@ -246,6 +250,7 @@ extension MainViewController: CustomCellDelegate {
         static let numberOfColumns: CGFloat = 2
         
         static let totalSpacing = (LocalConstants.numberOfColumns - 1) * 10
+        
         static let aspectRatio: CGFloat = 1.9
         
         static let extraHeight: CGFloat = 20

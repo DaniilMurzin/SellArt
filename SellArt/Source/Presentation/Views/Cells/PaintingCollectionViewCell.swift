@@ -123,6 +123,7 @@ class PaintingCollectionViewCell: UICollectionViewCell {
     // MARK: public methods
     func setupCell(with painting: Paintings,
                    formattedPrice: String) {
+//        print(painting.image) 
         self.image = painting.image
         paintingImageView.image = painting.image
         artist.text = painting.artist
@@ -145,27 +146,25 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             
-            // MARK: Painting
             paintingImageView.topAnchor.constraint(
                 equalTo: contentView.topAnchor),
             paintingImageView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor),
             
             heightImageAnchor,
+            
             paintingImageView.widthAnchor.constraint(
                 equalToConstant: bounds.width),
             paintingImageView.bottomAnchor.constraint(
                 equalTo: buttonsStackView.topAnchor,
                 constant: -LocalConstants.topInset),
             
-            // MARK: Buttons
             buttonsStackView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor,
                 constant: LocalConstants.topInset),
             buttonsStackView.heightAnchor.constraint(
                 equalToConstant: LocalConstants.buttonsHeight),
             
-            // MARK: Picture description
             artistArtPriceStackView.topAnchor.constraint(
                 equalTo: buttonsStackView.bottomAnchor,
                 constant: LocalConstants.topInset),
@@ -173,6 +172,8 @@ class PaintingCollectionViewCell: UICollectionViewCell {
                 equalTo: buttonsStackView.leadingAnchor)
         ])
     }
+    
+    // MARK: @objc methods
     @objc func likeButtonAction() {
         if let indexPath = indexPath {
             delegate?.likeButtonTapped(at: indexPath)
