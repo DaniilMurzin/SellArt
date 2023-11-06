@@ -5,7 +5,7 @@ protocol SplashViewProtocol: AnyObject {}
 class SplashViewController: UIViewController {
     
     // MARK: public properties
-    var presenter: SplashPresenterProtocol
+    private (set) var presenter: SplashPresenterProtocol
     
     // MARK: init
     init(presenter: SplashPresenterProtocol) {

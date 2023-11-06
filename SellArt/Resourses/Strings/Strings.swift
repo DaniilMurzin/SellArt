@@ -3,15 +3,15 @@ import UIKit
 enum Strings {
     static let submitFormButtonTitle = NSLocalizedString(
         "submitFormButtonTitle",
-        comment: "submitFormButtonTitle"
+        comment: ""
     )
     static let registrationButtonTitle = NSLocalizedString(
         "registrationButtonTitle",
-        comment: "registrationButtonTitle"
+        comment: ""
     )
     static let purchaseButtonTitle = NSLocalizedString(
         "purchase",
-        comment: "purchase"
+        comment: ""
     )
     static let nameTextField = NSLocalizedString(
         "name",
@@ -53,5 +53,16 @@ enum Strings {
         "addedToCartMessage",
         comment: ""
     )
-    static let ok = NSLocalizedString("ok", comment: "")
+    static let ok = NSLocalizedString(
+        "ok",
+        comment: ""
+    )
+    static let personalDataAgreement = NSLocalizedString(
+        "agreement",
+        comment: ""
+    )
+    static let form = NSLocalizedString(
+        "form",
+        comment: ""
+    )
 }

@@ -11,7 +11,7 @@ class PaintingCollectionViewCell: UICollectionViewCell {
     
     var indexPath: IndexPath?
     
-    // MARK: private properties
+    // MARK: - private properties
     private var image: UIImage?
     
     private var heightImageConstraint: NSLayoutConstraint?
@@ -107,7 +107,7 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: override methods
+    // MARK: - override methods
     override func layoutSubviews() {
         super.layoutSubviews()
         setupConstraints()
@@ -120,7 +120,7 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         heightImageConstraint = nil
     }
     
-    // MARK: public methods
+    // MARK: - public methods
     func setupCell(with painting: Paintings,
                    formattedPrice: String) {
 //        print(painting.image) 
@@ -173,7 +173,7 @@ class PaintingCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    // MARK: @objc methods
+    // MARK: - @objc methods
     @objc func likeButtonAction() {
         if let indexPath = indexPath {
             delegate?.likeButtonTapped(at: indexPath)
@@ -193,7 +193,7 @@ private enum LocalConstants {
     
     static let topInset: CGFloat = 10
     
-    static let buttonsStackViewSpacing: CGFloat = 15
+    static let buttonsStackViewSpacing: CGFloat = 20
     
     static let DescriptionStackViewSpacing: CGFloat = 5
 }

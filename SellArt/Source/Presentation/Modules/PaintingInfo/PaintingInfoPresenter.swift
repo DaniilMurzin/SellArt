@@ -4,6 +4,7 @@ protocol PaintingInfoPresenterProtocol {
     func formatPrice(_ price: Double) -> String
     func likeButtonTapped()
     func cartButtonTapped()
+    func buyButtonTapped()
 }
 
 class PaintingInfoPresenter {
@@ -33,4 +34,7 @@ extension PaintingInfoPresenter: PaintingInfoPresenterProtocol {
     func formatPrice(_ price: Double) -> String {
         return String(format: "%.2f $", price)
     }
+    func buyButtonTapped() {
+        view?.navigateToFormViewController()
+}
 }

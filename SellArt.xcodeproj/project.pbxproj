@@ -15,6 +15,9 @@
 		B612F1E32A02446C006041CF /* MainModuleBilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B612F1E22A02446C006041CF /* MainModuleBilder.swift */; };
 		B614025729EB027F0044DA2D /* SplashModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */; };
 		B617893C29F7D9410085E079 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B617893B29F7D9400085E079 /* CustomButton.swift */; };
+		B6199DEF2AEE96900062B4CC /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6199DEE2AEE96900062B4CC /* FormViewController.swift */; };
+		B6199DF12AEE96A90062B4CC /* FormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6199DF02AEE96A90062B4CC /* FormPresenter.swift */; };
+		B6199DF32AEE96C10062B4CC /* FormModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6199DF22AEE96C10062B4CC /* FormModuleBuilder.swift */; };
 		B639ECE129F298CE007FD55D /* RFTone-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE029F298CE007FD55D /* RFTone-Regular.ttf */; };
 		B639ECE329F29D3B007FD55D /* RFTone-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */; };
 		B639ECE529F2A039007FD55D /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */; };
@@ -43,10 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03FD8CC5CD2C7851C7040367 /* Pods-SellArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.debug.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.debug.xcconfig"; sourceTree = "<group>"; };
 		2D0BF302F73678CCD5F479FD /* Pods_SellArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SellArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		665DACA6FFE58005A2488B02 /* Pods-SellArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.debug.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.debug.xcconfig"; sourceTree = "<group>"; };
-		88CD09113D918D600A59A6C7 /* Pods-SellArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.release.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.release.xcconfig"; sourceTree = "<group>"; };
 		B353076ABEFDDDE1BBB8C191 /* Pods-SellArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellArt.release.xcconfig"; path = "Target Support Files/Pods-SellArt/Pods-SellArt.release.xcconfig"; sourceTree = "<group>"; };
 		B610C24C29EC464C001AF42B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B610C25129EC4672001AF42B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -58,6 +59,9 @@
 		B612F1E22A02446C006041CF /* MainModuleBilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleBilder.swift; sourceTree = "<group>"; };
 		B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashModuleBuilder.swift; sourceTree = "<group>"; };
 		B617893B29F7D9400085E079 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		B6199DEE2AEE96900062B4CC /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		B6199DF02AEE96A90062B4CC /* FormPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPresenter.swift; sourceTree = "<group>"; };
+		B6199DF22AEE96C10062B4CC /* FormModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormModuleBuilder.swift; sourceTree = "<group>"; };
 		B639ECE029F298CE007FD55D /* RFTone-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RFTone-Regular.ttf"; sourceTree = "<group>"; };
 		B639ECE229F29D3A007FD55D /* RFTone-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RFTone-Bold.ttf"; sourceTree = "<group>"; };
 		B639ECE429F2A039007FD55D /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.ttf"; sourceTree = "<group>"; };
@@ -98,15 +102,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		28716DFCF2D8D8CC30FCD927 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				03FD8CC5CD2C7851C7040367 /* Pods-SellArt.debug.xcconfig */,
-				88CD09113D918D600A59A6C7 /* Pods-SellArt.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		388535F401F432409F4A6D83 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,9 +191,10 @@
 		B614025D29EB08B40044DA2D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B614025E29EB08C00044DA2D /* Splash */,
 				B612F1DD2A0240CB006041CF /* Main */,
 				B6B6FE4D2ADD3C6A006C981E /* PaintingInfo */,
+				B6199DED2AEE96510062B4CC /* Form */,
+				B614025E29EB08C00044DA2D /* Splash */,
 				B66273F42A078B1F008EFA72 /* Model */,
 			);
 			path = Modules;
@@ -207,10 +203,9 @@
 		B614025E29EB08C00044DA2D /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				B6D24F9029EAEF170015F5B2 /* SplashPresenter.swift */,
 				B6D24F9229EAEFA00015F5B2 /* SplashViewController.swift */,
+				B6D24F9029EAEF170015F5B2 /* SplashPresenter.swift */,
 				B614025629EB027F0044DA2D /* SplashModuleBuilder.swift */,
-				28716DFCF2D8D8CC30FCD927 /* Pods */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -225,6 +220,16 @@
 				B612F1DA29FFEDD5006041CF /* Cells */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B6199DED2AEE96510062B4CC /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				B6199DEE2AEE96900062B4CC /* FormViewController.swift */,
+				B6199DF02AEE96A90062B4CC /* FormPresenter.swift */,
+				B6199DF22AEE96C10062B4CC /* FormModuleBuilder.swift */,
+			);
+			path = Form;
 			sourceTree = "<group>";
 		};
 		B65D8EE529F439840092425E /* Extensions */ = {
@@ -440,6 +445,7 @@
 				B6C295A32AE0DDBB00943E80 /* CustomSeparator.swift in Sources */,
 				B6B6FE512ADD3CB7006C981E /* PaintingInfoPresenter.swift in Sources */,
 				B6D24F7F29EAEE060015F5B2 /* SceneDelegate.swift in Sources */,
+				B6199DF32AEE96C10062B4CC /* FormModuleBuilder.swift in Sources */,
 				B6B32D7D2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift in Sources */,
 				B660DF262AD17A19000206A4 /* PaintingsRepository.swift in Sources */,
 				B6D24F9129EAEF170015F5B2 /* SplashPresenter.swift in Sources */,
@@ -447,6 +453,7 @@
 				B6D24F9329EAEFA00015F5B2 /* SplashViewController.swift in Sources */,
 				B612F1E12A024451006041CF /* MainViewController.swift in Sources */,
 				B6B6FE4F2ADD3CA2006C981E /* PaintingInfoModuleBuilder.swift in Sources */,
+				B6199DF12AEE96A90062B4CC /* FormPresenter.swift in Sources */,
 				B6721BE529F149C9008436A7 /* Images.swift in Sources */,
 				B610C25529EC526D001AF42B /* Strings.swift in Sources */,
 				B614025729EB027F0044DA2D /* SplashModuleBuilder.swift in Sources */,
@@ -456,6 +463,7 @@
 				B612F1DC29FFEE2F006041CF /* PaintingCollectionViewCell.swift in Sources */,
 				B66273F62A078BC6008EFA72 /* Paintings.swift in Sources */,
 				B612F1E32A02446C006041CF /* MainModuleBilder.swift in Sources */,
+				B6199DEF2AEE96900062B4CC /* FormViewController.swift in Sources */,
 				B6B1A3E529FC0CF400227388 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,7 +610,7 @@
 		};
 		B6D24F8E29EAEE090015F5B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03FD8CC5CD2C7851C7040367 /* Pods-SellArt.debug.xcconfig */;
+			baseConfigurationReference = 665DACA6FFE58005A2488B02 /* Pods-SellArt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -629,7 +637,7 @@
 		};
 		B6D24F8F29EAEE090015F5B2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88CD09113D918D600A59A6C7 /* Pods-SellArt.release.xcconfig */;
+			baseConfigurationReference = B353076ABEFDDDE1BBB8C191 /* Pods-SellArt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

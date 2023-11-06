@@ -12,3 +12,5 @@
 "addedToCartTitle" = "Added to Cart";
 "addedToCartMessage" = "This item has been added to your cart.";
 "ok" = "OK";
+"agreement" = "By clicking the registration button, you agree to the processing of personal data.";
+"form" = "Please fill out the form";

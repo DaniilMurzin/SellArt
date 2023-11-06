@@ -6,7 +6,7 @@ protocol MainViewProtocol: AnyObject {
 
 class MainViewController: UIViewController {
     
-    // MARK: private properties
+    // MARK: - private properties
     private(set) var presenter: MainPresenterProtocol
     
     private var paintings: [Paintings] = [] {
@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
         return collectionView
     }()
 
-    // MARK: init
+    // MARK: - init
     init(presenter: MainPresenterProtocol) {
         self.presenter = presenter
         super.init(
@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: override methods
+    // MARK: - override methods
     override func viewDidLoad () {
         super.viewDidLoad()
         
@@ -65,11 +65,25 @@ class MainViewController: UIViewController {
         }
     }
     
-    // MARK: private methods
+    // MARK: - private methods
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        let attributes: [NSAttributedString.Key: Any]
+        = [
+            .font: UIFont.largeTitleFont,
+            .foregroundColor: UIColor.mainFontColor
+        ]
+
+        navigationController?.navigationBar.largeTitleTextAttributes = attributes
+    }
+    
     private func setupView() {
         view.addSubview(collectionView)
         view.backgroundColor = .mainBackgroundColor
-        
+        title = Strings.tabBarGallery
+        setupNavigationBar()
         let profileBarItem = UIBarButtonItem(customView: profileButton)
         navigationItem.rightBarButtonItem = profileBarItem
     }
@@ -94,7 +108,7 @@ class MainViewController: UIViewController {
     }
 }
 
-    // MARK: extension MainViewController + MainViewProtocol
+    // MARK: - extension MainViewController + MainViewProtocol
 extension MainViewController: MainViewProtocol {
     
     func navigateToPaintingDetails(with painting: Paintings) {
@@ -108,7 +122,7 @@ extension MainViewController: MainViewProtocol {
     }
 }
 
-    // MARK: extension MainViewController + UICollectionViewDataSource
+    // MARK: - extension MainViewController + UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(
@@ -164,7 +178,7 @@ extension MainViewController: UICollectionViewDataSource {
     presenter.didSelectPainting(at: indexPath.item)
     }
 }
-    // MARK: extension MainViewController + UICollectionViewDelegateFlowLayout
+    // MARK: - extension MainViewController + UICollectionViewDelegateFlowLayout
 extension MainViewController: UICollectionViewDelegateFlowLayout {
         
     func collectionView(
@@ -173,28 +187,22 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     )
     -> CGSize {
-
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: PaintingCollectionViewCell.identifier,
-            for: indexPath
-        ) as? PaintingCollectionViewCell else {
-            return CGSize(width: 0, height: 0) 
-        }
         
-        let painting = paintings[indexPath.item]
-        let formattedPrice = presenter.formatPrice(painting.price)
-        cell.setupCell(with: painting, formattedPrice: formattedPrice)
-
-        cell.layoutIfNeeded()
-
-        let size = cell.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-
-        return size
+        let screenWidth = UIScreen.main.bounds.width
+        let cellWidth = (screenWidth - LocalConstants.totalSpacing) /
+        LocalConstants.numberOfColumns
+        let imageHeight = cellWidth * LocalConstants.aspectRatio
+        let cellHeight = imageHeight + LocalConstants.extraHeight
+        
+        return CGSize(
+            width: cellWidth,
+            height: cellHeight
+        )
     }
 
     }
 
-    // MARK: extension MainViewController + CustomCellDelegate
+    // MARK: - extension MainViewController + CustomCellDelegate
 extension MainViewController: CustomCellDelegate {
     
     func likeButtonTapped(at indexPath: IndexPath) {
@@ -238,6 +246,7 @@ extension MainViewController: CustomCellDelegate {
         )
     }
 }
+    // MARK: - extension MainViewController + CustomCellDelegate
     private enum LocalConstants {
         static let rightInset: CGFloat = 2
         

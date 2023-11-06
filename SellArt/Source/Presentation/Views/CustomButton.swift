@@ -12,7 +12,7 @@ class СustomButton: UIButton {
     init(state: ButtonViewState) {
         super.init(frame: .zero)
         
-        setupView(state: state)
+        setupView(style: state)
     }
     
     required init?(coder: NSCoder) {
@@ -20,11 +20,11 @@ class СustomButton: UIButton {
     }
     
     // MARK: private methods
-    private func setupView(state: ButtonViewState) {
+    private func setupView(style: ButtonViewState) {
         
         let attributedTitle: NSAttributedString
         
-        switch state {
+        switch style {
         case .submitForm:
             attributedTitle =
             Strings.submitFormButtonTitle.toStyledAttributedString(

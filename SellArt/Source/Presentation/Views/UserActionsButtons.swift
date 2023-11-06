@@ -25,6 +25,17 @@ class UserActionsButtons: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: override methods
+    override func point(
+        inside point: CGPoint,
+        with event: UIEvent?
+    ) -> Bool {
+            
+        let expandedArea = bounds.insetBy(dx: -10, dy: -10)
+       
+        return expandedArea.contains(point)
+    }
+    
     // MARK: private methods
     private func setupButton(type: UserActionType ) {
         

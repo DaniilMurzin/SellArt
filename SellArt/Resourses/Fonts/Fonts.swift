@@ -22,10 +22,13 @@ extension UIFont {
         size: 16
     ) // letter spacing 0.5
     
-    static let alertOptions = UIFont(
+    static let alertOptionsFont = UIFont(
         name: "SFProText-Semibold",
         size: 17
     )
+    static let largeTitleFont = UIFont.systemFont(
+        ofSize: 34,
+        weight: .bold)
 }
 
 enum FontStyle {

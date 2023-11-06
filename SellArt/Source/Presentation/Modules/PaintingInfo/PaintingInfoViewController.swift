@@ -1,6 +1,8 @@
 import UIKit
 
-protocol PaintingInfoViewProtocol: AnyObject {}
+protocol PaintingInfoViewProtocol: AnyObject {
+    func navigateToFormViewController()
+}
 
 class PaintingInfoViewController: UIViewController {
     
@@ -139,7 +141,7 @@ class PaintingInfoViewController: UIViewController {
         let view = UIStackView()
         
         view.axis  = NSLayoutConstraint.Axis.horizontal
-        view.spacing = 10
+        view.spacing = LocalConstants.buttonsStackViewSpacing
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addArrangedSubview(favoriteButton)
         view.addArrangedSubview(shareButton)
@@ -153,7 +155,7 @@ class PaintingInfoViewController: UIViewController {
         
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
-        view.spacing = 5
+        view.spacing = LocalConstants.topLabelsStackViewSpacing
         view.addArrangedSubview(artistNameLabel)
         view.addArrangedSubview(artistLabel)
         view.addArrangedSubview(locationLabel)
@@ -192,11 +194,11 @@ class PaintingInfoViewController: UIViewController {
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        setupViews()
         setupConstraints()
     }
     // MARK: - Private Methods
-    private func setupView() {
+    private func setupViews() {
         
         view.backgroundColor = .mainBackgroundColor
         view.addSubview(scrollView)
@@ -222,10 +224,15 @@ class PaintingInfoViewController: UIViewController {
             action: #selector(cartButtonAction),
             for: .touchUpInside
         )
+        buyButton.addTarget(
+            self,
+            action: #selector(buyButtonPressed),
+            for: .touchUpInside)
     }
     
-    private func setupScrollViewConstraints() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
+            
             scrollView.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor
             ),
@@ -237,12 +244,8 @@ class PaintingInfoViewController: UIViewController {
             ),
             scrollView.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor
-            )
-        ])
-    }
-    
-    private func setupContentViewConstraints() {
-        NSLayoutConstraint.activate([
+            ),
+
             contentView.topAnchor.constraint(
                 equalTo: scrollView.topAnchor
             ),
@@ -257,12 +260,8 @@ class PaintingInfoViewController: UIViewController {
             ),
             contentView.widthAnchor.constraint(
                 equalTo: scrollView.widthAnchor
-            )
-        ])
-    }
-    
-    private func setupImageViewConstraints() {
-        NSLayoutConstraint.activate([
+            ),
+
             imageView.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
                 constant: LocalConstants.imageViewTop
@@ -277,11 +276,8 @@ class PaintingInfoViewController: UIViewController {
             ),
             imageView.heightAnchor.constraint(
                 equalToConstant: LocalConstants.imageViewHeight
-            )
-        ])
-    }
-    private func setupTopLabelsStackViewConstraints() {
-        NSLayoutConstraint.activate([
+            ),
+
             topLabelsStackView.topAnchor.constraint(
                 equalTo: imageView.bottomAnchor,
                 constant: LocalConstants.topLabelsStackViewTop
@@ -289,22 +285,16 @@ class PaintingInfoViewController: UIViewController {
             topLabelsStackView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor,
                 constant: LocalConstants.topLabelsStackViewLeading
-            )
-        ])
-    }
-    private func setupButtonsStackViewConstraints() {
-        NSLayoutConstraint.activate([
+            ),
+
             buttonsStackView.topAnchor.constraint(
                 equalTo: locationLabel.bottomAnchor,
                 constant: LocalConstants.buttonsStackViewTop
             ),
             buttonsStackView.leadingAnchor.constraint(
                 equalTo: artistNameLabel.leadingAnchor
-            )
-        ])
-    }
-    private func setupViewsLabelConstraints() {
-        NSLayoutConstraint.activate([
+            ),
+
             viewsLabel.topAnchor.constraint(
                 equalTo: buttonsStackView.topAnchor,
                 constant: LocalConstants.viewsLabelTop
@@ -315,11 +305,8 @@ class PaintingInfoViewController: UIViewController {
             ),
             viewsLabel.bottomAnchor.constraint(
                 equalTo: buttonsStackView.bottomAnchor
-            )
-        ])
-    }
-    private func setupSeparatorConstraints() {
-        NSLayoutConstraint.activate([
+            ),
+
             separator.topAnchor.constraint(
                 equalTo: viewsLabel.bottomAnchor,
                 constant: LocalConstants.separatorTop
@@ -329,22 +316,16 @@ class PaintingInfoViewController: UIViewController {
             ),
             separator.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor
-            )
-        ])
-    }
-    private func setupPaintingDetailsStackViewConstraints() {
-        NSLayoutConstraint.activate([
+            ),
+
             paintingDetailsStackView.topAnchor.constraint(
                 equalTo: separator.bottomAnchor,
                 constant: LocalConstants.paintingDetailsStackViewTop
             ),
             paintingDetailsStackView.leadingAnchor.constraint(
                 equalTo: buttonsStackView.leadingAnchor
-            )
-        ])
-    }
-    private func setupSeparator2Constraints() {
-        NSLayoutConstraint.activate([
+            ),
+
             separator2.topAnchor.constraint(
                 equalTo: paintingDetailsStackView.bottomAnchor,
                 constant: LocalConstants.separator2Top
@@ -354,12 +335,8 @@ class PaintingInfoViewController: UIViewController {
             ),
             separator2.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor
-            )
-        ])
-    }
-    
-    private func setupBuyButtonConstraints() {
-        NSLayoutConstraint.activate([
+            ),
+
             buyButton.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor,
                 constant: LocalConstants.buyButtonLeading
@@ -381,20 +358,7 @@ class PaintingInfoViewController: UIViewController {
             )
         ])
     }
-    
-    private func setupConstraints() {
-        setupScrollViewConstraints()
-        setupContentViewConstraints()
-        setupImageViewConstraints()
-        setupTopLabelsStackViewConstraints()
-        setupButtonsStackViewConstraints()
-        setupViewsLabelConstraints()
-        setupSeparatorConstraints()
-        setupPaintingDetailsStackViewConstraints()
-        setupSeparator2Constraints()
-        setupBuyButtonConstraints()
-    }
-    
+
     @objc func likeButtonAction() {
         showAlert(
             withTitle: Strings.addedTitle,
@@ -409,6 +373,10 @@ class PaintingInfoViewController: UIViewController {
             message: Strings.addedToCartMessage
         )
         presenter.cartButtonTapped()
+    }
+    // может напрямую сделать @objc методы в презентере??? или не по архитектуре будет?
+    @objc func buyButtonPressed() {
+        presenter.buyButtonTapped()
     }
     
     private func showAlert(
@@ -447,8 +415,10 @@ class PaintingInfoViewController: UIViewController {
         
         static let topLabelsStackViewTop: CGFloat = 30
         static let topLabelsStackViewLeading: CGFloat = 20
+        static let topLabelsStackViewSpacing: CGFloat = 5
         
         static let buttonsStackViewTop: CGFloat = 10
+        static let buttonsStackViewSpacing: CGFloat = 20
         
         static let viewsLabelTop: CGFloat = 10
         static let viewsLabelTrailing: CGFloat = -10
@@ -464,7 +434,17 @@ class PaintingInfoViewController: UIViewController {
         static let buyButtonTop: CGFloat = 20
         static let buyButtonHeight: CGFloat = 50
         static let buyButtonBottom: CGFloat = -20
-     }
 
+     }
     // MARK: extension PaintingInfoViewController + PaintingInfoViewProtocol
-extension PaintingInfoViewController: PaintingInfoViewProtocol {}
+extension PaintingInfoViewController: PaintingInfoViewProtocol {
+    func navigateToFormViewController() {
+        let formViewController = FormModuleBuilder.build()
+  
+//        formViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(
+            formViewController,
+            animated: true
+        )
+    }
+}

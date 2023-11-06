@@ -10,7 +10,7 @@ enum TextFieldStyle {
 
 class CustomTextField: UITextField {
     
-    // MARK: init
+    // MARK: - init
     init(style: TextFieldStyle) {
         super.init(frame: .zero)
         
@@ -21,39 +21,65 @@ class CustomTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: private methods
+    // MARK: -private methods
+    private func makeAttributedPlaceholder(for text: String) -> NSAttributedString {
+        return NSAttributedString(
+            string: text,
+            attributes: [
+                .foregroundColor: UIColor.mainFontColor.withAlphaComponent(0.5),
+                .font: UIFont.regularSettingsFont!
+            ]
+        )
+    }
+    
     private func setupTextField(style: TextFieldStyle) {
         
         backgroundColor = .mainBackgroundColor
         font = UIFont.regularSettingsFont
         tintColor = .mainFontColor
+        translatesAutoresizingMaskIntoConstraints = false
+        self.attributedPlaceholder = NSAttributedString(
+              string: Strings.nameTextField,
+              attributes: [
+                  .foregroundColor: UIColor.mainFontColor,
+                  .font: UIFont.regularSettingsFont!
+              ]
+        )
         
         switch style {
             
         case .email:
             keyboardType = .emailAddress
             textContentType = .emailAddress
-            placeholder = Strings.emailTextField
+            self.attributedPlaceholder = makeAttributedPlaceholder(
+                for: Strings.emailTextField
+            )
             
         case .name:
             keyboardType = .default
             textContentType = .name
-            placeholder = Strings.nameTextField
-            
+            self.attributedPlaceholder = makeAttributedPlaceholder(
+                for: Strings.nameTextField
+            )
         case .surname:
             keyboardType = .default
             textContentType = .familyName
-            placeholder = Strings.surnameTextField
+            self.attributedPlaceholder = makeAttributedPlaceholder(
+                for: Strings.surnameTextField
+            )
             
         case .phoneNumber:
             keyboardType = .phonePad
             textContentType = .telephoneNumber
-            placeholder = Strings.phoneNumber
-            
+            self.attributedPlaceholder = makeAttributedPlaceholder(
+                for: Strings.phoneNumber
+            )
         case .address:
             keyboardType = .default
             textContentType = .fullStreetAddress
-            placeholder = Strings.addressTextField
+            self.attributedPlaceholder = makeAttributedPlaceholder(
+                for: Strings.addressTextField
+            )
         }
     }
 }
