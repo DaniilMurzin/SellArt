@@ -18,12 +18,8 @@ class MainViewController: UIViewController {
     private let profileButton = UserActionsButtons(type: .profile)
     
     private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = LocalConstants.minimumInterItemSpacing
-        layout.minimumLineSpacing = LocalConstants.minimumLineSpacing
-
+        let layout = PinterestLayout()
+        layout.delegate = self
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: layout
@@ -178,29 +174,6 @@ extension MainViewController: UICollectionViewDataSource {
     presenter.didSelectPainting(at: indexPath.item)
     }
 }
-    // MARK: - extension MainViewController + UICollectionViewDelegateFlowLayout
-extension MainViewController: UICollectionViewDelegateFlowLayout {
-        
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    )
-    -> CGSize {
-        
-        let screenWidth = UIScreen.main.bounds.width
-        let cellWidth = (screenWidth - LocalConstants.totalSpacing) /
-        LocalConstants.numberOfColumns
-        let imageHeight = cellWidth * LocalConstants.aspectRatio
-        let cellHeight = imageHeight + LocalConstants.extraHeight
-        
-        return CGSize(
-            width: cellWidth,
-            height: cellHeight
-        )
-    }
-
-    }
 
     // MARK: - extension MainViewController + CustomCellDelegate
 extension MainViewController: CustomCellDelegate {
@@ -246,6 +219,56 @@ extension MainViewController: CustomCellDelegate {
         )
     }
 }
+    // MARK: - extension MainViewController + UICollectionViewDelegate
+extension MainViewController: UICollectionViewDelegate {}
+
+    // MARK: - extension MainViewController + PinterestLayoutDelegate
+extension MainViewController: PinterestLayoutDelegate {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        heightForPhotoAtIndexPath indexPath: IndexPath
+    ) -> CGFloat {
+        
+        let painting = paintings[indexPath.item]
+        
+        // Расчет высоты изображения.
+        let cellWidth =
+        collectionView.bounds.width / LocalConstants.numberOfColumns
+        
+        let imageHeight =
+        painting.image.size.height * (cellWidth / painting.image.size.width)
+        
+        // Расчет высоты лейблов.
+        let labelWidth =
+        cellWidth - (LocalConstants.leftInset + LocalConstants.rightInset)
+        
+        let artNameHeight = painting.name.height(
+            withConstrainedWidth: labelWidth,
+            font: UIFont.artNameFont!
+        )
+        let artistHeight = painting.artist.height(
+            withConstrainedWidth: labelWidth,
+            font: UIFont.regularBaseFont!
+        )
+        let priceHeight = presenter.formatPrice(painting.price).height(
+            withConstrainedWidth: labelWidth,
+            font: UIFont.priceFont!
+        )
+        let additionalSpacing = LocalConstants.additionalSpacing
+        
+        // Расчет высоты кнопок.
+        let buttonsHeight = LocalConstants.buttonsHeight
+        
+        // Суммируем все высоты и добавляем вертикальные отступы.
+        let totalVerticalSpacing = LocalConstants.minimumLineSpacing * 4 //
+        
+        let totalHeight = imageHeight + artNameHeight + artistHeight +
+        priceHeight + buttonsHeight + totalVerticalSpacing + additionalSpacing
+        
+        return totalHeight
+    }
+}
     // MARK: - extension MainViewController + CustomCellDelegate
     private enum LocalConstants {
         static let rightInset: CGFloat = 2
@@ -263,4 +286,8 @@ extension MainViewController: CustomCellDelegate {
         static let aspectRatio: CGFloat = 1.9
         
         static let extraHeight: CGFloat = 20
+        
+        static let buttonsHeight: CGFloat = 30
+        
+        static let additionalSpacing: CGFloat = 20
 }
