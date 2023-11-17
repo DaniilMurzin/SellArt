@@ -6,6 +6,47 @@ enum TextFieldStyle {
     case surname
     case phoneNumber
     case address
+    
+    var keyboardType: UIKeyboardType {
+        switch self {
+        case .email:
+            return .emailAddress
+        case .phoneNumber:
+            return .phonePad
+        default:
+            return .default
+        }
+    }
+    
+    var textContentType: UITextContentType {
+        switch self {
+        case .email:
+            return .emailAddress
+        case .name:
+            return .name
+        case .surname:
+            return .familyName
+        case .phoneNumber:
+            return .telephoneNumber
+        case .address:
+            return .fullStreetAddress
+        }
+    }
+    
+    var attributedPlaceholder: String {
+        switch self {
+        case .email:
+            return Strings.emailTextField
+        case .name:
+            return Strings.nameTextField
+        case .surname:
+            return Strings.surnameTextField
+        case .phoneNumber:
+            return Strings.phoneNumber
+        case .address:
+            return Strings.addressTextField
+        }
+    }
 }
 
 class CustomTextField: UITextField {
@@ -14,6 +55,11 @@ class CustomTextField: UITextField {
     init(style: TextFieldStyle) {
         super.init(frame: .zero)
         
+        backgroundColor = .mainBackgroundColor
+        font = UIFont.regularSettingsFont
+        tintColor = .mainFontColor
+        translatesAutoresizingMaskIntoConstraints = false
+        
         setupTextField(style: style)
     }
 
@@ -21,7 +67,7 @@ class CustomTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: -private methods
+    // MARK: - private methods
     private func makeAttributedPlaceholder(for text: String) -> NSAttributedString {
         return NSAttributedString(
             string: text,
@@ -33,12 +79,7 @@ class CustomTextField: UITextField {
     }
     
     private func setupTextField(style: TextFieldStyle) {
-        
-        backgroundColor = .mainBackgroundColor
-        font = UIFont.regularSettingsFont
-        tintColor = .mainFontColor
-        translatesAutoresizingMaskIntoConstraints = false
-        self.attributedPlaceholder = NSAttributedString(
+        attributedPlaceholder = NSAttributedString(
               string: Strings.nameTextField,
               attributes: [
                   .foregroundColor: UIColor.mainFontColor,
@@ -46,40 +87,8 @@ class CustomTextField: UITextField {
               ]
         )
         
-        switch style {
-            
-        case .email:
-            keyboardType = .emailAddress
-            textContentType = .emailAddress
-            self.attributedPlaceholder = makeAttributedPlaceholder(
-                for: Strings.emailTextField
-            )
-            
-        case .name:
-            keyboardType = .default
-            textContentType = .name
-            self.attributedPlaceholder = makeAttributedPlaceholder(
-                for: Strings.nameTextField
-            )
-        case .surname:
-            keyboardType = .default
-            textContentType = .familyName
-            self.attributedPlaceholder = makeAttributedPlaceholder(
-                for: Strings.surnameTextField
-            )
-            
-        case .phoneNumber:
-            keyboardType = .phonePad
-            textContentType = .telephoneNumber
-            self.attributedPlaceholder = makeAttributedPlaceholder(
-                for: Strings.phoneNumber
-            )
-        case .address:
-            keyboardType = .default
-            textContentType = .fullStreetAddress
-            self.attributedPlaceholder = makeAttributedPlaceholder(
-                for: Strings.addressTextField
-            )
-        }
+        keyboardType = style.keyboardType
+        textContentType = style.textContentType
+        attributedPlaceholder = makeAttributedPlaceholder(for: style.attributedPlaceholder)
     }
 }

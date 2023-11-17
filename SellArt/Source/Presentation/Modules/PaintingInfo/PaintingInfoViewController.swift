@@ -38,14 +38,14 @@ class PaintingInfoViewController: UIViewController {
     }()
     
     private lazy var imageView: UIImageView = {
-        let iv = UIImageView()
+        let imageView = UIImageView()
         
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFit
-        iv.clipsToBounds = true
-        iv.image = painting.image
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.image = painting.image
         
-        return iv
+        return imageView
     }()
     
     private lazy var artistNameLabel: UILabel = {

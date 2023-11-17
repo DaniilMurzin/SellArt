@@ -80,14 +80,12 @@ class PinterestLayout: UICollectionViewLayout {
   }
   
   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-    var visibleLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+      var visibleLayoutAttributes: [UICollectionViewLayoutAttributes] = []
     
-    for attributes in cache {
-      if attributes.frame.intersects(rect) {
-        visibleLayoutAttributes.append(attributes)
-      }
-    }
-    return visibleLayoutAttributes
+      let attributes = cache.filter({ $0.frame.intersects(rect) })
+      visibleLayoutAttributes.append(contentsOf: attributes)
+
+      return visibleLayoutAttributes
   }
   
   override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {

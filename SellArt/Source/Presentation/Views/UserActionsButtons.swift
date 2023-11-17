@@ -85,21 +85,13 @@ class UserActionsButtons: UIButton {
         isFavoriteSelected.toggle()
         
         let image = isFavoriteSelected ? UIImage.favoriteSelected : UIImage.favoriteUnselected
-
-        setImage(
-            image,
-            for: .normal
-        )
+        setImage(image, for: .normal)
     }
     
     @objc private func cartButtonTapped() {
         isCartSelected.toggle()
         
         let image = isCartSelected ? UIImage.cartSelected : UIImage.cartUnselected
-        
-        setImage(
-            image,
-            for: .normal
-        )
+        setImage(image, for: .normal)
     }
 }

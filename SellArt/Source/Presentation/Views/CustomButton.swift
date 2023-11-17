@@ -47,10 +47,7 @@ class СustomButton: UIButton {
         layer.borderWidth = 1
         layer.borderColor = UIColor.black.cgColor
         
-        setAttributedTitle(
-            attributedTitle,
-            for: .normal
-        )
+        setAttributedTitle(attributedTitle, for: .normal)
         tintColor = .mainFontColor
         
         self.translatesAutoresizingMaskIntoConstraints = false

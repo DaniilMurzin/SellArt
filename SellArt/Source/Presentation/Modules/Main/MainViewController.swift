@@ -66,8 +66,7 @@ class MainViewController: UIViewController {
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        let attributes: [NSAttributedString.Key: Any]
-        = [
+        let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.largeTitleFont,
             .foregroundColor: UIColor.mainFontColor
         ]

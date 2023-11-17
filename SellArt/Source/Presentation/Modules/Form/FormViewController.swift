@@ -22,22 +22,13 @@ class FormViewController: UIViewController {
         label.textColor = UIColor.mainFontColor
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
         return label
     }()
     
-    private lazy var  inputFieldsTextView: UIStackView = {
+    private lazy var inputFieldsTextView: UIStackView = {
         let view = UIStackView()
-        
         view.axis  = NSLayoutConstraint.Axis.vertical
         view.spacing = 30
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addArrangedSubview(nameTextField)
-        view.addArrangedSubview(surnameTextField)
-        view.addArrangedSubview(emailTextField)
-        view.addArrangedSubview(phoneTextField)
-        view.addArrangedSubview(addressTextField)
         return view
     }()
     
@@ -68,50 +59,35 @@ class FormViewController: UIViewController {
         view.backgroundColor = .mainBackgroundColor
         title = Strings.form
         view.addSubview(inputFieldsTextView)
+        
+        personalDataLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(personalDataLabel)
         view.addSubview(sendFormButton)
+        
+        inputFieldsTextView.translatesAutoresizingMaskIntoConstraints = false
+        inputFieldsTextView.addArrangedSubview(nameTextField)
+        inputFieldsTextView.addArrangedSubview(surnameTextField)
+        inputFieldsTextView.addArrangedSubview(emailTextField)
+        inputFieldsTextView.addArrangedSubview(phoneTextField)
+        inputFieldsTextView.addArrangedSubview(addressTextField)
+        
         setupConstraints()
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            inputFieldsTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            inputFieldsTextView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            inputFieldsTextView.leadingAnchor.constraint(equalTo: sendFormButton.leadingAnchor),
+            inputFieldsTextView.trailingAnchor.constraint(equalTo: sendFormButton.trailingAnchor),
             
-            inputFieldsTextView.centerXAnchor.constraint(
-                equalTo: view.centerXAnchor
-            ),
-            inputFieldsTextView.centerYAnchor.constraint(
-                equalTo: view.centerYAnchor
-            ),
-            inputFieldsTextView.leadingAnchor.constraint(
-                equalTo: sendFormButton.leadingAnchor),
-            inputFieldsTextView.trailingAnchor.constraint(
-                equalTo: sendFormButton.trailingAnchor),
+            personalDataLabel.topAnchor.constraint(equalTo: inputFieldsTextView.bottomAnchor, constant: 140),
+            personalDataLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            personalDataLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             
-            personalDataLabel.topAnchor.constraint(
-                equalTo: inputFieldsTextView.bottomAnchor,
-                constant: 140
-            ),
-            personalDataLabel.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: 40
-            ),
-            personalDataLabel.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -40
-            ),
-            
-            sendFormButton.topAnchor.constraint(
-                equalTo: personalDataLabel.bottomAnchor,
-                constant: 15
-            ),
-            sendFormButton.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: 30
-            ),
-            sendFormButton.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -30
-            )
+            sendFormButton.topAnchor.constraint(equalTo: personalDataLabel.bottomAnchor, constant: 15),
+            sendFormButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            sendFormButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
         ])
     }
 }
