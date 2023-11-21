@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 protocol FormViewProtocol: AnyObject {}
 
@@ -59,12 +60,9 @@ class FormViewController: UIViewController {
         view.backgroundColor = .mainBackgroundColor
         title = Strings.form
         view.addSubview(inputFieldsTextView)
-        
-        personalDataLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(personalDataLabel)
         view.addSubview(sendFormButton)
         
-        inputFieldsTextView.translatesAutoresizingMaskIntoConstraints = false
         inputFieldsTextView.addArrangedSubview(nameTextField)
         inputFieldsTextView.addArrangedSubview(surnameTextField)
         inputFieldsTextView.addArrangedSubview(emailTextField)
@@ -75,21 +73,42 @@ class FormViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            inputFieldsTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            inputFieldsTextView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            inputFieldsTextView.leadingAnchor.constraint(equalTo: sendFormButton.leadingAnchor),
-            inputFieldsTextView.trailingAnchor.constraint(equalTo: sendFormButton.trailingAnchor),
-            
-            personalDataLabel.topAnchor.constraint(equalTo: inputFieldsTextView.bottomAnchor, constant: 140),
-            personalDataLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            personalDataLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            
-            sendFormButton.topAnchor.constraint(equalTo: personalDataLabel.bottomAnchor, constant: 15),
-            sendFormButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            sendFormButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
-        ])
+        inputFieldsTextView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(sendFormButton.snp.leading)
+            make.trailing.equalTo(sendFormButton.snp.trailing)
+        }
+        
+        personalDataLabel.snp.makeConstraints { make in
+            make.top.equalTo(inputFieldsTextView.snp.bottom).offset(
+                LocalConstants.personalDataLabelTopOffset
+            )
+            make.leading.equalToSuperview().offset(
+                LocalConstants.horizontalInset
+            )
+            make.trailing.equalToSuperview().inset(
+                LocalConstants.horizontalInset
+            )
+        }
+        
+        sendFormButton.snp.makeConstraints { make in
+            make.top.equalTo(personalDataLabel.snp.bottom).offset(
+                LocalConstants.sendButtonTopOffset
+            )
+            make.leading.equalToSuperview().offset(LocalConstants.sendButtonHorizontalInset)
+            make.trailing.equalToSuperview().inset(LocalConstants.sendButtonHorizontalInset)
+        }
     }
 }
     // MARK: - extension MainViewController + CustomCellDelegate
 extension FormViewController: FormViewProtocol {}
+
+    // MARK: - Local Constants
+private enum LocalConstants {
+    static let inputFieldSpacing: CGFloat = 30
+    static let personalDataLabelTopOffset: CGFloat = 140
+    static let horizontalInset: CGFloat = 40
+    static let sendButtonTopOffset: CGFloat = 15
+    static let sendButtonHorizontalInset: CGFloat = 30
+}

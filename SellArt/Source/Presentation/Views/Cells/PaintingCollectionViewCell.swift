@@ -123,7 +123,6 @@ class PaintingCollectionViewCell: UICollectionViewCell {
     // MARK: - public methods
     func setupCell(with painting: Paintings,
                    formattedPrice: String) {
-//        print(painting.image) 
         self.image = painting.image
         paintingImageView.image = painting.image
         artist.text = painting.artist

@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 protocol MainViewProtocol: AnyObject {
     func navigateToPaintingDetails(with painting: Paintings)
@@ -32,7 +33,6 @@ class MainViewController: UIViewController {
         collectionView.backgroundColor = .mainBackgroundColor
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
     }()
@@ -84,22 +84,12 @@ class MainViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            
-            collectionView.centerXAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.centerXAnchor
-            ),
-            collectionView.centerYAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.centerYAnchor
-            ),
-            collectionView.heightAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.heightAnchor
-            ),
-            collectionView.widthAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.widthAnchor
-            )
-        ])
-    
+        collectionView.snp.makeConstraints { make in
+            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
+            make.centerY.equalTo(view.safeAreaLayoutGuide.snp.centerY)
+            make.height.equalTo(view.safeAreaLayoutGuide.snp.height)
+            make.width.equalTo(view.safeAreaLayoutGuide.snp.width)
+        }
     }
 }
 

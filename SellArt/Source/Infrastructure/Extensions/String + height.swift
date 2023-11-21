@@ -1,5 +1,5 @@
 import UIKit
-// Дополнительное расширение для расчета высоты текста.
+
 extension String {
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
