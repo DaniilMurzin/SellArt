@@ -73,31 +73,20 @@ class FormViewController: UIViewController {
     }
     
     private func setupConstraints() {
+        
         inputFieldsTextView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(sendFormButton.snp.leading)
-            make.trailing.equalTo(sendFormButton.snp.trailing)
+            make.center.equalToSuperview()
+            make.leading.trailing.equalTo(sendFormButton)
         }
         
         personalDataLabel.snp.makeConstraints { make in
-            make.top.equalTo(inputFieldsTextView.snp.bottom).offset(
-                LocalConstants.personalDataLabelTopOffset
-            )
-            make.leading.equalToSuperview().offset(
-                LocalConstants.horizontalInset
-            )
-            make.trailing.equalToSuperview().inset(
-                LocalConstants.horizontalInset
-            )
+            make.top.equalTo(inputFieldsTextView.snp.bottom).offset(LocalConstants.personalDataLabelTopOffset)
+            make.leading.trailing.equalToSuperview().inset(LocalConstants.horizontalInset)
         }
         
         sendFormButton.snp.makeConstraints { make in
-            make.top.equalTo(personalDataLabel.snp.bottom).offset(
-                LocalConstants.sendButtonTopOffset
-            )
-            make.leading.equalToSuperview().offset(LocalConstants.sendButtonHorizontalInset)
-            make.trailing.equalToSuperview().inset(LocalConstants.sendButtonHorizontalInset)
+            make.top.equalTo(personalDataLabel.snp.bottom).offset(LocalConstants.sendButtonTopOffset)
+            make.leading.trailing.equalToSuperview().inset(LocalConstants.sendButtonHorizontalInset)
         }
     }
 }

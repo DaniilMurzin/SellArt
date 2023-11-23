@@ -219,9 +219,7 @@ class PaintingInfoViewController: UIViewController {
     private func setupConstraints() {
         
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.left.right.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
         contentView.snp.makeConstraints { make in
@@ -230,65 +228,46 @@ class PaintingInfoViewController: UIViewController {
         }
         
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(
-                LocalConstants.imageViewTop
-            )
-            make.left.equalTo(contentView).offset(
-                LocalConstants.imageViewLeading
-            )
-            make.right.equalTo(contentView).offset(
-                LocalConstants.imageViewTrailing
-            )
+            make.top.equalTo(contentView).offset(LocalConstants.imageViewTop)
+            make.leading.trailing.equalTo(contentView).inset(LocalConstants.imageViewHorizontalInset)
             make.height.equalTo(LocalConstants.imageViewHeight)
         }
         
         topLabelsStackView.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(LocalConstants.topLabelsStackViewTop)
-            make.left.equalTo(contentView).offset(LocalConstants.topLabelsStackViewLeading)
+            make.leading.equalTo(contentView).offset(LocalConstants.topLabelsStackViewLeading)
         }
         
         buttonsStackView.snp.makeConstraints { make in
-            make.left.equalTo(artistNameLabel.snp.left)
-            make.top.equalTo(locationLabel.snp.bottom).offset(
-                LocalConstants.buttonsStackViewTop + 5
-            )
-            make.centerY.equalTo(viewsLabel.snp.centerY)
+            make.leading.equalTo(topLabelsStackView)
+            make.top.equalTo(locationLabel.snp.bottom).offset(LocalConstants.buttonsStackViewTop)
         }
         
         viewsLabel.snp.makeConstraints { make in
             make.top.equalTo(topLabelsStackView.snp.bottom).offset(LocalConstants.viewsLabelTop)
-            make.right.equalTo(contentView).offset(LocalConstants.viewsLabelTrailing)
+            make.trailing.equalTo(contentView).offset(-LocalConstants.viewsLabelTrailing)
         }
         
         separator.snp.makeConstraints { make in
             make.top.equalTo(buttonsStackView.snp.bottom).offset(LocalConstants.separatorTop)
-            make.left.right.equalToSuperview()
+            make.leading.trailing.equalTo(contentView)
         }
         
         paintingDetailsStackView.snp.makeConstraints { make in
             make.top.equalTo(separator.snp.bottom).offset(LocalConstants.paintingDetailsStackViewTop)
-            make.left.equalTo(buttonsStackView.snp.left)
+            make.leading.equalTo(buttonsStackView)
         }
         
         separator2.snp.makeConstraints { make in
             make.top.equalTo(paintingDetailsStackView.snp.bottom).offset(LocalConstants.separator2Top)
-            make.left.right.equalToSuperview()
+            make.leading.trailing.equalTo(contentView)
         }
         
         buyButton.snp.makeConstraints { make in
-            make.left.equalTo(contentView).offset(
-                LocalConstants.buyButtonLeading
-            )
-            make.right.equalTo(contentView).offset(
-                LocalConstants.buyButtonTrailing
-            )
-            make.top.equalTo(separator2.snp.bottom).offset(
-                LocalConstants.buyButtonTop
-            )
+            make.leading.trailing.equalTo(contentView).inset(LocalConstants.buyButtonHorizontalInset)
+            make.top.equalTo(separator2.snp.bottom).offset(LocalConstants.buyButtonTop)
             make.height.equalTo(LocalConstants.buyButtonHeight)
-            make.bottom.equalTo(contentView).offset(
-                LocalConstants.buyButtonBottom
-            )
+            make.bottom.equalTo(contentView).offset(-LocalConstants.buyButtonBottom)
         }
     }
 
@@ -342,8 +321,7 @@ class PaintingInfoViewController: UIViewController {
     private enum LocalConstants {
         
         static let imageViewTop: CGFloat  = 10
-        static let imageViewLeading: CGFloat = 10
-        static let imageViewTrailing: CGFloat = -10
+        static let imageViewHorizontalInset: CGFloat = 10
         static let imageViewHeight: CGFloat = 300
         
         static let topLabelsStackViewTop: CGFloat = 30
@@ -362,8 +340,7 @@ class PaintingInfoViewController: UIViewController {
         
         static let separator2Top: CGFloat = 15
         
-        static let buyButtonLeading: CGFloat = 20
-        static let buyButtonTrailing: CGFloat = -20
+        static let buyButtonHorizontalInset: CGFloat = 20
         static let buyButtonTop: CGFloat = 20
         static let buyButtonHeight: CGFloat = 50
         static let buyButtonBottom: CGFloat = -20

@@ -85,10 +85,8 @@ class MainViewController: UIViewController {
     
     private func setupConstraints() {
         collectionView.snp.makeConstraints { make in
-            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
-            make.centerY.equalTo(view.safeAreaLayoutGuide.snp.centerY)
-            make.height.equalTo(view.safeAreaLayoutGuide.snp.height)
-            make.width.equalTo(view.safeAreaLayoutGuide.snp.width)
+            make.center.equalToSuperview()
+            make.size.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }
@@ -222,8 +220,7 @@ extension MainViewController: PinterestLayoutDelegate {
         let painting = paintings[indexPath.item]
         
         // Расчет высоты изображения.
-        let cellWidth =
-        collectionView.bounds.width / LocalConstants.numberOfColumns
+        let cellWidth = collectionView.bounds.width/LocalConstants.numberOfColumns
         
         let imageHeight =
         painting.image.size.height * (cellWidth / painting.image.size.width)
