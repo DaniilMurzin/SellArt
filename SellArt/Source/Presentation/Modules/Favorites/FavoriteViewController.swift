@@ -52,16 +52,12 @@ class FavoritesViewController: UIViewController {
     // MARK: - override methods
     override func viewDidLoad () {
         super.viewDidLoad()
- 
-        presenter.attachView(self)
-             setupView()
+              setupView()
              setupConstraints()
-             reloadData()
     }
     
     // MARK: - private methods
     private func loadFavorites() {
-        paintings = presenter.fetchFavorites()
     }
     
     private func setupNavigationBar() {
@@ -73,10 +69,6 @@ class FavoritesViewController: UIViewController {
         ]
         
         navigationController?.navigationBar.largeTitleTextAttributes = attributes
-    }
-    func reloadData() {
-        paintings = presenter.fetchFavorites()
-        collectionView.reloadData()
     }
     
     private func setupView() {
@@ -175,10 +167,6 @@ extension FavoritesViewController: CustomCellDelegate {
             message: Strings.addedMessage
         )
         presenter.likeButtonTapped(at: indexPath)
-        
-        let paintingId = paintings[indexPath.row].id
-         presenter.toggleFavorite(for: paintingId)
-         reloadData()
     }
     
     func cartButtonTapped(at indexPath: IndexPath) {

@@ -62,7 +62,6 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - private methods
-    
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
 
@@ -255,6 +254,7 @@ extension MainViewController: PinterestLayoutDelegate {
         return totalHeight
     }
 }
+    // MARK: - extension MainViewController + CustomCellDelegate
     private enum LocalConstants {
         static let rightInset: CGFloat = 2
         
