@@ -95,7 +95,7 @@ extension FormViewController: FormViewProtocol {}
 
     // MARK: - Local Constants
 private enum LocalConstants {
-    static let inputFieldSpacing: CGFloat = 30
+    static let inputFieldSpacing: CGFloat = 20
     static let personalDataLabelTopOffset: CGFloat = 140
     static let horizontalInset: CGFloat = 40
     static let sendButtonTopOffset: CGFloat = 15

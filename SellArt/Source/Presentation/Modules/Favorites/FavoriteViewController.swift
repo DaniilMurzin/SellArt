@@ -1,23 +1,22 @@
 import UIKit
 import SnapKit
 
-protocol MainViewProtocol: AnyObject {
+protocol FavoritesViewProtocol: AnyObject {
     func navigateToPaintingDetails(with painting: Paintings)
 }
 
-class MainViewController: UIViewController {
+class FavoritesViewController: UIViewController {
     
     // MARK: - private properties
-    private(set) var presenter: MainPresenterProtocol
+    private(set) var presenter: FavoritesPresenterProtocol
+    
+    private let profileButton = UserActionsButtons(type: .profile)
     
     private var paintings: [Paintings] = [] {
            didSet {
                collectionView.reloadData()
            }
        }
-    
-    private let profileButton = UserActionsButtons(type: .profile)
-    
     private lazy var collectionView: UICollectionView = {
         let layout = PinterestLayout()
         layout.delegate = self
@@ -36,9 +35,9 @@ class MainViewController: UIViewController {
         
         return collectionView
     }()
-
+    
     // MARK: - init
-    init(presenter: MainPresenterProtocol) {
+    init(presenter: FavoritesPresenterProtocol) {
         self.presenter = presenter
         super.init(
             nibName: nil,
@@ -53,25 +52,31 @@ class MainViewController: UIViewController {
     // MARK: - override methods
     override func viewDidLoad () {
         super.viewDidLoad()
-        
-        setupView()
-        setupConstraints()
-        presenter.loadPaintings { [weak self] paintings in
-            self?.paintings = paintings
-        }
+ 
+        presenter.attachView(self)
+             setupView()
+             setupConstraints()
+             reloadData()
     }
     
     // MARK: - private methods
+    private func loadFavorites() {
+        paintings = presenter.fetchFavorites()
+    }
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-
+        
         let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.largeTitleFont,
             .foregroundColor: UIColor.mainFontColor
         ]
-
+        
         navigationController?.navigationBar.largeTitleTextAttributes = attributes
+    }
+    func reloadData() {
+        paintings = presenter.fetchFavorites()
+        collectionView.reloadData()
     }
     
     private func setupView() {
@@ -90,14 +95,13 @@ class MainViewController: UIViewController {
         }
     }
 }
-
-    // MARK: - extension MainViewController + MainViewProtocol
-extension MainViewController: MainViewProtocol {
+// MARK: - extension FavoritesViewController + FavoritesViewProtocol
+extension FavoritesViewController: FavoritesViewProtocol {
     
     func navigateToPaintingDetails(with painting: Paintings) {
         let infoViewController = PaintingInfoModuleBuilder.build(with: painting)
         infoViewController.hidesBottomBarWhenPushed = true
-            
+        
         self.navigationController?.pushViewController(
             infoViewController,
             animated: true
@@ -105,8 +109,8 @@ extension MainViewController: MainViewProtocol {
     }
 }
 
-    // MARK: - extension MainViewController + UICollectionViewDataSource
-extension MainViewController: UICollectionViewDataSource {
+// MARK: - extension FavoritesViewController + UICollectionViewDataSource
+extension FavoritesViewController: UICollectionViewDataSource {
     
     func collectionView(
         _ collectionView: UICollectionView,
@@ -138,7 +142,7 @@ extension MainViewController: UICollectionViewDataSource {
             withReuseIdentifier: PaintingCollectionViewCell.identifier,
             for: indexPath
         )
-                
+        
         guard let paintingCell = cell as? PaintingCollectionViewCell else {
             return cell
         }
@@ -158,12 +162,12 @@ extension MainViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-    presenter.didSelectPainting(at: indexPath.item)
+        presenter.didSelectPainting(at: indexPath.item)
     }
 }
 
-    // MARK: - extension MainViewController + CustomCellDelegate
-extension MainViewController: CustomCellDelegate {
+// MARK: - extension FavoritesViewController + CustomCellDelegate
+extension FavoritesViewController: CustomCellDelegate {
     
     func likeButtonTapped(at indexPath: IndexPath) {
         showAlert(
@@ -171,6 +175,10 @@ extension MainViewController: CustomCellDelegate {
             message: Strings.addedMessage
         )
         presenter.likeButtonTapped(at: indexPath)
+        
+        let paintingId = paintings[indexPath.row].id
+         presenter.toggleFavorite(for: paintingId)
+         reloadData()
     }
     
     func cartButtonTapped(at indexPath: IndexPath) {
@@ -206,11 +214,11 @@ extension MainViewController: CustomCellDelegate {
         )
     }
 }
-    // MARK: - extension MainViewController + UICollectionViewDelegate
-extension MainViewController: UICollectionViewDelegate {}
+// MARK: - extension FavoritesViewController + UICollectionViewDelegate
+extension FavoritesViewController: UICollectionViewDelegate {}
 
-    // MARK: - extension MainViewController + PinterestLayoutDelegate
-extension MainViewController: PinterestLayoutDelegate {
+// MARK: - extension FavoritesViewController + PinterestLayoutDelegate
+extension FavoritesViewController: PinterestLayoutDelegate {
     
     func collectionView(
         _ collectionView: UICollectionView,
@@ -255,24 +263,25 @@ extension MainViewController: PinterestLayoutDelegate {
         return totalHeight
     }
 }
-    private enum LocalConstants {
-        static let rightInset: CGFloat = 2
-        
-        static let leftInset: CGFloat = 2
-        
-        static let minimumInterItemSpacing: CGFloat = 5
-        
-        static let minimumLineSpacing: CGFloat = 10
-        
-        static let numberOfColumns: CGFloat = 2
-        
-        static let totalSpacing = (LocalConstants.numberOfColumns - 1) * 10
-        
-        static let aspectRatio: CGFloat = 1.9
-        
-        static let extraHeight: CGFloat = 20
-        
-        static let buttonsHeight: CGFloat = 30
-        
-        static let additionalSpacing: CGFloat = 20
+
+private enum LocalConstants {
+    static let rightInset: CGFloat = 2
+    
+    static let leftInset: CGFloat = 2
+    
+    static let minimumInterItemSpacing: CGFloat = 5
+    
+    static let minimumLineSpacing: CGFloat = 10
+    
+    static let numberOfColumns: CGFloat = 2
+    
+    static let totalSpacing = (LocalConstants.numberOfColumns - 1) * 10
+    
+    static let aspectRatio: CGFloat = 1.9
+    
+    static let extraHeight: CGFloat = 20
+    
+    static let buttonsHeight: CGFloat = 30
+    
+    static let additionalSpacing: CGFloat = 20
 }

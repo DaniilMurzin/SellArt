@@ -14,9 +14,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mainNavigationController = UINavigationController(
             rootViewController: mainViewController
         )
+        let favoritesViewController = FavoritesModuleBuilder.build()
         
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [mainNavigationController]
+        tabBarController.viewControllers = [mainNavigationController, favoritesViewController]
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene

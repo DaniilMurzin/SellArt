@@ -13,6 +13,8 @@ struct Paintings {
     var view: Int {
         Int.random(in: 0...10000)
      }
+    var isFavorite: Bool
+
 }
 
 struct PaintingsModel {
@@ -26,7 +28,8 @@ struct PaintingsModel {
                   dimensions: "200x150 см",
                   type: "Живопись",
                   material: "Холст и масло",
-                  city: "Москва"),
+                  city: "Москва",
+                  isFavorite: false),
         Paintings(id: 2,
                   image: UIImage.matisse2!,
                   artist: "Анри Матисс",
@@ -35,7 +38,8 @@ struct PaintingsModel {
                   dimensions: "180x160 см",
                   type: "Живопись",
                   material: "Холст и масло",
-                  city: "Лондон"),
+                  city: "Лондон",
+                  isFavorite: false),
         
         Paintings(id: 3,
                   image: UIImage.demon!,
@@ -45,7 +49,8 @@ struct PaintingsModel {
                   dimensions: "210x145 см",
                   type: "Живопись",
                   material: "Холст и масло",
-                  city: "Лондон"),
+                  city: "Лондон",
+                  isFavorite: false),
         Paintings(id: 4,
                   image: UIImage.lebed!,
                   artist: "Михаил Врубель",
@@ -54,7 +59,8 @@ struct PaintingsModel {
                   dimensions: "195x170 см",
                   type: "Живопись",
                   material: "Холст и масло",
-                  city: "Москва"),
+                  city: "Москва",
+                  isFavorite: false),
         Paintings(id: 5,
                   image: UIImage.knight!,
                   artist: "Михаил Врубель",
@@ -63,7 +69,8 @@ struct PaintingsModel {
                   dimensions: "220x185 см",
                   type: "Живопись",
                   material: "Холст и масло",
-                  city: "Санкт-Петербург"),
+                  city: "Санкт-Петербург",
+                  isFavorite: false),
         Paintings(id: 6,
                   image: UIImage.sunflowers!,
                   artist: "Винсент ван Гог",
@@ -72,7 +79,8 @@ struct PaintingsModel {
                   dimensions: "165x150 см",
                   type: "Живопись",
                   material: "Холст и масло",
-                  city: "Лондон"),
+                  city: "Лондон",
+                  isFavorite: false),
         Paintings(id: 7,
                   image: UIImage.lilies!,
                   artist: "Клод Моне",
@@ -81,7 +89,8 @@ struct PaintingsModel {
                   dimensions: "210x170 см",
                   type: "Живопись",
                   material: "Холст и масло",
-                  city: "Москва"),
+                  city: "Москва",
+                  isFavorite: false),
         Paintings(id: 8,
                   image: UIImage.impression!,
                   artist: "Клод Моне",
@@ -90,7 +99,8 @@ struct PaintingsModel {
                   dimensions: "190x160 см",
                   type: "Живопись",
                   material: "Холст и масло",
-                  city: "Москва"),
+                  city: "Москва",
+                  isFavorite: false),
         Paintings(id: 9,
                   image: UIImage.dali1!,
                   artist: "Сальвадор Дали",
@@ -99,7 +109,8 @@ struct PaintingsModel {
                   dimensions: "240x210 см",
                   type: "Живопись",
                   material: "Холст и масло",
-                  city: "Москва"),
+                  city: "Москва",
+                  isFavorite: false),
         Paintings(id: 10,
                   image: UIImage.dali2!,
                   artist: "Сальвадор Дали",
@@ -108,6 +119,7 @@ struct PaintingsModel {
                   dimensions: "250x220 см",
                   type: "Живопись",
                   material: "Холст и масло",
-                  city: "Москва")
+                  city: "Москва",
+                  isFavorite: false)
     ]
 }
