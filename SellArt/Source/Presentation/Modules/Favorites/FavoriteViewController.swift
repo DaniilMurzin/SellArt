@@ -52,13 +52,12 @@ class FavoritesViewController: UIViewController {
     // MARK: - override methods
     override func viewDidLoad () {
         super.viewDidLoad()
-              setupView()
-             setupConstraints()
+        setupView()
+        setupConstraints()
     }
     
     // MARK: - private methods
-    private func loadFavorites() {
-    }
+    private func loadFavorites() {}
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -272,4 +271,20 @@ private enum LocalConstants {
     static let buttonsHeight: CGFloat = 30
     
     static let additionalSpacing: CGFloat = 20
+}
+
+extension FavoritesViewController: MainViewControllerDelegate {
+    
+    func mainViewController(
+        _ controller: MainViewController,
+        didToggleFavoriteForPainting painting: Paintings
+    ) {
+        // Обновите ваш массив избранных картин и обновите collectionView
+         if let index = paintings.firstIndex(where: { $0.id == painting.id }) {
+             paintings[index].isFavorite.toggle()
+         } else {
+             paintings.append(painting)
+         }
+         collectionView.reloadData()
+    }
 }

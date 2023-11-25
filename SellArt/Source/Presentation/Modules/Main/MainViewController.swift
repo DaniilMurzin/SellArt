@@ -2,13 +2,24 @@ import UIKit
 import SnapKit
 
 protocol MainViewProtocol: AnyObject {
+    
     func navigateToPaintingDetails(with painting: Paintings)
+}
+
+protocol MainViewControllerDelegate: AnyObject {
+    
+    func mainViewController(
+        _ controller: MainViewController,
+        didToggleFavoriteForPainting painting: Paintings
+    )
 }
 
 class MainViewController: UIViewController {
     
     // MARK: - private properties
     private(set) var presenter: MainPresenterProtocol
+    
+    weak var favoritesDelegate: MainViewControllerDelegate?
     
     private var paintings: [Paintings] = [] {
            didSet {
@@ -165,13 +176,18 @@ extension MainViewController: UICollectionViewDataSource {
 extension MainViewController: CustomCellDelegate {
     
     func likeButtonTapped(at indexPath: IndexPath) {
-        showAlert(
-            withTitle: Strings.addedTitle,
-            message: Strings.addedMessage
-        )
-        presenter.likeButtonTapped(at: indexPath)
+        if indexPath.row < paintings.count {
+            var painting = paintings[indexPath.row]
+            
+            favoritesDelegate?.mainViewController(self, didToggleFavoriteForPainting: painting)
+            
+            showAlert(
+                withTitle: Strings.addedTitle,
+                message: Strings.addedMessage
+            )
+            presenter.likeButtonTapped(at: indexPath)
+        }
     }
-    
     func cartButtonTapped(at indexPath: IndexPath) {
         showAlert(
             withTitle: Strings.addedToCartTitle,

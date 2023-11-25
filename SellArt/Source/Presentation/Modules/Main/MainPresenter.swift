@@ -48,11 +48,6 @@ extension MainPresenter: MainPresenterProtocol {
 }
 
 extension MainPresenter {
-    func toggleFavorite(for paintingId: Int) {
-        guard let index = paintings.firstIndex(where: { $0.id == paintingId }) else { return }
-        paintings[index].isFavorite.toggle()
-        UserDefaults.standard.set(paintings[index].isFavorite, forKey: "favorite_\(paintingId)")
-    }
     private func saveFavorites() {
         // Сохранить id избранных картин
         let favoriteIds = paintings.filter { $0.isFavorite }.map { $0.id }
@@ -60,3 +55,10 @@ extension MainPresenter {
     }
 }
 
+extension MainPresenter {
+    func toggleFavorite(for paintingId: Int) {
+        guard let index = paintings.firstIndex(where: { $0.id == paintingId }) else { return }
+        paintings[index].isFavorite.toggle()
+        // Здесь может быть код для сохранения измененных данных, если это необходимо
+    }
+}

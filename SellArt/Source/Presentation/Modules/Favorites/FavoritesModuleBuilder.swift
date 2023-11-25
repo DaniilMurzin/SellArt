@@ -2,7 +2,7 @@ import UIKit
 
 class FavoritesModuleBuilder {
     
-    static func build() -> UIViewController {
+    static func build() -> FavoritesViewController {
         let presenter = FavoritesPresenter()
         
         let favoritesViewController = FavoritesViewController(presenter: presenter)
