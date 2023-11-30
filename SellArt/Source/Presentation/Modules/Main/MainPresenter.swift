@@ -6,7 +6,6 @@ protocol MainPresenterProtocol {
     func didSelectPainting(at index: Int)
     func likeButtonTapped(at indexPath: IndexPath)
     func cartButtonTapped(at indexPath: IndexPath)
-    func toggleFavorite(for paintingId: Int)
 }
 
 class MainPresenter {
@@ -44,21 +43,5 @@ extension MainPresenter: MainPresenterProtocol {
     func didSelectPainting(at index: Int) {
         let painting = PaintingsModel.paintings[index]
         view?.navigateToPaintingDetails(with: painting)
-    }
-}
-
-extension MainPresenter {
-    private func saveFavorites() {
-        // Сохранить id избранных картин
-        let favoriteIds = paintings.filter { $0.isFavorite }.map { $0.id }
-        UserDefaults.standard.set(favoriteIds, forKey: "favorites")
-    }
-}
-
-extension MainPresenter {
-    func toggleFavorite(for paintingId: Int) {
-        guard let index = paintings.firstIndex(where: { $0.id == paintingId }) else { return }
-        paintings[index].isFavorite.toggle()
-        // Здесь может быть код для сохранения измененных данных, если это необходимо
     }
 }

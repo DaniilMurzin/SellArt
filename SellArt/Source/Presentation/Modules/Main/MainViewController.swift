@@ -177,10 +177,14 @@ extension MainViewController: CustomCellDelegate {
     
     func likeButtonTapped(at indexPath: IndexPath) {
         if indexPath.row < paintings.count {
-            var painting = paintings[indexPath.row]
+            let painting = paintings[indexPath.row]
             
-            favoritesDelegate?.mainViewController(self, didToggleFavoriteForPainting: painting)
-            
+            favoritesDelegate?.mainViewController(
+                self,
+                didToggleFavoriteForPainting: painting
+            )
+            print("Кнопка favorites нажата с  ID: \(painting.id)")
+
             showAlert(
                 withTitle: Strings.addedTitle,
                 message: Strings.addedMessage

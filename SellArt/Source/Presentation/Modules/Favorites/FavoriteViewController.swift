@@ -43,7 +43,12 @@ class FavoritesViewController: UIViewController {
             nibName: nil,
             bundle: nil
         )
-    }
+        print("FavoritesViewController init")
+     }
+
+     deinit {
+         print("FavoritesViewController deinit")
+     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -56,8 +61,15 @@ class FavoritesViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Favorites will appear with paintings: \(paintings.map { $0.id })")
+        collectionView.reloadData()
+    }
+    
     // MARK: - private methods
-    private func loadFavorites() {}
+    private func loadFavorites() {
+    }
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -279,12 +291,24 @@ extension FavoritesViewController: MainViewControllerDelegate {
         _ controller: MainViewController,
         didToggleFavoriteForPainting painting: Paintings
     ) {
-        // Обновите ваш массив избранных картин и обновите collectionView
-         if let index = paintings.firstIndex(where: { $0.id == painting.id }) {
-             paintings[index].isFavorite.toggle()
-         } else {
-             paintings.append(painting)
-         }
-         collectionView.reloadData()
+        print("Метод делегата вызван с картиной ID: \(painting.id)")
+        
+        if let index = paintings.firstIndex(where: { $0.id == painting.id }) {
+            var updatedPainting = paintings[index]
+            updatedPainting.isFavorite.toggle()
+            paintings[index] = updatedPainting
+            print("Избранное для \(updatedPainting.name): \(updatedPainting.isFavorite)")
+        } else {
+            print("Добавление новой картины в избранное с ID: \(painting.id)")
+            var newPainting = painting
+            newPainting.isFavorite = true
+            paintings.append(newPainting)
+        }
+        
+        DispatchQueue.main.async {
+                  self.collectionView.reloadData()
+            
+              }
+        print("Коллекция обновлена с \(paintings.count) картинами.")
     }
 }
