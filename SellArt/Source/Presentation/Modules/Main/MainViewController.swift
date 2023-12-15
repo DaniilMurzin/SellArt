@@ -148,13 +148,12 @@ extension MainViewController: UICollectionViewDataSource {
             withReuseIdentifier: PaintingCollectionViewCell.identifier,
             for: indexPath
         )
-            
-        let painting = paintings[indexPath.item]
     
         guard let paintingCell = cell as? PaintingCollectionViewCell else {
             return cell
         }
         
+        let painting = paintings[indexPath.item]
         paintingCell.delegate = self
         paintingCell.indexPath = indexPath
         let formattedPrice = presenter.formatPrice(painting.price)
