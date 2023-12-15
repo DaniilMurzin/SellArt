@@ -29,6 +29,8 @@
 		B6721BE729F149DA008436A7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6721BE629F149DA008436A7 /* Colors.swift */; };
 		B6721BED29F1646F008436A7 /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6721BEC29F1646F008436A7 /* Quicksand-VariableFont_wght.ttf */; };
 		B6721BEF29F17F27008436A7 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6721BEE29F17F27008436A7 /* Quicksand-Medium.ttf */; };
+		B67EBE482AFFBB6E009E2510 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67EBE472AFFBB6E009E2510 /* PinterestLayout.swift */; };
+		B6821BBC2B0647EC00E6425A /* String + height.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6821BBB2B0647EC00E6425A /* String + height.swift */; };
 		B6B1A3E529FC0CF400227388 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B1A3E429FC0CF400227388 /* CustomTextField.swift */; };
 		B6B1A3E729FE262700227388 /* UserActionsButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B1A3E629FE262600227388 /* UserActionsButtons.swift */; };
 		B6B32D7D2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B32D7C2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift */; };
@@ -42,6 +44,9 @@
 		B6D24F8929EAEE090015F5B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D24F8729EAEE090015F5B2 /* LaunchScreen.storyboard */; };
 		B6D24F9129EAEF170015F5B2 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D24F9029EAEF170015F5B2 /* SplashPresenter.swift */; };
 		B6D24F9329EAEFA00015F5B2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D24F9229EAEFA00015F5B2 /* SplashViewController.swift */; };
+		B6DAF5EE2B0E0500009CE082 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DAF5ED2B0E0500009CE082 /* FavoriteViewController.swift */; };
+		B6DAF5F02B0E0510009CE082 /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DAF5EF2B0E0510009CE082 /* FavoritesPresenter.swift */; };
+		B6DAF5F22B0E0522009CE082 /* FavoritesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DAF5F12B0E0522009CE082 /* FavoritesModuleBuilder.swift */; };
 		DED9B8B9C24F1638AA5C6395 /* Pods_SellArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0BF302F73678CCD5F479FD /* Pods_SellArt.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +78,8 @@
 		B6721BE629F149DA008436A7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B6721BEC29F1646F008436A7 /* Quicksand-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		B6721BEE29F17F27008436A7 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Medium.ttf"; sourceTree = "<group>"; };
+		B67EBE472AFFBB6E009E2510 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
+		B6821BBB2B0647EC00E6425A /* String + height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + height.swift"; sourceTree = "<group>"; };
 		B6B1A3E429FC0CF400227388 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		B6B1A3E629FE262600227388 /* UserActionsButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActionsButtons.swift; sourceTree = "<group>"; };
 		B6B32D7C2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionVIewCell + Identifier.swift"; sourceTree = "<group>"; };
@@ -88,6 +95,9 @@
 		B6D24F8A29EAEE090015F5B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6D24F9029EAEF170015F5B2 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		B6D24F9229EAEFA00015F5B2 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		B6DAF5ED2B0E0500009CE082 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		B6DAF5EF2B0E0510009CE082 /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
+		B6DAF5F12B0E0522009CE082 /* FavoritesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesModuleBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +201,7 @@
 		B614025D29EB08B40044DA2D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B6DAF5EC2B0E0494009CE082 /* Favorites */,
 				B612F1DD2A0240CB006041CF /* Main */,
 				B6B6FE4D2ADD3C6A006C981E /* PaintingInfo */,
 				B6199DED2AEE96510062B4CC /* Form */,
@@ -237,6 +248,7 @@
 			children = (
 				B65D8EE629F439CD0092425E /* UIcolor + Hex.swift */,
 				B6B32D7C2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift */,
+				B6821BBB2B0647EC00E6425A /* String + height.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -254,6 +266,7 @@
 			children = (
 				B660DF252AD17A19000206A4 /* PaintingsRepository.swift */,
 				B66273F52A078BC6008EFA72 /* Paintings.swift */,
+				B67EBE472AFFBB6E009E2510 /* PinterestLayout.swift */,
 			);
 			path = MainScreenContentFeature;
 			sourceTree = "<group>";
@@ -308,6 +321,16 @@
 			path = SellArt;
 			sourceTree = "<group>";
 		};
+		B6DAF5EC2B0E0494009CE082 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				B6DAF5ED2B0E0500009CE082 /* FavoriteViewController.swift */,
+				B6DAF5EF2B0E0510009CE082 /* FavoritesPresenter.swift */,
+				B6DAF5F12B0E0522009CE082 /* FavoritesModuleBuilder.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		E344140CA9EA9BE12E02B1A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +351,7 @@
 				B6D24F7529EAEE060015F5B2 /* Sources */,
 				B6D24F7629EAEE060015F5B2 /* Frameworks */,
 				B6D24F7729EAEE060015F5B2 /* Resources */,
+				B4F960E390E495B1BCE3267D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -413,6 +437,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B4F960E390E495B1BCE3267D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SellArt/Pods-SellArt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SellArt/Pods-SellArt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SellArt/Pods-SellArt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B6721BE129F14368008436A7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -441,12 +482,17 @@
 				B6721BE329F149B2008436A7 /* Fonts.swift in Sources */,
 				B6721BE729F149DA008436A7 /* Colors.swift in Sources */,
 				B6D24F7D29EAEE060015F5B2 /* AppDelegate.swift in Sources */,
+				B6DAF5F22B0E0522009CE082 /* FavoritesModuleBuilder.swift in Sources */,
+				B6821BBC2B0647EC00E6425A /* String + height.swift in Sources */,
+				B6DAF5EE2B0E0500009CE082 /* FavoriteViewController.swift in Sources */,
 				B6B6FE4C2ADD3C37006C981E /* PaintingInfoViewController.swift in Sources */,
 				B6C295A32AE0DDBB00943E80 /* CustomSeparator.swift in Sources */,
 				B6B6FE512ADD3CB7006C981E /* PaintingInfoPresenter.swift in Sources */,
 				B6D24F7F29EAEE060015F5B2 /* SceneDelegate.swift in Sources */,
 				B6199DF32AEE96C10062B4CC /* FormModuleBuilder.swift in Sources */,
+				B67EBE482AFFBB6E009E2510 /* PinterestLayout.swift in Sources */,
 				B6B32D7D2ADADE7300D1BEAF /* UICollectionVIewCell + Identifier.swift in Sources */,
+				B6DAF5F02B0E0510009CE082 /* FavoritesPresenter.swift in Sources */,
 				B660DF262AD17A19000206A4 /* PaintingsRepository.swift in Sources */,
 				B6D24F9129EAEF170015F5B2 /* SplashPresenter.swift in Sources */,
 				B65D8EE729F439CD0092425E /* UIcolor + Hex.swift in Sources */,

@@ -1,34 +1,22 @@
 import UIKit
 import SnapKit
 
-protocol MainViewProtocol: AnyObject {
-    
+protocol FavoritesViewProtocol: AnyObject {
     func navigateToPaintingDetails(with painting: Paintings)
 }
 
-protocol MainViewControllerDelegate: AnyObject {
-    
-    func mainViewController(
-        _ controller: MainViewController,
-        didToggleFavoriteForPainting painting: Paintings
-    )
-}
-
-class MainViewController: UIViewController {
+class FavoritesViewController: UIViewController {
     
     // MARK: - private properties
-    private(set) var presenter: MainPresenterProtocol
+    private(set) var presenter: FavoritesPresenterProtocol
     
-    weak var favoritesDelegate: MainViewControllerDelegate?
+    private let profileButton = UserActionsButtons(type: .profile)
     
     private var paintings: [Paintings] = [] {
            didSet {
                collectionView.reloadData()
            }
        }
-    
-    private let profileButton = UserActionsButtons(type: .profile)
-    
     private lazy var collectionView: UICollectionView = {
         let layout = PinterestLayout()
         layout.delegate = self
@@ -47,15 +35,15 @@ class MainViewController: UIViewController {
         
         return collectionView
     }()
-
+    
     // MARK: - init
-    init(presenter: MainPresenterProtocol) {
+    init(presenter: FavoritesPresenterProtocol) {
         self.presenter = presenter
         super.init(
             nibName: nil,
             bundle: nil
         )
-    }
+     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -64,23 +52,27 @@ class MainViewController: UIViewController {
     // MARK: - override methods
     override func viewDidLoad () {
         super.viewDidLoad()
-        
         setupView()
         setupConstraints()
-        presenter.loadPaintings { [weak self] paintings in
-            self?.paintings = paintings
-        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
     
     // MARK: - private methods
+    private func loadFavorites() {
+    }
+    
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-
+        
         let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.largeTitleFont,
             .foregroundColor: UIColor.mainFontColor
         ]
-
+        
         navigationController?.navigationBar.largeTitleTextAttributes = attributes
     }
     
@@ -100,14 +92,13 @@ class MainViewController: UIViewController {
         }
     }
 }
-
-    // MARK: - extension MainViewController + MainViewProtocol
-extension MainViewController: MainViewProtocol {
+// MARK: - extension FavoritesViewController + FavoritesViewProtocol
+extension FavoritesViewController: FavoritesViewProtocol {
     
     func navigateToPaintingDetails(with painting: Paintings) {
         let infoViewController = PaintingInfoModuleBuilder.build(with: painting)
         infoViewController.hidesBottomBarWhenPushed = true
-            
+        
         self.navigationController?.pushViewController(
             infoViewController,
             animated: true
@@ -115,8 +106,8 @@ extension MainViewController: MainViewProtocol {
     }
 }
 
-    // MARK: - extension MainViewController + UICollectionViewDataSource
-extension MainViewController: UICollectionViewDataSource {
+// MARK: - extension FavoritesViewController + UICollectionViewDataSource
+extension FavoritesViewController: UICollectionViewDataSource {
     
     func collectionView(
         _ collectionView: UICollectionView,
@@ -148,14 +139,14 @@ extension MainViewController: UICollectionViewDataSource {
             withReuseIdentifier: PaintingCollectionViewCell.identifier,
             for: indexPath
         )
-    
+        
         guard let paintingCell = cell as? PaintingCollectionViewCell else {
             return cell
         }
         
-        let painting = paintings[indexPath.item]
         paintingCell.delegate = self
         paintingCell.indexPath = indexPath
+        let painting = paintings[indexPath.item]
         let formattedPrice = presenter.formatPrice(painting.price)
         paintingCell.setupCell(
             with: painting,
@@ -168,29 +159,21 @@ extension MainViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-    presenter.didSelectPainting(at: indexPath.item)
+        presenter.didSelectPainting(at: indexPath.item)
     }
 }
 
-    // MARK: - extension MainViewController + CustomCellDelegate
-extension MainViewController: CustomCellDelegate {
+// MARK: - extension FavoritesViewController + CustomCellDelegate
+extension FavoritesViewController: CustomCellDelegate {
     
     func likeButtonTapped(at indexPath: IndexPath) {
-        if indexPath.row < paintings.count {
-            let painting = paintings[indexPath.row]
-            
-            favoritesDelegate?.mainViewController(
-                self,
-                didToggleFavoriteForPainting: painting
-            )
-
-            showAlert(
-                withTitle: Strings.addedTitle,
-                message: Strings.addedMessage
-            )
-            presenter.likeButtonTapped(at: indexPath)
-        }
+        showAlert(
+            withTitle: Strings.addedTitle,
+            message: Strings.addedMessage
+        )
+        presenter.likeButtonTapped(at: indexPath)
     }
+    
     func cartButtonTapped(at indexPath: IndexPath) {
         showAlert(
             withTitle: Strings.addedToCartTitle,
@@ -224,11 +207,11 @@ extension MainViewController: CustomCellDelegate {
         )
     }
 }
-    // MARK: - extension MainViewController + UICollectionViewDelegate
-extension MainViewController: UICollectionViewDelegate {}
+// MARK: - extension FavoritesViewController + UICollectionViewDelegate
+extension FavoritesViewController: UICollectionViewDelegate {}
 
-    // MARK: - extension MainViewController + PinterestLayoutDelegate
-extension MainViewController: PinterestLayoutDelegate {
+// MARK: - extension FavoritesViewController + PinterestLayoutDelegate
+extension FavoritesViewController: PinterestLayoutDelegate {
     
     func collectionView(
         _ collectionView: UICollectionView,
@@ -273,25 +256,49 @@ extension MainViewController: PinterestLayoutDelegate {
         return totalHeight
     }
 }
-    // MARK: - extension MainViewController + CustomCellDelegate
-    private enum LocalConstants {
-        static let rightInset: CGFloat = 2
+
+private enum LocalConstants {
+    static let rightInset: CGFloat = 2
+    
+    static let leftInset: CGFloat = 2
+    
+    static let minimumInterItemSpacing: CGFloat = 5
+    
+    static let minimumLineSpacing: CGFloat = 10
+    
+    static let numberOfColumns: CGFloat = 2
+    
+    static let totalSpacing = (LocalConstants.numberOfColumns - 1) * 10
+    
+    static let aspectRatio: CGFloat = 1.9
+    
+    static let extraHeight: CGFloat = 20
+    
+    static let buttonsHeight: CGFloat = 30
+    
+    static let additionalSpacing: CGFloat = 20
+}
+
+extension FavoritesViewController: MainViewControllerDelegate {
+    
+    func mainViewController(
+        _ controller: MainViewController,
+        didToggleFavoriteForPainting painting: Paintings
+    ) {
+
+        if let index = paintings.firstIndex(where: { $0.id == painting.id }) {
+            var updatedPainting = paintings[index]
+            updatedPainting.isFavorite.toggle()
+            paintings[index] = updatedPainting
+        } else {
+            var newPainting = painting
+            newPainting.isFavorite = true
+            paintings.append(newPainting)
+        }
         
-        static let leftInset: CGFloat = 2
-        
-        static let minimumInterItemSpacing: CGFloat = 5
-        
-        static let minimumLineSpacing: CGFloat = 10
-        
-        static let numberOfColumns: CGFloat = 2
-        
-        static let totalSpacing = (LocalConstants.numberOfColumns - 1) * 10
-        
-        static let aspectRatio: CGFloat = 1.9
-        
-        static let extraHeight: CGFloat = 20
-        
-        static let buttonsHeight: CGFloat = 30
-        
-        static let additionalSpacing: CGFloat = 20
+        DispatchQueue.main.async {
+                  self.collectionView.reloadData()
+            
+              }
+    }
 }

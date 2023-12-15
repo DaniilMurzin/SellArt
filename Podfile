@@ -8,4 +8,6 @@ target 'SellArt' do
 
   # Pods for SellArt
 
+pod 'SnapKit'
+
 end

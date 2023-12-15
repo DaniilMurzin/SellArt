@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 protocol PaintingInfoViewProtocol: AnyObject {
     func navigateToFormViewController()
@@ -21,8 +22,6 @@ class PaintingInfoViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.backgroundColor = .mainBackgroundColor
         
         return scrollView
@@ -32,26 +31,23 @@ class PaintingInfoViewController: UIViewController {
         let view = UIView()
         
         view.backgroundColor = .mainBackgroundColor
-        view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
     private lazy var imageView: UIImageView = {
-        let iv = UIImageView()
+        let imageView = UIImageView()
         
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFit
-        iv.clipsToBounds = true
-        iv.image = painting.image
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.image = painting.image
         
-        return iv
+        return imageView
     }()
     
     private lazy var artistNameLabel: UILabel = {
         let label = UILabel()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = painting.artist
         label.font = UIFont.artNameFont
         label.textColor = UIColor.mainFontColor
@@ -62,7 +58,6 @@ class PaintingInfoViewController: UIViewController {
     private lazy var artistLabel: UILabel = {
         let label = UILabel()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = painting.name
         label.font = UIFont.regularBaseFont
         label.textColor = UIColor.mainFontColor
@@ -73,7 +68,6 @@ class PaintingInfoViewController: UIViewController {
     private lazy var locationLabel: UILabel = {
         let label = UILabel()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = painting.city
         label.font = UIFont.regularBaseFont
         label.textColor = UIColor.mainFontColor
@@ -84,7 +78,6 @@ class PaintingInfoViewController: UIViewController {
     private lazy var viewsLabel: UILabel = {
         let label = UILabel()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Views \(painting.view)"
         label.font = UIFont.regularBaseFont
         label.textColor = UIColor.mainFontColor
@@ -95,7 +88,6 @@ class PaintingInfoViewController: UIViewController {
     private lazy var paintingTypeLabel: UILabel = {
         let label = UILabel()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.regularBaseFont
         label.textColor = UIColor.mainFontColor
         label.text = painting.type
@@ -106,7 +98,6 @@ class PaintingInfoViewController: UIViewController {
     private lazy var materialLabel: UILabel = {
         let label = UILabel()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.regularBaseFont
         label.textColor = UIColor.mainFontColor
         label.text = painting.material
@@ -117,7 +108,6 @@ class PaintingInfoViewController: UIViewController {
     private lazy var dimensionsLabel: UILabel = {
         let label = UILabel()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.regularBaseFont
         label.textColor = UIColor.mainFontColor
         label.text = painting.dimensions
@@ -128,7 +118,6 @@ class PaintingInfoViewController: UIViewController {
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.regularBaseFont
         label.textColor = UIColor.mainFontColor
         label.text = presenter.formatPrice(painting.price)
@@ -142,7 +131,6 @@ class PaintingInfoViewController: UIViewController {
         
         view.axis  = NSLayoutConstraint.Axis.horizontal
         view.spacing = LocalConstants.buttonsStackViewSpacing
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.addArrangedSubview(favoriteButton)
         view.addArrangedSubview(shareButton)
         view.addArrangedSubview(cartButton)
@@ -153,7 +141,6 @@ class PaintingInfoViewController: UIViewController {
     private lazy var topLabelsStackView: UIStackView = {
         let view = UIStackView()
         
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
         view.spacing = LocalConstants.topLabelsStackViewSpacing
         view.addArrangedSubview(artistNameLabel)
@@ -166,7 +153,6 @@ class PaintingInfoViewController: UIViewController {
     private lazy var paintingDetailsStackView: UIStackView = {
         let view = UIStackView()
         
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
         view.spacing = 5
         view.addArrangedSubview(paintingTypeLabel)
@@ -207,13 +193,13 @@ class PaintingInfoViewController: UIViewController {
         
         contentView.addSubview(imageView)
         contentView.addSubview(topLabelsStackView)
-        contentView.addSubview(buttonsStackView)
         contentView.addSubview(viewsLabel)
+        contentView.addSubview(buttonsStackView)
         contentView.addSubview(separator)
         contentView.addSubview(paintingDetailsStackView)
         contentView.addSubview(separator2)
         contentView.addSubview(buyButton)
-        
+    
         favoriteButton.addTarget(
             self,
             action: #selector(likeButtonAction),
@@ -231,132 +217,58 @@ class PaintingInfoViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            
-            scrollView.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor
-            ),
-            scrollView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor
-            ),
-            scrollView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor
-            ),
-            scrollView.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor
-            ),
-
-            contentView.topAnchor.constraint(
-                equalTo: scrollView.topAnchor
-            ),
-            contentView.leadingAnchor.constraint(
-                equalTo: scrollView.leadingAnchor
-            ),
-            contentView.trailingAnchor.constraint(
-                equalTo: scrollView.trailingAnchor
-            ),
-            contentView.bottomAnchor.constraint(
-                equalTo: scrollView.bottomAnchor
-            ),
-            contentView.widthAnchor.constraint(
-                equalTo: scrollView.widthAnchor
-            ),
-
-            imageView.topAnchor.constraint(
-                equalTo: contentView.topAnchor,
-                constant: LocalConstants.imageViewTop
-            ),
-            imageView.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor,
-                constant: LocalConstants.imageViewLeading
-            ),
-            imageView.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: LocalConstants.imageViewTrailing
-            ),
-            imageView.heightAnchor.constraint(
-                equalToConstant: LocalConstants.imageViewHeight
-            ),
-
-            topLabelsStackView.topAnchor.constraint(
-                equalTo: imageView.bottomAnchor,
-                constant: LocalConstants.topLabelsStackViewTop
-            ),
-            topLabelsStackView.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor,
-                constant: LocalConstants.topLabelsStackViewLeading
-            ),
-
-            buttonsStackView.topAnchor.constraint(
-                equalTo: locationLabel.bottomAnchor,
-                constant: LocalConstants.buttonsStackViewTop
-            ),
-            buttonsStackView.leadingAnchor.constraint(
-                equalTo: artistNameLabel.leadingAnchor
-            ),
-
-            viewsLabel.topAnchor.constraint(
-                equalTo: buttonsStackView.topAnchor,
-                constant: LocalConstants.viewsLabelTop
-            ),
-            viewsLabel.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: LocalConstants.viewsLabelTrailing
-            ),
-            viewsLabel.bottomAnchor.constraint(
-                equalTo: buttonsStackView.bottomAnchor
-            ),
-
-            separator.topAnchor.constraint(
-                equalTo: viewsLabel.bottomAnchor,
-                constant: LocalConstants.separatorTop
-            ),
-            separator.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor
-            ),
-            separator.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor
-            ),
-
-            paintingDetailsStackView.topAnchor.constraint(
-                equalTo: separator.bottomAnchor,
-                constant: LocalConstants.paintingDetailsStackViewTop
-            ),
-            paintingDetailsStackView.leadingAnchor.constraint(
-                equalTo: buttonsStackView.leadingAnchor
-            ),
-
-            separator2.topAnchor.constraint(
-                equalTo: paintingDetailsStackView.bottomAnchor,
-                constant: LocalConstants.separator2Top
-            ),
-            separator2.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor
-            ),
-            separator2.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor
-            ),
-
-            buyButton.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor,
-                constant: LocalConstants.buyButtonLeading
-            ),
-            buyButton.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: LocalConstants.buyButtonTrailing
-            ),
-            buyButton.topAnchor.constraint(
-                equalTo: separator2.bottomAnchor,
-                constant: LocalConstants.buyButtonTop
-            ),
-            buyButton.heightAnchor.constraint(
-                equalToConstant: LocalConstants.buyButtonHeight
-            ),
-            buyButton.bottomAnchor.constraint(
-                equalTo: contentView.bottomAnchor,
-                constant: LocalConstants.buyButtonBottom
-            )
-        ])
+        
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.edges.equalTo(scrollView)
+            make.width.equalTo(scrollView)
+        }
+        
+        imageView.snp.makeConstraints { make in
+            make.top.equalTo(contentView).offset(LocalConstants.imageViewTop)
+            make.leading.trailing.equalTo(contentView).inset(LocalConstants.imageViewHorizontalInset)
+            make.height.equalTo(LocalConstants.imageViewHeight)
+        }
+        
+        topLabelsStackView.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).offset(LocalConstants.topLabelsStackViewTop)
+            make.leading.equalTo(contentView).offset(LocalConstants.topLabelsStackViewLeading)
+        }
+        
+        buttonsStackView.snp.makeConstraints { make in
+            make.leading.equalTo(topLabelsStackView)
+            make.top.equalTo(locationLabel.snp.bottom).offset(LocalConstants.buttonsStackViewTop)
+        }
+        
+        viewsLabel.snp.makeConstraints { make in
+            make.top.equalTo(topLabelsStackView.snp.bottom).offset(LocalConstants.viewsLabelTop)
+            make.trailing.equalTo(contentView).offset(-LocalConstants.viewsLabelTrailing)
+        }
+        
+        separator.snp.makeConstraints { make in
+            make.top.equalTo(buttonsStackView.snp.bottom).offset(LocalConstants.separatorTop)
+            make.leading.trailing.equalTo(contentView)
+        }
+        
+        paintingDetailsStackView.snp.makeConstraints { make in
+            make.top.equalTo(separator.snp.bottom).offset(LocalConstants.paintingDetailsStackViewTop)
+            make.leading.equalTo(buttonsStackView)
+        }
+        
+        separator2.snp.makeConstraints { make in
+            make.top.equalTo(paintingDetailsStackView.snp.bottom).offset(LocalConstants.separator2Top)
+            make.leading.trailing.equalTo(contentView)
+        }
+        
+        buyButton.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(contentView).inset(LocalConstants.buyButtonHorizontalInset)
+            make.top.equalTo(separator2.snp.bottom).offset(LocalConstants.buyButtonTop)
+            make.height.equalTo(LocalConstants.buyButtonHeight)
+            make.bottom.equalTo(contentView).offset(-LocalConstants.buyButtonBottom)
+        }
     }
 
     @objc func likeButtonAction() {
@@ -409,8 +321,7 @@ class PaintingInfoViewController: UIViewController {
     private enum LocalConstants {
         
         static let imageViewTop: CGFloat  = 10
-        static let imageViewLeading: CGFloat = 10
-        static let imageViewTrailing: CGFloat = -10
+        static let imageViewHorizontalInset: CGFloat = 10
         static let imageViewHeight: CGFloat = 300
         
         static let topLabelsStackViewTop: CGFloat = 30
@@ -429,8 +340,7 @@ class PaintingInfoViewController: UIViewController {
         
         static let separator2Top: CGFloat = 15
         
-        static let buyButtonLeading: CGFloat = 20
-        static let buyButtonTrailing: CGFloat = -20
+        static let buyButtonHorizontalInset: CGFloat = 20
         static let buyButtonTop: CGFloat = 20
         static let buyButtonHeight: CGFloat = 50
         static let buyButtonBottom: CGFloat = -20
