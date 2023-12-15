@@ -148,14 +148,15 @@ extension MainViewController: UICollectionViewDataSource {
             withReuseIdentifier: PaintingCollectionViewCell.identifier,
             for: indexPath
         )
-                
+            
+        let painting = paintings[indexPath.item]
+    
         guard let paintingCell = cell as? PaintingCollectionViewCell else {
             return cell
         }
         
         paintingCell.delegate = self
         paintingCell.indexPath = indexPath
-        let painting = paintings[indexPath.item]
         let formattedPrice = presenter.formatPrice(painting.price)
         paintingCell.setupCell(
             with: painting,
@@ -183,7 +184,6 @@ extension MainViewController: CustomCellDelegate {
                 self,
                 didToggleFavoriteForPainting: painting
             )
-            print("Кнопка favorites нажата с  ID: \(painting.id)")
 
             showAlert(
                 withTitle: Strings.addedTitle,

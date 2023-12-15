@@ -33,11 +33,12 @@ class PinterestLayout: UICollectionViewLayout {
   override func prepare() {
 
     guard
-      cache.isEmpty == true,
       let collectionView = collectionView
       else {
         return
     }
+      cache.removeAll()
+      contentHeight = 0
       
     let columnWidth = contentWidth / CGFloat(numberOfColumns)
       

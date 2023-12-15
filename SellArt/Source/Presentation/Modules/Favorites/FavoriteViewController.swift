@@ -43,11 +43,6 @@ class FavoritesViewController: UIViewController {
             nibName: nil,
             bundle: nil
         )
-        print("FavoritesViewController init")
-     }
-
-     deinit {
-         print("FavoritesViewController deinit")
      }
     
     required init?(coder: NSCoder) {
@@ -63,7 +58,6 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("Favorites will appear with paintings: \(paintings.map { $0.id })")
         collectionView.reloadData()
     }
     
@@ -291,15 +285,12 @@ extension FavoritesViewController: MainViewControllerDelegate {
         _ controller: MainViewController,
         didToggleFavoriteForPainting painting: Paintings
     ) {
-        print("Метод делегата вызван с картиной ID: \(painting.id)")
-        
+
         if let index = paintings.firstIndex(where: { $0.id == painting.id }) {
             var updatedPainting = paintings[index]
             updatedPainting.isFavorite.toggle()
             paintings[index] = updatedPainting
-            print("Избранное для \(updatedPainting.name): \(updatedPainting.isFavorite)")
         } else {
-            print("Добавление новой картины в избранное с ID: \(painting.id)")
             var newPainting = painting
             newPainting.isFavorite = true
             paintings.append(newPainting)
@@ -309,6 +300,5 @@ extension FavoritesViewController: MainViewControllerDelegate {
                   self.collectionView.reloadData()
             
               }
-        print("Коллекция обновлена с \(paintings.count) картинами.")
     }
 }
