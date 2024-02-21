@@ -1,0 +1,16 @@
+"submitFormButtonTitle" = "SUBMIT FORM";
+"registrationButtonTitle" = "REGISTRATION";
+"purchase" = "PURCHASE";
+"name" = "Name";
+"surname" = "Surname";
+"email" = "Email";
+"phone number" = "Phone number";
+"address" = "Address";
+"tabBarGallery" = "Gallery";
+"addedTitle" = "Added to Favorites";
+"addedMessage" = "This item has been added to your favorites.";
+"addedToCartTitle" = "Added to Cart";
+"addedToCartMessage" = "This item has been added to your cart.";
+"ok" = "OK";
+"agreement" = "By clicking the registration button, you agree to the processing of personal data.";
+"form" = "Please fill out the form";

@@ -1,0 +1,16 @@
+"submitFormButtonTitle" = "ОТПРАВИТЬ ЗАЯВКУ";
+"registrationButtonTitle" = "РЕГИСТРАЦИЯ";
+"purchase" = "КУПИТЬ";
+"name" = "Имя";
+"surname" = "Фамилия";
+"email" = "Емейл";
+"phone number" = "Номер телефона";
+"address" = "Адрес";
+"tabBarGallery" = "Галерея";
+"addedTitle" = "Добавлено в избранное";
+"addedMessage" = "Этот товар был добавлен в избранное.";
+"addedToCartTitle" = "Добавлено в корзину";
+"addedToCartMessage" = "Этот товар был добавлен в вашу корзину.";
+"ok" = "Принять";
+"agreement" = "Нажимая кнопку регистрация вы соглашаетесь согласие на обработку персональных данных";
+"form" = "Заполните форму";
